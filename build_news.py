@@ -466,13 +466,19 @@ def main() -> None:
     # 市值權重高者優先（抓不到權重視為 0，排最後）；同權重時新聞多者優先，再股號
     stocks.sort(key=lambda s: (-(s["weight_per"] or 0.0), -s["count"], s["stock_id"]))
 
+    # total_news 必須是「實際輸出的則數」（去重後、前端「N 則」顯示的那個數字），
+    # 不能用 len(kept)：kept 是**去重前**的計數，而去重掉多少完全取決於抓了幾個切片
+    #   - 全量（7 切片）：kept ~730 → 實際輸出 ~479（FinMind 同一篇在相鄰切片重複出現）
+    #   - 增量（2 切片 + 快取）：kept ~491 → 實際輸出 ~475（快取那段早已去重過）
+    # 兩者實際輸出一致，但 len(kept) 會讓前端的「則數」看起來掉了三成。
+    delivered = sum(len(s["news"]) for s in stocks)
     payload = {
         "generated_at": datetime.now(TAIPEI_TZ).isoformat(timespec="seconds"),
         "lookback_days": args.lookback,
         "trading_days": tdays,
         "pool_size": int(len(pool)),
         "stocks_with_news": len(stocks),
-        "total_news": len(kept),
+        "total_news": delivered,
         # 下一班的增量依據：本檔已涵蓋這些 (日曆日切片 × 股票代號) 的組合。
         # 「有涵蓋但 stocks 裡沒出現」＝該檔該日確實沒新聞（而非沒抓過）——少了這個
         # 區塊就無法區分兩者，只能全量重抓。~1.5KB，且內容穩定、幾乎不增加 git churn。
@@ -481,7 +487,8 @@ def main() -> None:
     }
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=1)
-    logger.info(f"已輸出 {OUTPUT_JSON}：{len(stocks)} 檔有新聞、共 {len(kept)} 則")
+    logger.info(f"已輸出 {OUTPUT_JSON}：{len(stocks)} 檔有新聞、共 {delivered} 則"
+                f"（去重前 {len(kept)} 則）")
 
 
 if __name__ == "__main__":
