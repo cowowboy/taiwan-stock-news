@@ -106,8 +106,33 @@ news.json            ← 每日由 GitHub Actions 產出並 commit
 
 ## 手動更新
 ```bash
-FINMIND_TOKEN=xxx python build_news.py --lookback 3
+FINMIND_TOKEN=xxx python build_news.py --lookback 3            # 增量（預設）
+FINMIND_TOKEN=xxx python build_news.py --lookback 5 --full     # 全窗重抓
+python tests/test_incremental.py                               # 增量正確性（免 token/免網路）
 ```
+
+## 增量抓取（2026-07 起）
+
+這支排程每小時跑一次（Worker dispatch，一天 16 班），但 5 日視窗裡只有「今天」會變
+——實測 724 則新聞中今天只佔 73 則（~10%）。原本每班都把 `池150 × 日曆日7~10`
+＝1000~1500 個 `(檔,日)` 請求全部重打，逼出 `--hourly-budget 1400`、`timeout 90 分`
+與 Throttle 睡到整點。
+
+- **增量規則**：只重抓最近的 UTC 切片，其餘沿用既有 `news.json`。池 150 的請求數
+  約 **1050 → 300**。
+- **`coverage` 區塊**：`news.json` 新增 `coverage:{dates,codes}`，記錄本檔已涵蓋哪些
+  `(日曆日切片 × 代號)`。「有涵蓋但 `stocks` 裡沒出現」＝該檔該日**確實沒新聞**；
+  少了這個區塊就無法與「沒抓過」區分，只能全量。舊版 `news.json`（無 coverage）
+  會被判定為不可用快取而自動走全量並補上。
+- **切片 vs 台北日（關鍵）**：FinMind 單日切片是 **UTC 日**，台北 = UTC+8，所以
+  UTC 切片 `s` 涵蓋台北 `s 08:00 ~ (s+1) 07:59` → **台北 D 日的新聞散落在切片 D-1 與 D**。
+  要完整重抓 R 個台北日就得抓 **R+1** 個切片（`--refresh-days` 是台北日數，程式自己 +1）。
+- **每日自我校正**：21:37 台北的備援 cron 班跑 `--full`。過濾規則變更、快取被寫壞、
+  coverage 漂移都會在這一班被沖掉。
+- **退回全量的情形**：`--full`、無/舊版快取、或視窗新增了「不在 refresh 範圍又沒抓過」
+  的舊切片（通常是 `--lookback` 變大）。
+- **守門**：`tests/test_incremental.py` 用假語料驗證「增量輸出 == 全量輸出」，含
+  台北日跨切片、新進池個股全窗補抓、快取段與新抓段不重複三個情境（CI: `tests` workflow）。
 
 ## 快速接手（2026-07-12）
 

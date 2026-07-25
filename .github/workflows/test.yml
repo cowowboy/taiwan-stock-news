@@ -1,0 +1,36 @@
+name: tests
+
+# 增量抓取正確性測試：增量結果必須與全量結果完全一致。
+# 用假語料替換 FinMind，不需要 FINMIND_TOKEN、不連外網。
+
+on:
+  push:
+    paths:
+      - "build_news.py"
+      - "news_curation.py"
+      - "tests/**"
+      - ".github/workflows/test.yml"
+  pull_request:
+    paths:
+      - "build_news.py"
+      - "news_curation.py"
+      - "tests/**"
+  workflow_dispatch: {}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: 增量 == 全量
+        run: python tests/test_incremental.py

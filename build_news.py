@@ -269,6 +269,42 @@ def news_calendar_days(trading_days: list[str]) -> list[str]:
     return out
 
 
+def load_cache(path: str) -> dict:
+    """讀既有 news.json 當快取。回 {} 表示不可用（首次執行 / 格式舊 / 損壞）。
+
+    快取裡的 news 已是「過濾後」的結果（source 已 normalize、另帶 impact），
+    重用時不再送進 curate_news——normalize_source 對 canonical 值雖然是 idempotent，
+    但沒必要重跑；直接與新抓那批 curate 完的結果合併即可。
+    """
+    try:
+        with open(path, encoding="utf-8") as f:
+            prev = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        logger.info(f"無可用快取（{type(e).__name__}）→ 全量抓取")
+        return {}
+    if not isinstance(prev.get("coverage"), dict):
+        # 舊版 news.json 沒有 coverage，無法判斷「某 (檔,日) 是真的沒新聞還是沒抓過」
+        logger.info("既有 news.json 無 coverage 區塊（舊版）→ 本次全量抓取並補上")
+        return {}
+    return prev
+
+
+def cached_records(prev: dict, codes: set[str], lo: str, hi_exclusive: str) -> list[dict]:
+    """從快取取出 code ∈ codes、台北日在 [lo, hi_exclusive) 的新聞（附回 stock_id）。"""
+    out: list[dict] = []
+    for s in prev.get("stocks", []):
+        sid = str(s.get("stock_id", ""))
+        if sid not in codes:
+            continue
+        for n in s.get("news", []):
+            day = str(n.get("date", ""))[:10]
+            if lo <= day < hi_exclusive:
+                out.append({"date": n["date"], "stock_id": sid,
+                            "source": n.get("source", ""), "title": n.get("title", ""),
+                            "link": n.get("link", "")})
+    return out
+
+
 def fetch_news_one(stock_id: str, date: str, throttle: Throttle) -> list[dict]:
     """抓單檔單日新聞（TaiwanStockNews 單日單請求）。"""
     throttle.wait()
@@ -297,6 +333,11 @@ def main() -> None:
     ap.add_argument("--hourly-budget", type=int, default=550)
     ap.add_argument("--pool-csv", default=None,
                      help="指定舊格式CSV(path或url)覆蓋預設；不指定則用FinMind自建股票池")
+    ap.add_argument("--refresh-days", type=int, default=1,
+                    help="增量模式下要重抓的「台北日」數（預設 1＝只重抓今天；"
+                         "更早的日子沿用既有 news.json）")
+    ap.add_argument("--full", action="store_true",
+                    help="忽略快取、全窗重抓（換過濾規則/池邏輯後跑一次）")
     args = ap.parse_args()
 
     if not FINMIND_TOKEN:
@@ -312,17 +353,57 @@ def main() -> None:
 
     name_map = dict(zip(pool["code"], pool["name"]))
     ind_map = dict(zip(pool["code"], pool["industry"]))
+    pool_codes = [str(c) for c in pool["code"]]
+
+    # ── 增量規劃 ────────────────────────────────────────────────────
+    # 這支排程每小時跑一次（Worker dispatch，一天 16 班），但視窗裡只有「今天」會變：
+    # 實測 5 日視窗 724 則新聞，今天只佔 73 則（~10%）。原本每班都把 池150 × 日曆日7~10
+    # ＝1000~1500 個 (檔,日) 請求全部重打，逼出 --hourly-budget 1400 + timeout 90 分
+    # + Throttle 睡到整點。改成只重抓最近幾個切片、其餘沿用既有 news.json。
+    #
+    # 切片與台北日的關係（關鍵）：FinMind 的單日切片是 UTC 日，台北 = UTC+8，所以
+    # UTC 切片 s 涵蓋台北 s 08:00 ~ (s+1) 07:59 → 台北 D 日的新聞散落在切片 D-1 與 D。
+    # 要「完整」重抓 R 個台北日，就必須抓 R+1 個切片。
+    prev = {} if args.full else load_cache(OUTPUT_JSON)
+    prev_dates = set(prev.get("coverage", {}).get("dates", []))
+    prev_codes = set(prev.get("coverage", {}).get("codes", []))
+
+    refresh_slices = dates[-(args.refresh_days + 1):]
+    # 被 refresh 完整覆蓋的最早台北日（其前一個切片也在 refresh 範圍內才算完整）
+    cache_cutoff = refresh_slices[1] if len(refresh_slices) > 1 else refresh_slices[0]
+
+    # 視窗新增了「不在 refresh 範圍、又沒抓過」的舊切片（通常是 --lookback 變大）
+    # → 增量拼不出完整視窗，退回全量
+    stale = (set(dates) - prev_dates) - set(refresh_slices)
+    if prev and stale:
+        logger.info(f"視窗新增 {len(stale)} 個未抓過的舊切片（lookback 變大？）→ 本次全量重抓")
+        prev, prev_codes = {}, set()
+
+    incr_codes = [c for c in pool_codes if c in prev_codes]      # 有快取 → 只抓 refresh 切片
+    fresh_codes = [c for c in pool_codes if c not in prev_codes]  # 新進池 → 全窗補抓
+    plan = {c: (refresh_slices if c in prev_codes else dates) for c in pool_codes}
+    n_req = sum(len(v) for v in plan.values())
+    if prev:
+        logger.info(f"增量模式：重抓 {len(refresh_slices)} 個切片 {refresh_slices[0]}~{refresh_slices[-1]}"
+                    f"（完整覆蓋台北日 >= {cache_cutoff}）；"
+                    f"{len(incr_codes)} 檔沿用快取 + {len(fresh_codes)} 檔新進池全窗補抓"
+                    f" → 共 {n_req} 個請求（全量需 {len(pool_codes)*len(dates)}）")
+    else:
+        logger.info(f"全量模式：{len(pool_codes)} 檔 × {len(dates)} 日 → 共 {n_req} 個請求")
 
     raw: list[dict] = []
-    for i, code in enumerate(pool["code"], 1):
+    for i, code in enumerate(pool_codes, 1):
         cnt = 0
-        for d in dates:
+        # 有快取的檔只接受 refresh 完整覆蓋的台北日（更早的由快取供應，避免重複）；
+        # 新進池的檔沒有快取可用，整個視窗都收
+        lo = cache_cutoff if (prev and code in prev_codes) else tdays[0]
+        for d in plan[code]:
             for rec in fetch_news_one(code, d, throttle):
                 # FinMind date 是 UTC → 轉台北（見 finmind_news_date_to_taipei 註解）
                 date_tpe = finmind_news_date_to_taipei(rec.get("date", ""))
                 # 視窗以「台北日」為準：多抓的前一個 UTC 日切片裡，台北時間
-                # 仍早於 trading_days[0] 的新聞不在視窗內，這裡丟掉
-                if date_tpe[:10] < tdays[0]:
+                # 仍早於 lo 的新聞不在本次負責範圍內，這裡丟掉
+                if date_tpe[:10] < lo:
                     continue
                 raw.append({
                     "date": date_tpe,
@@ -332,12 +413,18 @@ def main() -> None:
                     "link": str(rec.get("link", "")),
                 })
                 cnt += 1
-        if i % 20 == 0 or i == len(pool):
-            logger.info(f"進度 {i}/{len(pool)}（最新 {code} {name_map.get(code,'')}: {cnt} 則）")
+        if i % 20 == 0 or i == len(pool_codes):
+            logger.info(f"進度 {i}/{len(pool_codes)}（最新 {code} {name_map.get(code,'')}: {cnt} 則）")
 
     logger.info(f"抓取原始 {len(raw)} 則，套用白名單過濾...")
     kept = curate_news(raw)
     logger.info(f"過濾後保留 {len(kept)} 則")
+
+    # 快取供應的區段：台北日 [tdays[0], cache_cutoff)，僅限有快取覆蓋的檔
+    if prev:
+        reused = cached_records(prev, set(incr_codes), tdays[0], cache_cutoff)
+        logger.info(f"沿用快取 {len(reused)} 則（台北日 {tdays[0]} ~ {cache_cutoff} 之前）")
+        kept = kept + reused
 
     # 依股票分組＋去重。key 用「去尾巴(- 媒體名)+寬鬆正規化」的標題（沿用
     # news_curation 既有的 strip_title_tail/_loose）：同一篇文章常見同來源
@@ -386,6 +473,10 @@ def main() -> None:
         "pool_size": int(len(pool)),
         "stocks_with_news": len(stocks),
         "total_news": len(kept),
+        # 下一班的增量依據：本檔已涵蓋這些 (日曆日切片 × 股票代號) 的組合。
+        # 「有涵蓋但 stocks 裡沒出現」＝該檔該日確實沒新聞（而非沒抓過）——少了這個
+        # 區塊就無法區分兩者，只能全量重抓。~1.5KB，且內容穩定、幾乎不增加 git churn。
+        "coverage": {"dates": dates, "codes": pool_codes},
         "stocks": stocks,
     }
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
