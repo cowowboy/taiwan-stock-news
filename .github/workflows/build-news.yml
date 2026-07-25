@@ -7,6 +7,10 @@ on:
         description: '近 N 個交易日'
         required: false
         default: '5'
+      full:
+        description: '忽略快取、全窗重抓（true/false）'
+        required: false
+        default: 'false'
   schedule:
     # 主力觸發改為 Cloudflare Worker 定點 dispatch（2026-07-15 起）：
     # taiwan-flow-live-v2 worker 每天（含週末）台北 06:07–22:07 每小時 :07
@@ -54,7 +58,20 @@ jobs:
         env:
           FINMIND_TOKEN: ${{ secrets.FINMIND_TOKEN }}
         run: |
-          python build_news.py --lookback "${{ github.event.inputs.lookback || '5' }}" --hourly-budget 1400
+          # 增量抓取（2026-07 起）：視窗裡只有「今天」會變（實測 5 日 724 則、今天僅 73 則），
+          # 每班只重抓最近的 UTC 切片、其餘沿用既有 news.json → 池150 的請求數
+          # 由 ~1050 降到 ~300，Throttle 不再需要睡到整點。
+          # 每天 21:37 的備援 cron 班改跑 --full 全窗重抓，作為快取的每日自我校正
+          #（過濾規則變更、快取被寫壞、coverage 漂移都會在這一班被沖掉）。
+          mode=""
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event.inputs.full }}" = "true" ]; then
+            mode="--full"
+            echo "全量模式（event=${{ github.event_name }}）"
+          else
+            echo "增量模式"
+          fi
+          python build_news.py --lookback "${{ github.event.inputs.lookback || '5' }}" \
+            --hourly-budget 1400 $mode
 
       - name: Commit news.json
         run: |
