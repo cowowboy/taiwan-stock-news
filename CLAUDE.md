@@ -1,0 +1,92 @@
+# CLAUDE.md — taiwan-stock-news 接手速覽
+
+<!-- CANON:BEGIN v1 -->
+<!-- 唯一事實來源＝shihpc/claude-harness 的 CANON.md。以下區塊在五個 repo 的 CLAUDE.md 頂端
+     有 byte-identical 逐字副本，由各 repo 的 .github/workflows/canon.yml 守門（比對 sha256）。
+     改動流程：先改 claude-harness/CANON.md → 跑 tools/sync_canon.py 同步五份 → 更新守門 hash。
+     不要只改單一 repo，CI 會擋下來。 -->
+
+## 通用工作鐵律（五個 repo 逐字相同，勿單獨修改）
+
+1. **機密**：token／金鑰一律走 `.env` 或 Actions secret，絕不寫進任何會 commit 的檔案、log 或
+   對話輸出。commit 前用 `git diff --staged` 檢查有無夾帶金鑰樣式字串（`sk-ant-`、`ghp_`、`eyJ` 開頭）。
+2. **指揮官不下場**：掃 repo、通讀 >300 行的檔、一次讀 >3 個檔、查網頁研究、批次改檔、
+   驗收改過的東西——這六類一律派 subagent，主對話只收結論＋`檔案:行號`。
+3. **先寫驗收條件再動手**：動手前先寫下目標專案完整路徑＋怎樣算完成＋怎麼驗。改完派
+   fresh-context subagent 驗收——**改東西的 agent（含主對話自己）不得擔任驗收者**。
+4. **不確定不亂說**：陳述事實（尤其技術細節、數字、外部服務的限制與行為）要嘛附佐證（官方
+   文件、實測、`檔案:行號`），要嘛明說「這點我不確定，需要查證」，不可憑印象當確定講。
+   區分「已驗證事實」與「推測」，推測要標明。
+5. **一次只做一件事**：只做明確要求的那件事，做完給簡短結果；少主動丟一堆延伸提案。
+6. **完成的定義**：驗收條件逐條打勾＋fresh-context subagent 驗過＋產物在使用者拿得到的位置。
+   **沒實跑過不算完成**。涉及部署者另需 push＋部署 workflow 成功＋**線上驗證本次變更的具體內容**
+   （破快取 raw URL／curl／瀏覽器實查），只寫在本機不算完成。
+7. **push 前**：先 `git fetch`；`git log --oneline main..origin/main` 非空必須先看內容（訊息／
+   時間戳／diff）。一般 push → rebase 整合，嚴禁直接覆蓋；force push 前若 origin 領先的 commit
+   是真實新工作 → 停下來問，授權「這次 force push」不等於授權蓋掉 origin 所有領先 commit。
+8. **新指標／訊號先問有沒有回測依據**，沒有就先驗證再上線；不做預測宣稱，只描述歷史統計
+   傾向與局限。
+9. **語言**：對話與文件用繁體中文；程式碼註解可中文，identifier 用英文。
+
+> 判準細則、派工模板、教訓簿見 `shihpc/claude-harness`（private）。雲端 session 需 add_repo 才讀得到。
+<!-- CANON:END v1 -->
+
+「新聞晨報」站：抓 FinMind `TaiwanStockNews` → 來源白名單過濾 → 產 `news.json`。
+線上 https://shihpc.github.io/taiwan-stock-news/ 。4 個 tab：新聞／晨報／摘要分析／
+個股追蹤（`index.html:160-163`）。純靜態前端（單檔 `index.html`）＋ Python 管線。
+
+## 佈局
+
+- `build_news.py`：主管線，流程註解在 :6-15 —— 自建股票池 → 市值權重 → 算窗 →
+  增量規劃（:355-386）→ 逐檔逐日抓 → `news_curation.py` 白名單過濾 → 依股分組去重 → 寫 `news.json`
+- `news_curation.py`：來源白名單／標題正規化／去重（Python 端事實來源）
+- `index.html`、`news.json`、`data/`、`tests/`
+- `.github/workflows/`：`build-news.yml` ＋ `test.yml` ＋ `canon.yml`
+  （後者只守 CLAUDE.md 頂端的 CANON 區塊，不碰資料管線）
+
+## 股票池自建
+
+`build_pool_from_finmind()`（`build_news.py:138-184`）：`TaiwanStockInfo` 限 twse/tpex、
+代號開頭為數字、排除 ETF；以近 3 交易日法人資料算投信/外資連買天數，
+取 `trust_days>=2 or foreign_days>=2`，再取前 `--max-pool`（預設 150）。
+**原依賴已刪除的 taiwan-stock-radar `scan_app.csv`，2026-07-10 改為自建**，不再依賴外部 repo。
+
+## 不可破壞的約定
+
+1. **備援 cron 排 21:37 不排 22:37**（理由原樣寫在 `build-news.yml:18-27`）：主力觸發是
+   外部 Worker dispatch（每日含週末台北 06:07–22:07 每小時 :07），此 repo 只留一班備援
+   cron `37 13 * * *`＝台北 21:37。GitHub cron 常態延遲 1~2 小時，若排 22:37 延遲後會
+   **跨台北午夜把 `generated_at` 滾成隔日、覆蓋 Worker 22:07 已寫好的當日晚班，
+   害下游 pm 彙總閘門永久 skip**（2026-07-16 實際事故）。改排程前先讀那段註解。
+2. **前端絕不碰 FinMind token**：個股追蹤三分頁全打
+   `USW_WORKER = https://taiwan-flow-v2.shihpc.workers.dev`（`index.html:530`）——
+   `/fundamentals?ids=`（批次）、`/chips?id=`（逐股 lazy）、`/technical?id=`（7 指標全在
+   Worker 端算）。token 由 Worker 持有。
+3. **三站同步函式**：`index.html:641` 明寫「postmkt / taiwan-flow-live-v2 /
+   taiwan-stock-news，修改請三站同步」（另見 :729-730、:846），與 postmkt CLAUDE.md
+   第 2 條是同一組約定。
+4. **誠實原則（專案鐵律，逐字保留，`README.md:71`）**：分頁頂部固定免責卡
+   「技術指標為現況描述、非買賣訊號，僅供參考」；狀態詞用中性色、不寫該買該賣、不做預測。
+
+## 跨 repo 依賴
+
+- 讀 taiwan-flow-live-v2 的 `morning.json` / `us.json` / `daysummary/latest.json`
+  （讀不到時該整段隱藏）
+- 摘要分析結果**寫入 postmkt** `data/analyses/insight-news-YYYYMMDD.json`
+- 持股診斷股讀同 origin localStorage `pm_holdings`（postmkt 寫入，本站唯讀）
+
+## 已知坑
+
+1. **FinMind 單日切片是 UTC 日**，台北＝UTC+8，切片 s 涵蓋台北 s 08:00～(s+1) 07:59；
+   要完整重抓 R 個台北日必須抓 **R+1** 個切片（`build_news.py:363-366`）。
+2. **JS 的 `\W` 是 ASCII-only**（即使加 u 旗標），會把中文當非字元砍掉，與 Python
+   `re.UNICODE` 語意不同；改用 `[^\p{L}\p{N}]`（`index.html:326`）。
+3. 晨報籌碼段資料日標 `MORNING.generated_at`，但法人數字實為**前一交易日**
+   （已知未修，`README.md:162`）。
+
+## 驗證方式
+
+```bash
+python tests/test_incremental.py   # 免 token 免網路，驗「增量輸出 == 全量輸出」三情境
+python -m http.server 8000         # 前端本機驗證，4 個 tab 逐一點擊 console 零 error
+```
