@@ -45,12 +45,18 @@ CORPUS = {
     ("2317", "2026-07-21"): [("2026-07-21 10:30:00", "中央社", "鴻海股東會")],
     ("2317", "2026-07-22"): [("2026-07-21 10:30:00", "中央社", "鴻海股東會")],
     ("2317", "2026-07-24"): [("2026-07-24 09:30:00", "自由財經", "鴻海新廠")],
-    ("2454", "2026-07-22"): [("2026-07-22 16:00:00", "今周刊", "聯發科新晶片")],
+    # 台北 07-23 清晨（06:30）的新聞，UTC 是 07-22 22:30 → 落在切片 07-22。
+    # 這一則是用來釘住 cache_cutoff 的：cutoff 若提前一天（refresh_slices[0] 而非 [1]），
+    # 它既不在快取段（快取止於 cutoff）也不在重抓的切片裡 → 會被漏掉。
+    # 沒有這則語料的話，把 cutoff 改錯測試照樣全綠。
+    ("2454", "2026-07-22"): [("2026-07-22 16:00:00", "今周刊", "聯發科新晶片"),
+                             ("2026-07-23 06:30:00", "經濟日報", "台北07-23清晨新聞在切片07-22")],
     (NEW_CODE, "2026-07-21"): [("2026-07-21 08:30:00", "經濟日報", "新進池個股舊新聞")],
     (NEW_CODE, "2026-07-24"): [("2026-07-24 10:00:00", "工商時報", "新進池個股今日新聞")],
 }
 
 req_log: list[tuple[str, str]] = []
+FAIL_PAIRS: set[tuple[str, str]] = set()   # 要模擬抓取失敗的 (代號, 切片)
 
 
 def taipei_to_utc_slice(tpe: str) -> str:
@@ -71,9 +77,11 @@ def install_stubs(pool_codes: list[str]) -> None:
 
     def fake_fetch(stock_id, date, throttle):
         req_log.append((stock_id, date))
-        return [{"date": taipei_to_utc_slice(t), "stock_id": stock_id, "source": s,
-                 "title": ti, "link": f"https://x/{ti}"}
-                for (t, s, ti) in CORPUS.get((stock_id, date), [])]
+        if (stock_id, date) in FAIL_PAIRS:      # 模擬 HTTP 非 200 / 連線例外
+            return [], False
+        return ([{"date": taipei_to_utc_slice(t), "stock_id": stock_id, "source": s,
+                  "title": ti, "link": f"https://x/{ti}"}
+                 for (t, s, ti) in CORPUS.get((stock_id, date), [])], True)
     bn.fetch_news_one = fake_fetch
 
 
@@ -161,6 +169,23 @@ def main() -> None:
         dup = [s["stock_id"] for s in incr2["stocks"]
                if len({(n["date"], n["title"]) for n in s["news"]}) != len(s["news"])]
         check(not dup, f"無重複新聞（快取段與新抓段沒接壞）{dup}")
+
+        # 抓取失敗（HTTP 非 200／連線例外）回空清單，與「這天真的沒新聞」形狀相同。
+        # 若失敗仍被寫進 coverage，下一班就會從快取拿這個「沒有」，那天的新聞永久
+        # 遺失（只有 --full 沖得掉）。全量重抓時代不會有這問題——失敗只影響當班。
+        print("[6] 抓取失敗不得毒化 coverage（增量最大的資料遺失風險）")
+        install_stubs(POOL_BASE)
+        run(["--lookback", "5", "--full"])                       # 先建立乾淨快取
+        FAIL_PAIRS.add(("2330", "2026-07-24"))                   # 這班某檔某切片失敗
+        broken, _ = run(["--lookback", "5"])
+        check("2330" not in broken["coverage"]["codes"],
+              "失敗的檔已被排出 coverage")
+        FAIL_PAIRS.clear()
+        healed, _ = run(["--lookback", "5"])                     # 下一班（仍是增量）
+        idx_h = news_index(healed)
+        check(("2330", "2026-07-24 13:00:00", "尾盤拉抬") in idx_h,
+              "下一班增量即自動補回失敗那天的新聞（不必等 --full）")
+        check("2330" in healed["coverage"]["codes"], "補回後重新計入 coverage")
 
     print()
     if failures:

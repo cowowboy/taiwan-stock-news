@@ -305,8 +305,15 @@ def cached_records(prev: dict, codes: set[str], lo: str, hi_exclusive: str) -> l
     return out
 
 
-def fetch_news_one(stock_id: str, date: str, throttle: Throttle) -> list[dict]:
-    """抓單檔單日新聞（TaiwanStockNews 單日單請求）。"""
+def fetch_news_one(stock_id: str, date: str, throttle: Throttle) -> tuple[list[dict], bool]:
+    """抓單檔單日新聞（TaiwanStockNews 單日單請求）。
+
+    回傳 `(records, ok)`。**必須把「抓取失敗」與「這天真的沒新聞」分開**：
+    兩者都回空清單的話，失敗會被 coverage 記成「已涵蓋且沒新聞」，之後每一班
+    增量都從快取拿這個「沒有」，那天的新聞就永久遺失（只有 --full 沖得掉）。
+    改成全量重抓之前，失敗只影響當班、下一班會重抓，是自癒的；增量把它變成
+    沾黏的，所以這裡一定要回報失敗。
+    """
     throttle.wait()
     try:
         r = requests.get(FINMIND_URL, params={
@@ -317,13 +324,14 @@ def fetch_news_one(stock_id: str, date: str, throttle: Throttle) -> list[dict]:
             "token": FINMIND_TOKEN,
         }, timeout=30)
         if r.status_code != 200:
-            return []
+            logger.warning(f"[{stock_id} {date}] HTTP {r.status_code}，視為抓取失敗")
+            return [], False
         data = r.json().get("data", [])
         time.sleep(0.05)
-        return data
+        return data, True
     except Exception as e:
         logger.warning(f"[{stock_id} {date}] 抓取失敗：{e}")
-        return []
+        return [], False
 
 
 def main() -> None:
@@ -333,7 +341,11 @@ def main() -> None:
     ap.add_argument("--hourly-budget", type=int, default=550)
     ap.add_argument("--pool-csv", default=None,
                      help="指定舊格式CSV(path或url)覆蓋預設；不指定則用FinMind自建股票池")
-    ap.add_argument("--refresh-days", type=int, default=1,
+    # 下限 1：台北日 D 的新聞散落在 UTC 切片 D-1 與 D，refresh_days=0 只會抓到
+    # 一個切片，cache_cutoff 退化成「今天」，於是台北今天 00:00~07:59 的新聞
+    # 既不在快取（快取止於今天之前）也沒抓到 → 每天無聲漏掉清晨那批。
+    ap.add_argument("--refresh-days", type=int, default=1, choices=range(1, 8),
+                    metavar="{1..7}",
                     help="增量模式下要重抓的「台北日」數（預設 1＝只重抓今天；"
                          "更早的日子沿用既有 news.json）")
     ap.add_argument("--full", action="store_true",
@@ -392,13 +404,17 @@ def main() -> None:
         logger.info(f"全量模式：{len(pool_codes)} 檔 × {len(dates)} 日 → 共 {n_req} 個請求")
 
     raw: list[dict] = []
+    failed_codes: set[str] = set()   # 本班有任一請求失敗的檔 → 不寫進 coverage
     for i, code in enumerate(pool_codes, 1):
         cnt = 0
         # 有快取的檔只接受 refresh 完整覆蓋的台北日（更早的由快取供應，避免重複）；
         # 新進池的檔沒有快取可用，整個視窗都收
         lo = cache_cutoff if (prev and code in prev_codes) else tdays[0]
         for d in plan[code]:
-            for rec in fetch_news_one(code, d, throttle):
+            recs, ok = fetch_news_one(code, d, throttle)
+            if not ok:
+                failed_codes.add(code)   # 這檔本班不算「已涵蓋」，見下方 coverage
+            for rec in recs:
                 # FinMind date 是 UTC → 轉台北（見 finmind_news_date_to_taipei 註解）
                 date_tpe = finmind_news_date_to_taipei(rec.get("date", ""))
                 # 視窗以「台北日」為準：多抓的前一個 UTC 日切片裡，台北時間
@@ -472,6 +488,11 @@ def main() -> None:
     #   - 增量（2 切片 + 快取）：kept ~491 → 實際輸出 ~475（快取那段早已去重過）
     # 兩者實際輸出一致，但 len(kept) 會讓前端的「則數」看起來掉了三成。
     delivered = sum(len(s["news"]) for s in stocks)
+    covered_codes = [c for c in pool_codes if c not in failed_codes]
+    if failed_codes:
+        logger.warning(f"⚠ {len(failed_codes)} 檔本班有抓取失敗，已排出 coverage："
+                       f"{sorted(failed_codes)[:10]}{' …' if len(failed_codes) > 10 else ''}"
+                       f"；下一班會對這些檔全窗重抓補回")
     payload = {
         "generated_at": datetime.now(TAIPEI_TZ).isoformat(timespec="seconds"),
         "lookback_days": args.lookback,
@@ -482,7 +503,12 @@ def main() -> None:
         # 下一班的增量依據：本檔已涵蓋這些 (日曆日切片 × 股票代號) 的組合。
         # 「有涵蓋但 stocks 裡沒出現」＝該檔該日確實沒新聞（而非沒抓過）——少了這個
         # 區塊就無法區分兩者，只能全量重抓。~1.5KB，且內容穩定、幾乎不增加 git churn。
-        "coverage": {"dates": dates, "codes": pool_codes},
+        #
+        # **本班抓取失敗的檔一律排除**：這個不變式的前提是「沒出現＝真的沒有」，
+        # 而失敗的請求回空清單，會讓「暫時抓不到」被寫成「那天沒新聞」而沾黏下去
+        # （之後每班都從快取拿這個「沒有」，只有 --full 沖得掉）。排除後該檔下一班
+        # 不在 prev_codes 裡 → 被當成新進池、全窗重抓 → 自動補回，不必等 --full。
+        "coverage": {"dates": dates, "codes": covered_codes},
         "stocks": stocks,
     }
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
