@@ -79,15 +79,23 @@
 ## 已知坑
 
 1. **FinMind 單日切片是 UTC 日**，台北＝UTC+8，切片 s 涵蓋台北 s 08:00～(s+1) 07:59；
-   要完整重抓 R 個台北日必須抓 **R+1** 個切片（`build_news.py:363-366`）。
-2. **JS 的 `\W` 是 ASCII-only**（即使加 u 旗標），會把中文當非字元砍掉，與 Python
+   要完整重抓 R 個台北日必須抓 **R+1** 個切片（`build_news.py:383`），快取邊界
+   `cache_cutoff` 必須取 `refresh_slices[1]`＝「被完整覆蓋的最早台北日」（`:385`）。
+   取 `[0]` 會漏掉該日 00:00～07:59（那批在前一個切片裡），且**現象無聲**。
+2. **抓取失敗不可寫進 `coverage`**（2026-07-27 修）：`fetch_news_one` 回 `(records, ok)`，
+   失敗的檔收進 `failed_codes` 並排除在 `coverage.codes` 之外（`:485` 附近）。
+   `coverage` 的不變式是「有涵蓋但 stocks 沒出現＝那天真的沒新聞」；若把失敗也記成
+   已涵蓋，下一班增量會從快取拿這個「沒有」並一路沿用，**只有 `--full` 沖得掉**。
+   全量時代失敗只影響當班（自癒），增量會把它變成沾黏的——改這段前先想清楚。
+3. **JS 的 `\W` 是 ASCII-only**（即使加 u 旗標），會把中文當非字元砍掉，與 Python
    `re.UNICODE` 語意不同；改用 `[^\p{L}\p{N}]`（`index.html:326`）。
-3. 晨報籌碼段資料日標 `MORNING.generated_at`，但法人數字實為**前一交易日**
+4. 晨報籌碼段資料日標 `MORNING.generated_at`，但法人數字實為**前一交易日**
    （已知未修，`README.md:162`）。
 
 ## 驗證方式
 
 ```bash
-python tests/test_incremental.py   # 免 token 免網路，驗「增量輸出 == 全量輸出」三情境
+python tests/test_incremental.py   # 免 token 免網路，驗「增量輸出 == 全量輸出」六情境
+                                   # （含抓取失敗不毒化 coverage、失敗後下一班自動補回）
 python -m http.server 8000         # 前端本機驗證，4 個 tab 逐一點擊 console 零 error
 ```
