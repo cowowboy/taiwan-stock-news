@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-30T07:11:18+08:00",
+ "generated_at": "2026-07-30T08:11:16+08:00",
  "lookback_days": 5,
  "trading_days": [
   "2026-07-24",
@@ -23,159 +23,408 @@
    "2026-07-30"
   ],
   "codes": [
-   "2542",
-   "3231",
-   "6196",
-   "2903",
-   "5269",
-   "5880",
-   "3491",
-   "3034",
-   "3529",
-   "2006",
    "1477",
-   "3026",
-   "2356",
-   "3045",
-   "2884",
-   "6548",
+   "2542",
+   "2609",
    "2201",
-   "2520",
-   "2357",
-   "2605",
-   "3703",
-   "3293",
-   "3036",
-   "1904",
+   "3529",
+   "6789",
    "2206",
-   "1216",
+   "5880",
+   "2006",
+   "3034",
+   "3231",
    "5876",
-   "6285",
-   "1434",
+   "3045",
    "9917",
    "5536",
-   "2492",
+   "1216",
    "2603",
-   "2609",
-   "2610",
-   "1227",
-   "1785",
-   "1319",
-   "2002",
-   "1326",
-   "2409",
-   "1229",
-   "2316",
-   "1101",
-   "1402",
-   "6223",
-   "6789",
-   "3450",
-   "6719",
-   "2382",
-   "1102",
-   "9910",
-   "2637",
    "2023",
-   "6505",
-   "2464",
-   "4763",
-   "4904",
-   "2504",
-   "6579",
-   "5309",
-   "3693",
-   "1104",
-   "2489",
-   "9921",
-   "1590",
-   "1409",
-   "8069",
-   "6669",
-   "2486",
-   "4919",
-   "5234",
-   "4991",
-   "6589",
-   "2495",
-   "2727",
-   "8454",
-   "6197",
-   "3563",
-   "1215",
-   "9939",
-   "6605",
-   "2345",
-   "2615",
-   "3044",
-   "3443",
-   "9904",
-   "2377",
-   "2912",
-   "6890",
-   "2451",
-   "6670",
-   "9941",
-   "2472",
-   "1303",
-   "2458",
-   "6282",
-   "2634",
-   "2890",
-   "2597",
-   "9907",
-   "5871",
-   "2353",
-   "6584",
-   "9914",
-   "6526",
-   "2812",
-   "6409",
-   "8016",
-   "2441",
-   "8210",
-   "1608",
-   "2324",
-   "3665",
-   "5288",
-   "3376",
-   "2059",
-   "6442",
-   "1717",
+   "2884",
+   "1101",
+   "2605",
+   "3293",
+   "2903",
+   "6548",
+   "1227",
+   "2356",
+   "2492",
+   "6196",
+   "2637",
+   "3491",
+   "1229",
+   "2357",
+   "9910",
+   "2382",
+   "1785",
+   "3703",
+   "2610",
+   "1904",
+   "2409",
+   "2316",
+   "1319",
+   "1402",
+   "3026",
+   "2002",
+   "2520",
+   "3036",
+   "6285",
+   "5269",
+   "6719",
+   "3450",
+   "1102",
+   "1326",
+   "1434",
+   "6223",
    "2379",
-   "2891",
-   "2207",
-   "6805",
-   "6531",
-   "6533",
-   "2845",
-   "2546",
-   "6278",
-   "6472",
-   "2388",
-   "2412",
-   "3030",
-   "2881",
-   "6679",
-   "9802",
-   "5434",
-   "1907",
-   "2633",
-   "8422",
-   "4722",
-   "2455",
+   "2472",
+   "6197",
    "2211",
-   "2371",
-   "1210",
+   "2464",
+   "4904",
+   "2059",
    "1476",
-   "2618",
-   "3005",
-   "3706",
+   "6584",
+   "2891",
+   "6589",
+   "5234",
+   "3665",
+   "4722",
+   "9907",
+   "8454",
+   "1104",
+   "8016",
+   "6472",
+   "1590",
+   "2486",
+   "6533",
    "2204",
-   "5289"
+   "3044",
+   "6531",
+   "6805",
+   "2324",
+   "2546",
+   "5309",
+   "2489",
+   "1215",
+   "1717",
+   "9941",
+   "6579",
+   "6679",
+   "1210",
+   "2618",
+   "9802",
+   "2633",
+   "2455",
+   "2890",
+   "9904",
+   "2345",
+   "9939",
+   "2597",
+   "1303",
+   "2371",
+   "3693",
+   "3005",
+   "3030",
+   "8422",
+   "6890",
+   "2845",
+   "2207",
+   "3706",
+   "6670",
+   "2727",
+   "2412",
+   "6278",
+   "9914",
+   "5288",
+   "2504",
+   "4991",
+   "2634",
+   "1608",
+   "6526",
+   "1409",
+   "5871",
+   "3443",
+   "6442",
+   "8069",
+   "2615",
+   "4763",
+   "1907",
+   "2441",
+   "6505",
+   "5289",
+   "2812",
+   "2912",
+   "6282",
+   "2451",
+   "2495",
+   "6409",
+   "2881",
+   "2458",
+   "2388",
+   "6605",
+   "3376",
+   "2353",
+   "9921",
+   "4919",
+   "8210",
+   "2377",
+   "3563",
+   "5434",
+   "6669"
   ]
  },
  "stocks": [
+  {
+   "stock_id": "6223",
+   "name": "旺矽",
+   "industry": "半導體業",
+   "heavyweight": false,
+   "weight_per": 5.2994,
+   "count": 2,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-07-29 19:30:00",
+     "source": "FTNN新聞",
+     "title": "封測綠光滿面！「這檔」連5跌33.7%同日月光、京元電、訊芯跌停 穎崴、旺矽大跌7% - FTNN 新聞",
+     "link": "https://www.ftnn.com.tw/news/565376",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-07-25 17:45:29",
+     "source": "自由時報系",
+     "title": "在台灣沒有競爭對手 旺矽今年有望逐季成長 - 自由時報",
+     "link": "https://stock.ltn.com.tw/article/eu0cbkyetfua",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "8069",
+   "name": "元太",
+   "industry": "光電業",
+   "heavyweight": false,
+   "weight_per": 2.0092,
+   "count": 1,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-07-29 04:00:00",
+     "source": "經濟日報",
+     "title": "元太董座李政昊 出任台虹副董事長 - 經濟日報",
+     "link": "https://money.udn.com/money/story/5612/9658878",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "3293",
+   "name": "鈊象",
+   "industry": "文化創意業",
+   "heavyweight": false,
+   "weight_per": 1.9726,
+   "count": 4,
+   "market_count": 1,
+   "news": [
+    {
+     "date": "2026-07-30 01:03:51",
+     "source": "經濟日報",
+     "title": "鈊象、聯詠 認購放電 | 權證特區 | 證券 - 經濟日報",
+     "link": "https://money.udn.com/money/story/5739/9658967",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-07-29 03:03:59",
+     "source": "UDN",
+     "title": "鈊象遊戲登上Steam平台 - UDN",
+     "link": "https://udn.com/news/story/7252/9656549",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-07-29 03:00:00",
+     "source": "工商時報",
+     "title": "獲利穩鈊象、寶雅逆勢收紅- 日報 - 工商時報",
+     "link": "https://www.ctee.com.tw/news/20260729700272-439901",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-07-27 11:18:09",
+     "source": "UDN",
+     "title": "鈊象無懼大盤疲軟 早盤逆勢上漲 - UDN",
+     "link": "https://udn.com/news/story/7252/9653105",
+     "impact": "market"
+    }
+   ]
+  },
+  {
+   "stock_id": "3529",
+   "name": "力旺",
+   "industry": "半導體業",
+   "heavyweight": false,
+   "weight_per": 1.7032,
+   "count": 1,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-07-29 16:51:24",
+     "source": "經濟日報",
+     "title": "力旺財報／第2季獲利年增近45%、EPS 7.77元 總經理何明洲將退休 - 經濟日報",
+     "link": "https://money.udn.com/money/amp/story/11074/9658609",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "5289",
+   "name": "宜鼎",
+   "industry": "電腦及週邊設備業",
+   "heavyweight": false,
+   "weight_per": 1.1605,
+   "count": 2,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-07-27 11:53:00",
+     "source": "MoneyDJ",
+     "title": "宜鼎受惠記憶體市況延續，Q2毛利率看突破6成 - MoneyDJ",
+     "link": "https://m.moneydj.com/f1a.aspx?a=25688ad2-abe9-4f12-9086-c574a3dcef8d",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-07-25 00:06:36",
+     "source": "UDN",
+     "title": "威剛、宜鼎瞄準90天期| 權證期貨| 股市 - UDN",
+     "link": "https://udn.com/news/story/7255/9649520?from=udn-relatednews_ch2",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "3491",
+   "name": "昇達科",
+   "industry": "通信網路業",
+   "heavyweight": false,
+   "weight_per": 0.8323,
+   "count": 11,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-07-30 03:27:00",
+     "source": "UDN",
+     "title": "昇達科目標價 上看2,513元 - UDN",
+     "link": "https://udn.com/news/amp/story/7252/9659013",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-07-29 02:27:16",
+     "source": "UDN",
+     "title": "亞馬遜擴大發射衛星 昇達科、華通、台光電等將迎來新一波訂單 - UDN",
+     "link": "https://udn.com/news/amp/story/7240/9656863",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-07-28 10:35:29",
+     "source": "自由時報系",
+     "title": "昇達科、雅特力 上半年獲利大增 - 自由時報",
+     "link": "https://stock.ltn.com.tw/article/tvnwwgdfwera",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-07-28 09:15:00",
+     "source": "MoneyDJ",
+     "title": "昇達科擴增產品線，看好下半年更勝上半年- 新聞 - MoneyDJ",
+     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=73497ff2-071e-4cb7-a871-b41988cca997",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-07-28 03:00:00",
+     "source": "工商時報",
+     "title": "昇達科H1獲利勝去年全年- 日報 - 工商時報",
+     "link": "https://www.ctee.com.tw/news/20260728700212-439901",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-07-28 01:58:49",
+     "source": "UDN",
+     "title": "昇達科上半年賺贏去年 低軌衛星接單熱 營運將升溫 - UDN",
+     "link": "https://udn.com/news/story/7252/9654237",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-07-27 17:38:40",
+     "source": "UDN",
+     "title": "昇達科獲利／自結上半年損益 每股賺8.15元超過去年全年 - UDN",
+     "link": "https://udn.com/news/story/7252/9653942",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-07-27 17:27:00",
+     "source": "MoneyDJ",
+     "title": "昇達科自結上半年EPS 8.15元，超去年全年- 新聞 - MoneyDJ",
+     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=c8d7ef9e-cd77-449b-b407-b2d5a7857fb2",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-07-27 17:02:20",
+     "source": "鉅亨(cnyes)",
+     "title": "昇達科自結上半年稅後賺5.61億元 EPS8.15元 賺贏歷年全年獲利 - news.cnyes.com",
+     "link": "https://news.cnyes.com/news/id/6546787",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-07-27 16:21:15",
+     "source": "自由時報系",
+     "title": "昇達科上半年EPS 8.15元 超越去年全年 - 自由財經",
+     "link": "https://ec.ltn.com.tw/amp/article/breakingnews/5519312",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-07-24 00:24:47",
+     "source": "經濟日報",
+     "title": "昇達科好威 一日填息 - 經濟日報",
+     "link": "https://money.udn.com/money/story/11074/9647144?from=edn_newest_index",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "6548",
+   "name": "長科*",
+   "industry": "半導體業",
+   "heavyweight": false,
+   "weight_per": 0.6276,
+   "count": 1,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-07-29 18:35:21",
+     "source": "自由時報系",
+     "title": "長科*Q2獲利攀15季高點 看好Q3營收將季增雙位數 - 自由時報",
+     "link": "https://stock.ltn.com.tw/article/aajgt1bz7gj0",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "1785",
+   "name": "光洋科",
+   "industry": "其他電子類",
+   "heavyweight": false,
+   "weight_per": 0.6175,
+   "count": 1,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-07-28 10:46:30",
+     "source": "自由時報系",
+     "title": "熱門股》當沖熱絡 光洋科強攻漲停 - 自由時報",
+     "link": "https://stock.ltn.com.tw/article/m6g7mr7unwax",
+     "impact": "stock"
+    }
+   ]
+  },
   {
    "stock_id": "3231",
    "name": "緯創",
@@ -850,94 +1099,6 @@
      "source": "經濟日報",
      "title": "創見上半年大賺200億 EPS 46.63元 寫新猷 | 集中市場 | 證券 - 經濟日報",
      "link": "https://money.udn.com/money/story/5710/9647128?from=edn_newest_index",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
-   "stock_id": "3491",
-   "name": "昇達科",
-   "industry": "通信網路業",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 11,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-07-30 03:27:00",
-     "source": "UDN",
-     "title": "昇達科目標價 上看2,513元 - UDN",
-     "link": "https://udn.com/news/amp/story/7252/9659013",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-07-29 02:27:16",
-     "source": "UDN",
-     "title": "亞馬遜擴大發射衛星 昇達科、華通、台光電等將迎來新一波訂單 - UDN",
-     "link": "https://udn.com/news/amp/story/7240/9656863",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-07-28 10:35:29",
-     "source": "自由時報系",
-     "title": "昇達科、雅特力 上半年獲利大增 - 自由時報",
-     "link": "https://stock.ltn.com.tw/article/tvnwwgdfwera",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-07-28 09:15:00",
-     "source": "MoneyDJ",
-     "title": "昇達科擴增產品線，看好下半年更勝上半年- 新聞 - MoneyDJ",
-     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=73497ff2-071e-4cb7-a871-b41988cca997",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-07-28 03:00:00",
-     "source": "工商時報",
-     "title": "昇達科H1獲利勝去年全年- 日報 - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260728700212-439901",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-07-28 01:58:49",
-     "source": "UDN",
-     "title": "昇達科上半年賺贏去年 低軌衛星接單熱 營運將升溫 - UDN",
-     "link": "https://udn.com/news/story/7252/9654237",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-07-27 17:38:40",
-     "source": "UDN",
-     "title": "昇達科獲利／自結上半年損益 每股賺8.15元超過去年全年 - UDN",
-     "link": "https://udn.com/news/story/7252/9653942",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-07-27 17:27:00",
-     "source": "MoneyDJ",
-     "title": "昇達科自結上半年EPS 8.15元，超去年全年- 新聞 - MoneyDJ",
-     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=c8d7ef9e-cd77-449b-b407-b2d5a7857fb2",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-07-27 17:02:20",
-     "source": "鉅亨(cnyes)",
-     "title": "昇達科自結上半年稅後賺5.61億元 EPS8.15元 賺贏歷年全年獲利 - news.cnyes.com",
-     "link": "https://news.cnyes.com/news/id/6546787",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-07-27 16:21:15",
-     "source": "自由時報系",
-     "title": "昇達科上半年EPS 8.15元 超越去年全年 - 自由財經",
-     "link": "https://ec.ltn.com.tw/amp/article/breakingnews/5519312",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-07-24 00:24:47",
-     "source": "經濟日報",
-     "title": "昇達科好威 一日填息 - 經濟日報",
-     "link": "https://money.udn.com/money/story/11074/9647144?from=edn_newest_index",
      "impact": "stock"
     }
    ]
@@ -2189,45 +2350,6 @@
    ]
   },
   {
-   "stock_id": "3293",
-   "name": "鈊象",
-   "industry": "文化創意業",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 4,
-   "market_count": 1,
-   "news": [
-    {
-     "date": "2026-07-30 01:03:51",
-     "source": "經濟日報",
-     "title": "鈊象、聯詠 認購放電 | 權證特區 | 證券 - 經濟日報",
-     "link": "https://money.udn.com/money/story/5739/9658967",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-07-29 03:03:59",
-     "source": "UDN",
-     "title": "鈊象遊戲登上Steam平台 - UDN",
-     "link": "https://udn.com/news/story/7252/9656549",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-07-29 03:00:00",
-     "source": "工商時報",
-     "title": "獲利穩鈊象、寶雅逆勢收紅- 日報 - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260729700272-439901",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-07-27 11:18:09",
-     "source": "UDN",
-     "title": "鈊象無懼大盤疲軟 早盤逆勢上漲 - UDN",
-     "link": "https://udn.com/news/story/7252/9653105",
-     "impact": "market"
-    }
-   ]
-  },
-  {
    "stock_id": "3450",
    "name": "聯鈞",
    "industry": "其他電子業",
@@ -2666,31 +2788,6 @@
    ]
   },
   {
-   "stock_id": "5289",
-   "name": "宜鼎",
-   "industry": "電腦及週邊設備業",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 2,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-07-27 11:53:00",
-     "source": "MoneyDJ",
-     "title": "宜鼎受惠記憶體市況延續，Q2毛利率看突破6成 - MoneyDJ",
-     "link": "https://m.moneydj.com/f1a.aspx?a=25688ad2-abe9-4f12-9086-c574a3dcef8d",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-07-25 00:06:36",
-     "source": "UDN",
-     "title": "威剛、宜鼎瞄準90天期| 權證期貨| 股市 - UDN",
-     "link": "https://udn.com/news/story/7255/9649520?from=udn-relatednews_ch2",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
    "stock_id": "6196",
    "name": "帆宣",
    "industry": "其他電子業",
@@ -2711,31 +2808,6 @@
      "source": "經濟日報",
      "title": "台積、日月光、ASML 等訂單湧入 帆宣接單熱 忙到2027後 - 經濟日報",
      "link": "https://money.udn.com/money/story/5710/9652136",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
-   "stock_id": "6223",
-   "name": "旺矽",
-   "industry": "半導體業",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 2,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-07-29 19:30:00",
-     "source": "FTNN新聞",
-     "title": "封測綠光滿面！「這檔」連5跌33.7%同日月光、京元電、訊芯跌停 穎崴、旺矽大跌7% - FTNN 新聞",
-     "link": "https://www.ftnn.com.tw/news/565376",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-07-25 17:45:29",
-     "source": "自由時報系",
-     "title": "在台灣沒有競爭對手 旺矽今年有望逐季成長 - 自由時報",
-     "link": "https://stock.ltn.com.tw/article/eu0cbkyetfua",
      "impact": "stock"
     }
    ]
@@ -2944,24 +3016,6 @@
      "source": "自由時報系",
      "title": "熱門股》爆量換手 長興噴出創28年新高 - 自由時報",
      "link": "https://stock.ltn.com.tw/article/btaekehsugb2",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
-   "stock_id": "1785",
-   "name": "光洋科",
-   "industry": "其他電子類",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 1,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-07-28 10:46:30",
-     "source": "自由時報系",
-     "title": "熱門股》當沖熱絡 光洋科強攻漲停 - 自由時報",
-     "link": "https://stock.ltn.com.tw/article/m6g7mr7unwax",
      "impact": "stock"
     }
    ]
@@ -3255,24 +3309,6 @@
    ]
   },
   {
-   "stock_id": "3529",
-   "name": "力旺",
-   "industry": "半導體業",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 1,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-07-29 16:51:24",
-     "source": "經濟日報",
-     "title": "力旺財報／第2季獲利年增近45%、EPS 7.77元 總經理何明洲將退休 - 經濟日報",
-     "link": "https://money.udn.com/money/amp/story/11074/9658609",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
    "stock_id": "5871",
    "name": "中租-KY",
    "industry": "其他",
@@ -3363,24 +3399,6 @@
    ]
   },
   {
-   "stock_id": "6548",
-   "name": "長科*",
-   "industry": "半導體業",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 1,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-07-29 18:35:21",
-     "source": "自由時報系",
-     "title": "長科*Q2獲利攀15季高點 看好Q3營收將季增雙位數 - 自由時報",
-     "link": "https://stock.ltn.com.tw/article/aajgt1bz7gj0",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
    "stock_id": "6670",
    "name": "復盛應用",
    "industry": "其他",
@@ -3412,24 +3430,6 @@
      "source": "理財周刊",
      "title": "00981A 持續加碼富世達(6805)，壓注下半年摺疊機爆發與 AI 水冷需求不變 - 理財周刊",
      "link": "https://www.moneyweekly.com.tw/ArticleData/Info/Article/238554",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
-   "stock_id": "8069",
-   "name": "元太",
-   "industry": "光電業",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 1,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-07-29 04:00:00",
-     "source": "經濟日報",
-     "title": "元太董座李政昊 出任台虹副董事長 - 經濟日報",
-     "link": "https://money.udn.com/money/story/5612/9658878",
      "impact": "stock"
     }
    ]
