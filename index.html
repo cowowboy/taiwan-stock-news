@@ -467,7 +467,9 @@ function usHtml(u){
 function chipsHtml(m){
   const c = m.chips || {}, inst = c.inst;
   let lines = [];
-  if (inst) lines.push(`法人（億）：外資 ${sgn(inst.foreign,(inst.foreign>0?"+":"")+inst.foreign)}`
+  // 法人數字是 FinMind 最近可得交易日（常態為前一交易日），非晨報建置日 MORNING.generated_at；
+  // 同卡的主動ETF已標基準日，法人不標反而更誤導 → 沿用 :474/:495 慣例補上資料日
+  if (inst) lines.push(`法人（億，資料日 ${esc(inst.date||"—")}）：外資 ${sgn(inst.foreign,(inst.foreign>0?"+":"")+inst.foreign)}`
     + `｜投信 ${sgn(inst.trust,(inst.trust>0?"+":"")+inst.trust)}｜自營 ${sgn(inst.dealer,(inst.dealer>0?"+":"")+inst.dealer)}`);
   if ((c.it3||[]).length) lines.push(`投信3日連買：${c.it3.map(x=>esc(x.n||x.c)).join("、")}`);
   if ((c.it3_sell||[]).length) lines.push(`投信3日連賣：${c.it3_sell.map(x=>esc(x.n||x.c)).join("、")}`);

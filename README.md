@@ -159,5 +159,6 @@ python tests/test_incremental.py                               # 增量正確性
   保留近3日），寫入用 localStorage `gh_token`（GitHub Fine-grained PAT，三站同 origin 共用、
   未設靜默跳過）；tab 內「雲端歷史（近3日）」免 token 列本站檔、點擊展開（raw CDN 約 5 分快取）。
   PAT 建法與維護細節見 postmkt `README.md`。
-- 已知觀察項（輕微、未修）：晨報籌碼段資料日標 `MORNING.generated_at`，
-  但法人數字實為前一交易日（晨報本質即彙整昨日籌碼），更嚴謹可改標 `chips.inst.date`。
+- 晨報籌碼段的法人資料日（2026-07-31 已修）：`chipsHtml()` 原本沒有自帶日期，法人數字視覺上
+  繼承上方的 `MORNING.generated_at`（建置時間），但數字實為前一交易日（晨報本質即彙整昨日籌碼）。
+  已改標 payload 既有的 `chips.inst.date`（`index.html:470`），沿用同卡主動ETF基準日的慣例。

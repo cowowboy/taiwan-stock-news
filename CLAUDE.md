@@ -89,8 +89,9 @@
    全量時代失敗只影響當班（自癒），增量會把它變成沾黏的——改這段前先想清楚。
 3. **JS 的 `\W` 是 ASCII-only**（即使加 u 旗標），會把中文當非字元砍掉，與 Python
    `re.UNICODE` 語意不同；改用 `[^\p{L}\p{N}]`（`index.html:326`）。
-4. 晨報籌碼段資料日標 `MORNING.generated_at`，但法人數字實為**前一交易日**
-   （已知未修，`README.md:162`）。
+4. 晨報籌碼段法人數字實為**前一交易日**，原本沒標日期而視覺上繼承 `MORNING.generated_at`
+   （建置時間）。2026-07-31 已修：改標 payload 既有的 `chips.inst.date`（`index.html:470`）。
+   其他消費者（postmkt、Worker 圖卡）本來就正確解析該欄，本站渲染是唯一漏網的。
 
 ## 驗證方式
 
