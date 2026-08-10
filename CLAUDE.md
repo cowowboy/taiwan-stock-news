@@ -34,8 +34,10 @@
 <!-- CANON:END v1 -->
 
 「新聞晨報」站：抓 FinMind `TaiwanStockNews` → 來源白名單過濾 → 產 `news.json`。
-線上 https://shihpc.github.io/taiwan-stock-news/ 。4 個 tab：新聞／晨報／摘要分析／
-個股追蹤（`index.html:160-163`）。純靜態前端（單檔 `index.html`）＋ Python 管線。
+線上 https://shihpc.github.io/taiwan-stock-news/ 。5 個 tab：新聞／每日晨報／昨日市場
+（原「晨報」tab 更名）／摘要分析／個股追蹤（`index.html` tabs 區）。「每日晨報」tab 以
+iframe 載入同 repo 的 `daily-brief.html`——該檔由雲端排程 session 每日台北 07:30 產製並
+push 到 main，勿手動編輯。純靜態前端（單檔 `index.html`）＋ Python 管線。
 
 ## 佈局
 

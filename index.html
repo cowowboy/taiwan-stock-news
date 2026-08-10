@@ -158,7 +158,8 @@
 
   <div class="tabs">
     <div class="tab active" data-tab="news">新聞</div>
-    <div class="tab" data-tab="morning">晨報</div>
+    <div class="tab" data-tab="daily">每日晨報</div>
+    <div class="tab" data-tab="morning">昨日市場</div>
     <div class="tab" data-tab="insight">摘要分析</div>
     <div class="tab" data-tab="track">個股追蹤</div>
   </div>
@@ -177,6 +178,10 @@
     <div id="list"><div class="empty">載入中…</div></div>
   </div>
 
+  <div id="dailyView" style="display:none">
+    <iframe id="dailyFrame" title="每日晨報" style="width:100%;height:82vh;border:0;border-radius:12px;background:transparent"></iframe>
+  </div>
+
   <div id="morningView" style="display:none">
     <div id="morningList"><div class="empty">載入中…</div></div>
   </div>
@@ -187,7 +192,7 @@
 
   <footer>
     資料來源：FinMind · TaiwanStockNews（新聞）／
-    <a href="https://github.com/shihpc/taiwan-flow-live-v2">taiwan-flow-live-v2</a>（晨報）｜過濾規格見
+    <a href="https://github.com/shihpc/taiwan-flow-live-v2">taiwan-flow-live-v2</a>（昨日市場）｜過濾規格見
     <a href="https://github.com/shihpc/taiwan-stock-news">taiwan-stock-news</a>
   </footer>
 </div>
@@ -997,16 +1002,19 @@ document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
   document.querySelectorAll(".tab").forEach(x => x.classList.toggle("active", x === t));
   const tab = t.dataset.tab;
   document.getElementById("newsView").style.display = tab === "news" ? "" : "none";
+  document.getElementById("dailyView").style.display = tab === "daily" ? "" : "none";
   document.getElementById("morningView").style.display = tab === "morning" ? "" : "none";
   document.getElementById("insightView").style.display = tab === "insight" ? "" : "none";
   document.getElementById("trackView").style.display = tab === "track" ? "" : "none";
   const SUBS = {
     news: "投信／外資連買股的近日新聞，經來源白名單過濾後，依產業別與對大盤影響度分層。",
-    morning: "台股開盤前晨報：期指開盤參考、隔夜美股、法人籌碼與除權息（資料源：taiwan-flow-live-v2）。",
+    daily: "每日晨報：今日三件事、開盤前定位、本週關鍵事件與生活情報，每日台北時間 07:30 更新。AI 研判非保證、非投資顧問服務。",
+    morning: "昨日市場與開盤參考：期指開盤參考、隔夜美股、法人籌碼與除權息（資料源：taiwan-flow-live-v2）。",
     insight: "AI 摘要分析：彙整新聞焦點與晨報籌碼，由 Claude 生成洞見。token 自備、只存本機。非投資建議。",
     track: "個股追蹤（第一批：基本面）：自選股＋持股診斷股的每日新聞、每月營收、每季財報。資料經 taiwan-flow-live-v2 Worker 即時代理 FinMind。非投資建議。",
   };
   document.getElementById("pageSub").textContent = SUBS[tab] || SUBS.news;
+  if (tab === "daily") { const f = document.getElementById("dailyFrame"); if (!f.src) f.src = "daily-brief.html?t=" + Date.now(); }
   if (tab === "morning") loadMorning();
   if (tab === "insight") renderInsight();
   if (tab === "track") loadTrack();
