@@ -1043,6 +1043,18 @@ document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
   if (tab === "track") loadTrack();
 });
 
+// 晨報 iframe 自動高度（2026-08-30）：daily-brief.html 內嵌 script 會 postMessage 回報
+// scrollHeight，這裡接手把 iframe 撐到內容高，消除「外層＋iframe」雙層捲動。
+// 同源檢查：晨報與本頁同站，e.origin 必等於本頁 origin；舊版晨報（無 script）不回報
+// 則維持 82vh 原行為，天然向下相容。
+window.addEventListener("message", e => {
+  if (e.origin !== location.origin) return;
+  const d = e.data;
+  if (!d || d.t !== "brief-h" || !Number.isFinite(d.h)) return;
+  const f = document.getElementById("dailyFrame");
+  if (f) f.style.height = Math.max(300, Math.min(d.h + 24, 300000)) + "px";
+});
+
 // ==== 個股追蹤（第一批：基本面）====
 // 資料架構：新聞/月營收/季財報/股利/名稱全走 v2 Worker 即時代理（/fundamentals，任何台股皆可），
 // 前端絕不碰 FinMind token；新聞＝媒體新聞（TaiwanStockNews）＋業績事件墊底，保證 ≥3、無「不在池」死路。
