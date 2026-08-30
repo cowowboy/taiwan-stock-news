@@ -17,6 +17,12 @@ on:
       - "tests/**"
   workflow_dispatch: {}
 
+# 本檔原無 permissions 區塊（吃 repo 預設）。因告警 step 需要 issues: write 而顯式宣告，
+# 顯式宣告會把未列出的權限降為 none，故一併補上 actions/checkout 需要的 contents: read。
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -34,3 +40,10 @@ jobs:
 
       - name: 增量 == 全量
         run: python tests/test_incremental.py
+      - name: Notify failure
+        # cancelled 也要告警：跑一半被取消（GitHub 端異常或誤按）同樣代表該場沒產出，
+        # 而 failure() 在 cancelled 時不成立（2026-07-24 postmkt pm 場靜默消失的教訓）
+        if: failure() || cancelled()
+        uses: ./.github/actions/notify-failure
+        with:
+          pipeline: news-test

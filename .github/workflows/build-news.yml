@@ -28,6 +28,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 # Worker 每小時 dispatch＋備援 cron 可能重疊（單次建置最長 90 分），
 # 同 group 排隊不並行、不取消進行中的（後到的等前一輪跑完再跑）
@@ -111,3 +112,13 @@ jobs:
             sleep 4
           done
           if [ "$pushed" != "1" ]; then echo "::error::push failed after 5 retries"; exit 1; fi
+      # ⚠ 同 taiwan-flow-live-v2/us.yml：concurrency group 為 build-news、
+      # cancel-in-progress: false，Worker 每小時 dispatch 撞上備援 cron 時，
+      # 佇列中較舊的 run 會被 GitHub 取消（正常行為），會觸發本告警。
+      - name: Notify failure
+        # cancelled 也要告警：跑一半被取消（GitHub 端異常或誤按）同樣代表該場沒產出，
+        # 而 failure() 在 cancelled 時不成立（2026-07-24 postmkt pm 場靜默消失的教訓）
+        if: failure() || cancelled()
+        uses: ./.github/actions/notify-failure
+        with:
+          pipeline: news-build
