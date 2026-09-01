@@ -40,6 +40,9 @@ jobs:
 
       - name: 增量 == 全量
         run: python tests/test_incremental.py
+
+      - name: 換址點一致
+        run: python tests/test_sites_consistency.py
       - name: Notify failure
         # cancelled 也要告警：跑一半被取消（GitHub 端異常或誤按）同樣代表該場沒產出，
         # 而 failure() 在 cancelled 時不成立（2026-07-24 postmkt pm 場靜默消失的教訓）

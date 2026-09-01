@@ -149,6 +149,7 @@
 <body>
 <div class="wrap">
   <div class="top">
+    <!-- 換址點：與 SITE.hub 同步（tests/test_sites_consistency.py 守門） -->
     <a class="back" href="https://shihpc.github.io/">← 回 Hub</a>
   </div>
   <header>
@@ -432,7 +433,17 @@ document.getElementById("srcToggle").addEventListener("click", () =>
   setSrcPanel(!document.getElementById("srcPanel").classList.contains("open")));
 
 // ---- 晨報 tab（跨repo唯讀讀taiwan-flow-live-v2的raw資料，不搬遷該站的抓取管線）----
-const V2_BASE = "https://raw.githubusercontent.com/shihpc/taiwan-flow-live-v2/main/data";
+// ── 單一換址點（前端）──────────────────────────────────────────────
+// 換帳號或換託管只改這個物件。「← 回 Hub」是純 HTML 插不了值，必須手動跟著改，
+// 由 tests/test_sites_consistency.py 守門。
+const SITE = {
+  rawOrg: "https://raw.githubusercontent.com/shihpc",
+  worker: "https://taiwan-flow-v2.shihpc.workers.dev",
+  hub:    "https://shihpc.github.io",
+};
+const RAW = (repo, path) => `${SITE.rawOrg}/${repo}/main/${path}`;
+
+const V2_BASE = RAW("taiwan-flow-live-v2", "data");
 let MORNING = null, US = null, DAYSUM = null;
 const sgn = (v, t) => `<span class="${v>0?"up":v<0?"down":"mut"}">${t}</span>`;
 const pct = v => v==null ? "—" : (v>0?"+":"")+v.toFixed(2)+"%";
@@ -535,7 +546,7 @@ function renderMorning(){
 
 // ---- 美股自選（沿用 taiwan-flow-live-v2 Worker 的 /uswatch 報價與 /usersync 同步；
 //      localStorage key 沿用 tflive2_* 讓原站使用者的清單/同步碼無縫延續）----
-const USW_WORKER = "https://taiwan-flow-v2.shihpc.workers.dev";
+const USW_WORKER = SITE.worker;
 const uswList = () => { try{ return JSON.parse(localStorage.getItem("tflive2_uswatch")||"[]"); }catch(e){ return []; } };
 const uswSave = l => localStorage.setItem("tflive2_uswatch", JSON.stringify(l));
 const uswSyncCode = () => localStorage.getItem("tflive2_usw_sync") || "";
@@ -958,7 +969,7 @@ function insightHtml(){
   return h;
 }
 // ---------- 雲端歷史（近3日；只列本站 insight-news，讀取免 token） ----------
-const CLOUD_RAW = "https://raw.githubusercontent.com/shihpc/postmkt/main/data/analyses/";
+const CLOUD_RAW = RAW("postmkt", "data/analyses/");
 const CLOUD_KIND = "insight-news";
 // 近 n 個台北日 YYYYMMDD（今日在前；休市日檔案不存在→404 靜默略過）
 const twDayList = n => Array.from({length:n}, (_,i) =>

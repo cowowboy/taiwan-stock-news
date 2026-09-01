@@ -62,8 +62,6 @@ def taipei_today():
     return datetime.now(TAIPEI_TZ).date()
 
 # taiwan-stock-radar 每日產出的候選清單（公開、唯讀）
-DEFAULT_POOL_CSV = "https://raw.githubusercontent.com/shihpc/taiwan-stock-radar/main/scan_app.csv"
-
 OUTPUT_JSON = "news.json"
 
 # ── 分層：權值股（市值大、對大盤影響高，約當 0050 成分）──────────
