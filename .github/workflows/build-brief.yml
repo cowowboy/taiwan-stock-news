@@ -1,0 +1,50 @@
+name: build-brief
+
+# 每日晨報。上游是「雲端排程 session 每晨產製並 push」,那個 session 不會跟著 fork
+# 過來,所以自架版改由這條管線產(見 build_brief.py 檔頭的設計說明)。
+#
+# 07:30 台北 = 23:30 UTC(前一日)。刻意排在 morning.yml(06:20 台北)與 us.yml 之後,
+# 才讀得到當日的 morning.json / us.json;news.json 由 build-news.yml 全天多次更新。
+# 只保留手動觸發。常態產製走排程 Claude session(見 README「每日晨報」節)——
+# 那條路有網路搜尋(才寫得出本週關鍵事件)且算在訂閱內;這條 API 路徑是備援,
+# 排程 session 掛掉時手動跑。兩者不可同時排程,否則同一天會產兩期、期號亂掉。
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: build-brief
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install anthropic pydantic
+
+      - name: 產製晨報
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python build_brief.py
+
+      - name: Commit
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet daily-brief.html daily-brief-card.json; then
+            echo "無變更"; exit 0
+          fi
+          ED=$(python -c "import json;print(json.load(open('daily-brief-card.json'))['edition'])")
+          git add daily-brief.html daily-brief-card.json
+          git commit -m "brief: $(date -u +%Y-%m-%d) 第 ${ED} 期"
+          git push

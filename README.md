@@ -162,3 +162,23 @@ python tests/test_incremental.py                               # 增量正確性
 - 晨報籌碼段的法人資料日（2026-07-31 已修）：`chipsHtml()` 原本沒有自帶日期，法人數字視覺上
   繼承上方的 `MORNING.generated_at`（建置時間），但數字實為前一交易日（晨報本質即彙整昨日籌碼）。
   已改標 payload 既有的 `chips.inst.date`（`index.html:470`），沿用同卡主動ETF基準日的慣例。
+
+## 每日晨報（自架版，2026-09-03）
+
+上游的 `daily-brief.html` / `daily-brief-card.json` 由「雲端排程 session 每晨產製並 push」，
+那個 session 不會跟著 fork 過來。自架版改成**排程 Claude session + 程式強制版式**：
+
+| 角色 | 負責 |
+|---|---|
+| 排程 cloud session（台北一~五 07:52） | 讀資料、網路搜尋、判讀與組稿 → 產出 content JSON |
+| `brief_tools.py render` | 版式、存檔輪替（只留 7 期）、硬預算校驗（正文 ≤5,000 漢字） |
+| `templates/brief_{head,tail}.html` | CSS 與 `</body>` 前的 iframe 自動高度 script（原樣保留） |
+
+分工的理由：session 擅長判讀，不擅長每天重寫 516 行 HTML 又記得輪替存檔。
+把後者交給程式後，硬預算是**強制**而不是寫在 prompt 裡祈禱——
+`brief_tools.py render` 不符規範會 exit 1 且不寫檔。
+
+- `python3 brief_tools.py schema` — 印出 content JSON 的格式
+- `python3 brief_tools.py check` — 校驗現有檔案
+- `build_brief.py` + `build-brief.yml` — **備援**，直接呼叫 Anthropic API（約 $6/月），
+  只能手動觸發。它沒有網路搜尋，所以 `week_events` 只能留空。

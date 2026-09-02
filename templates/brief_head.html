@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-Hant">
+<!-- ══ 速讀版組稿規範（2026-08-30 第24期起；每日產製 session 必讀，優先級高於任何舊版結構印象）══
+  硬性預算：當期正文（<details class="archive"> 之前）≤5,000 漢字；每則新聞＝h3 標題(≤30字)＋一句 why(≤50字)＋來源 meta；
+  重點判讀全刊只 3 則（依據＋影響機制＋失效情境，各 ≤150 字），其餘判讀一句帶過；行情數字只在 table.pos 完整出現一次；
+  <b> 每則至多 1 處；「今日一句話」≤100 字。
+  結構順序：刊頭(速讀版)→nav.toc 錨點列→今日三件事(h3＋一句判讀)→開盤前定位 table.pos(含匯率)→本週關鍵事件(ul.cal 每條≤40字)
+  →今日關注個股 ul.stocks→重點判讀×3→要聞速覽(法規/要聞/經濟，細節收 details.more)→details.lifeblock 生活與家庭(四節收合)
+  →今日一句話→免責→歷史存檔（**只保留最近 7 期＝近一週**，多的刪除）。</body> 前的自動高度 postMessage script 必須原樣保留。 ══ -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>每日晨報</title>
+<style>
+  :root {
+    --paper: #FAF8F4;
+    --ink: #24312E;
+    --ink-soft: #5C6B66;
+    --accent: #2E6E5F;
+    --rule: #D9D4CA;
+    --why-bg: #EFF3EE;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #171B1A;
+      --ink: #E4E8E4;
+      --ink-soft: #98A5A0;
+      --accent: #6FBFA9;
+      --rule: #333B38;
+      --why-bg: #212925;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #171B1A;
+    --ink: #E4E8E4;
+    --ink-soft: #98A5A0;
+    --accent: #6FBFA9;
+    --rule: #333B38;
+    --why-bg: #212925;
+  }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
+    line-height: 1.75;
+    margin: 0;
+    padding: 0 1.25rem 4rem;
+  }
+  .sheet { max-width: 42rem; margin: 0 auto; }
+  header.masthead {
+    padding: 2.5rem 0 1.25rem;
+    border-bottom: 3px double var(--rule);
+    margin-bottom: 2rem;
+  }
+  .masthead .kicker { color: var(--accent); font-size: .8rem; letter-spacing: .35em; margin: 0 0 .5rem; }
+  .masthead h1 {
+    font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    font-weight: 700; letter-spacing: .12em; margin: 0; text-wrap: balance;
+  }
+  .masthead .dateline { margin: .6rem 0 0; color: var(--ink-soft); font-size: .9rem; font-variant-numeric: tabular-nums; }
+  .masthead .dateline strong { color: var(--ink); font-weight: 600; }
+  section.block { margin-bottom: 2.75rem; }
+  .block > h2 {
+    font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+    font-size: 1.25rem; letter-spacing: .2em; color: var(--accent);
+    border-bottom: 1px solid var(--rule); padding-bottom: .4rem; margin: 0 0 1.1rem;
+  }
+  article.item { margin-bottom: 1.6rem; }
+  .item h3 { font-size: 1.05rem; font-weight: 700; margin: 0 0 .35rem; text-wrap: balance; }
+  .item p.sum { margin: 0 0 .5rem; }
+  .item .why {
+    background: var(--why-bg); border-left: 3px solid var(--accent);
+    padding: .45rem .8rem; margin: 0 0 .5rem; border-radius: 0 4px 4px 0; font-size: .95rem;
+  }
+  .item .why b { color: var(--accent); font-weight: 600; }
+  .item .meta { font-size: .82rem; color: var(--ink-soft); }
+  .item .meta a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+  .item .meta a:hover { border-bottom-style: solid; }
+  .item .meta a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  ul.cal { margin: .2rem 0 0 1.2rem; padding: 0; }
+  ul.cal li { margin-bottom: .5rem; }
+  p.final {
+    font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+    font-size: 1.05rem; background: var(--why-bg); border-left: 3px solid var(--accent);
+    padding: .7rem 1rem; border-radius: 0 4px 4px 0;
+  }
+  .note { font-size: .85rem; color: var(--ink-soft); border-top: 1px solid var(--rule); padding-top: 1rem; }
+  section.archive { margin-top: 3rem; }
+  .archive > h2 {
+    font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+    font-size: 1.1rem; letter-spacing: .2em; color: var(--ink-soft);
+    border-bottom: 1px solid var(--rule); padding-bottom: .4rem;
+  }
+  .archive details { border-bottom: 1px dashed var(--rule); padding: .5rem 0; }
+  .archive summary { cursor: pointer; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .archive ul { margin: .5rem 0 .5rem 1.2rem; padding: 0; font-size: .9rem; color: var(--ink-soft); }
+  /* 速讀版新增樣式 */
+  .fastread { font-size: .72rem; color: var(--accent); border: 1px solid var(--accent); border-radius: 3px; padding: 0 .35em; margin-left: .4em; white-space: nowrap; }
+  nav.toc { font-size: .82rem; color: var(--ink-soft); margin: -.8rem 0 2rem; line-height: 2; }
+  nav.toc a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+  nav.toc a:hover { border-bottom-style: solid; }
+  .poswrap { overflow-x: auto; }
+  table.pos { width: 100%; border-collapse: collapse; font-size: .86rem; font-variant-numeric: tabular-nums; }
+  table.pos th, table.pos td { border-bottom: 1px solid var(--rule); padding: .3rem .45rem; text-align: left; vertical-align: top; }
+  table.pos th { color: var(--ink-soft); font-weight: 600; font-size: .78rem; }
+  table.pos td:last-child { color: var(--ink-soft); font-size: .82rem; }
+  ul.stocks { margin: .2rem 0 0 1.2rem; padding: 0; }
+  ul.stocks li { margin-bottom: .45rem; }
+  details.more { font-size: .88rem; color: var(--ink-soft); margin: 0 0 .5rem; }
+  details.more summary { cursor: pointer; color: var(--accent); }
+  details.lifeblock { border: 1px solid var(--rule); border-radius: 6px; padding: .5rem 1rem; background: var(--why-bg); }
+  details.lifeblock summary { cursor: pointer; font-weight: 600; }
+  details.lifeblock h3 { font-size: .95rem; color: var(--accent); margin: .9rem 0 .3rem; }
+  details.lifeblock p { margin: 0 0 .45rem; font-size: .9rem; }
+  details.lifeblock .meta { font-size: .78rem; color: var(--ink-soft); }
+  details.lifeblock .meta a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+</style>
+</head>
+<body>
+<div class="sheet">

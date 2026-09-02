@@ -1,0 +1,11 @@
+
+<script>
+(function(){
+  var post=function(){ parent.postMessage({t:"brief-h",h:document.documentElement.scrollHeight},"*"); };
+  addEventListener("load",post);
+  document.addEventListener("toggle",function(){ setTimeout(post,60); },true);
+  if (window.ResizeObserver) new ResizeObserver(post).observe(document.body);
+})();
+</script>
+</body>
+</html>
