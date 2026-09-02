@@ -65,6 +65,18 @@ def main() -> None:
             bad.append(f"{i}: {t[:90]}")
     check(not bad, "沒有寫死的位址" + ("\n      " + "\n      ".join(bad) if bad else ""))
 
+    print("[4] github.com / api.github.com 的帳號與 SITE 一致")
+    owner = S["rawOrg"].rstrip("/").split("/")[-1]
+    bad2 = []
+    for i, line in enumerate(HTML.splitlines(), 1):
+        t = line.strip()
+        if t.startswith(("//", "<!--")) or "${" in t:
+            continue
+        for m in re.finditer(r"https://(?:api\.)?github\.com/(?:repos/)?([A-Za-z0-9_.-]+)", t):
+            if m.group(1) != owner:
+                bad2.append(f"{i}: {t[:80]}")
+    check(not bad2, "github 位址帳號一致" + ("\n      " + "\n      ".join(bad2) if bad2 else ""))
+
     if fails:
         print(f"\n✗ 換址點不一致（{len(fails)} 項）")
         sys.exit(1)
