@@ -150,7 +150,7 @@
 <div class="wrap">
   <div class="top">
     <!-- 換址點：與 SITE.hub 同步（tests/test_sites_consistency.py 守門） -->
-    <a class="back" href="https://shihpc.github.io/">← 回 Hub</a>
+    <a class="back" href="https://cowowboy.github.io/">← 回 Hub</a>
   </div>
   <header>
     <h1>🗞️ 新聞晨報</h1>
@@ -437,9 +437,9 @@ document.getElementById("srcToggle").addEventListener("click", () =>
 // 換帳號或換託管只改這個物件。「← 回 Hub」是純 HTML 插不了值，必須手動跟著改，
 // 由 tests/test_sites_consistency.py 守門。
 const SITE = {
-  rawOrg: "https://raw.githubusercontent.com/shihpc",
-  worker: "https://taiwan-flow-v2.shihpc.workers.dev",
-  hub:    "https://shihpc.github.io",
+  rawOrg: "https://raw.githubusercontent.com/cowowboy",
+  worker: "https://taiwan-flow-v2.twradar.workers.dev",
+  hub:    "https://cowowboy.github.io",
 };
 const RAW = (repo, path) => `${SITE.rawOrg}/${repo}/main/${path}`;
 
