@@ -1101,7 +1101,6 @@ function calToday(){ return new Date(Date.now() + 8*3600e3).toISOString().slice(
 
 function calCard(e, today){
   const halted = e.halt_start && e.halt_end && e.halt_start <= today && today <= e.halt_end;
-  const kind = e.kind === "split" ? "股票分割（面額變更）" : "減資";
   const par = (e.par_before && e.par_after)
     ? `面額 ${e.par_before} 元 → ${e.par_after} 元` : "";
   const div = e.price_divisor ? `復牌參考價 ＝ 最後交易日收盤價 ÷ ${e.price_divisor}` : "";
@@ -1119,7 +1118,6 @@ function calCard(e, today){
   return `<div class="mcard warncard${halted ? " now" : ""}">
     <div class="chead">${badge}${esc(e.code)} ${esc(e.name)}
       <span class="cflag">${esc(e.market)}</span>
-      <span class="cflag">${kind}</span>
       ${e.provisional ? '<span class="cflag prov">計畫未經核備，日期可能再變</span>' : ""}</div>
     <table class="mtable">
       <tr><td>舊股最後交易日</td><td><b>${e.last_trade ? esc(e.last_trade) : na}</b></td></tr>
@@ -1140,11 +1138,18 @@ function renderCal(){
   const acts = (CAL.actions || []).filter(e =>
     (e.resume && e.resume >= today) || (e.halt_end && e.halt_end >= today));
   acts.sort((a,b) => (a.resume || a.halt_end || "9999").localeCompare(b.resume || b.halt_end || "9999"));
-  hz.innerHTML = '<div class="msection">停止交易預告</div>'
-    + (acts.length ? acts.map(e => calCard(e, today)).join("")
-       : '<div class="mcard"><span class="mut">目前沒有進行中或即將發生的分割／減資停牌。</span>'
-         + '<div class="mut" style="font-size:.8rem;margin-top:6px">'
-         + '公告由程式每天兩班累積，公司一發布就會出現在這裡。</div></div>');
+  // 分區標題用事件本身命名（分割／減資），不用「停止交易預告」那種以後果命名的說法。
+  // 兩類必須分開:這一區同時有分割與減資,單一標題會有一半名不符實。
+  const GRP = [["split", "股票分割／股票面額變更"], ["reduce", "減資"]];
+  let hh = "";
+  for (const [k, title] of GRP) {
+    const g = acts.filter(e => e.kind === k);
+    if (g.length) hh += `<div class="msection">${title}</div>` + g.map(e => calCard(e, today)).join("");
+  }
+  hz.innerHTML = hh || '<div class="msection">股票分割／股票面額變更・減資</div>'
+    + '<div class="mcard"><span class="mut">目前沒有進行中或即將發生的分割、面額變更或減資。</span>'
+    + '<div class="mut" style="font-size:.8rem;margin-top:6px">'
+    + '公告由程式每天兩班累積，公司一發布就會出現在這裡。</div></div>';
 
   const chip = (id, val, cur, txt) =>
     `<span class="chip${val === cur ? " active" : ""}" data-${id}="${val}">${txt}</span>`;
