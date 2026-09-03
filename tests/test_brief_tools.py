@@ -30,8 +30,8 @@ def base() -> dict:
     return {
         "top3": [{"title": z(20), "why": z(60), "source": "中央社",
                   "source_url": "https://example.com/a"} for _ in range(3)],
-        "positioning": [{"market": "加權指數", "fact": "9/2 收 46,164.72", "view": z(15)}
-                        for _ in range(4)],
+        "positioning": [{"market": f"市場{i}", "fact": "9/2 收 46,164.72", "view": z(15)}
+                        for i in range(6)],
         "week_events": [{"when": f"9/{d} 20:30", "what": z(20)} for d in (1, 2, 3, 4)],
         "stocks": [{"code": "2330", "name": "台積電", "note": z(25)} for _ in range(3)],
         "calls": [{"title": "標題", "basis": z(80), "mechanism": z(80), "invalid": z(60)}
@@ -69,6 +69,19 @@ def main() -> int:
         0, {"cat": "政策與權益", "note": z(900)})), "上限"), "life.note 900 字被上限擋下")
     check(hit(bad_of(lambda c: c["calls"][0].update(basis=z(10))), "下限"),
           "calls.basis 寫太薄被擋")
+
+    print("\n開盤前定位:列數與 fact 用字元數(不是漢字)")
+    check(hit(bad_of(lambda c: c.__setitem__("positioning", c["positioning"][:4])), "6~10"),
+          "只有 4 列被擋（一列一個市場，第 30 期把四個市場擠成一列）")
+    check(bad_of(lambda c: c["positioning"].extend(
+        [{"market": f"額外{i}", "fact": "406.96", "view": z(15)} for i in range(4)])) == [],
+        "10 列合規")
+    check(hit(bad_of(lambda c: c["positioning"][0].update(
+        fact="標普 +0.46%、那斯達克 +0.45%、道瓊 +0.56%、費半 +0.45%、"
+             "台積電 ADR 415.5 美元、新台幣 31.74 元")), "字元"),
+        "一列塞多個市場（>60 字元）被擋")
+    check(bad_of(lambda c: c["positioning"][0].update(fact="46,164.72")) == [],
+          "純數字 fact 通過（漢字數 0，若用漢字下限會誤殺）")
 
     print("\n必填欄與來源連結")
     check(hit(bad_of(lambda c: c["top3"][0].pop("source_url")), "缺漏"),

@@ -45,8 +45,12 @@ LIMITS = {                  # 欄位 → (下限, 上限) 漢字數;兩端都擋
     "life.note": (200, 500),
     "quote": (40, 100),
 }
-COUNTS = {"top3": (3, 3), "positioning": (4, 6), "stocks": (3, 6),
+COUNTS = {"top3": (3, 3), "positioning": (6, 10), "stocks": (3, 6),
           "calls": (3, 3), "news": (6, 12), "life": (3, 4), "week_events": (0, 12)}
+# positioning.fact 幾乎都是數字,用漢字數量它會誤殺(「46,164.72」是 0 漢字),改數全長。
+# 上限存在的理由:定位表一列一個市場,不是把四個市場擠成一句話——
+# 上游第 28 期是 12 列各自獨立,我方第 30 期只有 6 列、其中兩列各塞了四個市場。
+LIMITS_CHARS = {"positioning.fact": (4, 60)}
 REQUIRED = {
     "top3": ("title", "why", "source", "source_url"),
     "positioning": ("market", "fact", "view"),
@@ -70,7 +74,9 @@ SCHEMA = """content.json 結構（全部欄位必填，括號內為則數，字�
       "source":     "來源名稱，如 博通官方新聞稿 / 證交所",
       "source_url": "https:// 開頭的可點連結"
   }]
-  "positioning": [{"market": "", "fact": "含日期的數字事實", "view": "10~25字"}]  (4~6)
+  "positioning": [{"market": "", "fact": "含日期的數字事實，4~60 字元", "view": "10~25字"}]  (6~10)
+                 一列一個市場（加權／櫃買／成交金額／台積電／三大法人／新台幣／
+                 美股／費半／美債／原油…），不要把數個市場擠進同一列
   "week_events": [{"when": "如 週五 9/4 20:30", "what": "12~40字"}]        (0~12)
   "stocks":      [{"code": "", "name": "", "note": "16~40字"}]            (3~6)
   "calls":       [{"title": "", "basis": "50~150",
@@ -129,6 +135,14 @@ def validate(c: dict, today: dt.date | None = None) -> list[str]:
             for f in fields:
                 if not str(x.get(f, "")).strip():
                     bad.append(f"{arr}[{i}].{f} 缺漏")
+
+    for path, (lo, hi) in LIMITS_CHARS.items():
+        arr, _, field = path.partition(".")
+        for i, x in enumerate(c.get(arr) or []):
+            n = len(str(x.get(field, "")).strip())
+            if not (lo <= n <= hi):
+                bad.append(f"{arr}[{i}].{field} {n} 字元，應為 {lo}~{hi}"
+                           f"（一列一個市場，數字照寫不要寫成句子）")
 
     for path, (lo, hi) in LIMITS.items():
         arr, _, field = path.partition(".")

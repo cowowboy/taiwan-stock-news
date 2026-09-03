@@ -55,8 +55,8 @@ class Item(BaseModel):
 
 
 class Pos(BaseModel):
-    market: str = Field(description="市場名稱，如 加權指數 / 費半 / 台幣")
-    fact: str = Field(description="數字事實，需含日期")
+    market: str = Field(description="單一市場名稱，如 加權指數 / 櫃買 / 費半 / 台幣 / 美債10Y")
+    fact: str = Field(description="數字事實，需含日期，4~60 字元；數字照寫，不要寫成句子")
     view: str = Field(description="一句解讀，10~25 字")
 
 
@@ -93,7 +93,7 @@ class Life(BaseModel):
 
 class Brief(BaseModel):
     top3: List[Item] = Field(description="今日三件事，恰好 3 則")
-    positioning: List[Pos] = Field(description="開盤前定位，4~6 列")
+    positioning: List[Pos] = Field(description="開盤前定位，6~10 列，一列一個市場")
     week_events: List[Ev] = Field(description="本週關鍵事件；**只寫輸入資料裡有憑據的**，沒有就給空陣列")
     stocks: List[Stock] = Field(description="今日關注個股，3~6 檔")
     calls: List[Call] = Field(description="重點判讀，恰好 3 則")
@@ -145,13 +145,16 @@ PROMPT = """你在為台股投資人產製「每日晨報」。今天是 {date}�
 3. **字數是上下限，兩端都會擋。** 寫太薄跟寫太長一樣算失敗：
    `top3.title` 12~30、`top3.why` 40~90、`positioning.view` 10~25、
    `week_events.what` 12~40、`stocks.note` 16~40、`news.why` 16~60、
+   `positioning.fact` 4~60 **字元**（不是漢字，數字照寫）、
    `calls` 三欄各 50~150（invalid 40~150）、**`life.note` 200~500**、`quote` 40~100。
    `life` 每塊是**完整段落**，不是一句話。
 4. `top3.source_url` 只能填 `<news>` 裡該則新聞自帶的 `link`，不可自行拼湊網址。
 5. 語氣：現況描述，不做預測、不寫該買該賣。技術指標是描述不是訊號。
-6. `life` 三~四塊與市場無關（政策與權益／健康與生活／下一代／科技與生活），可自由發揮。
-7. 讀者看不到這些 JSON，**不要在內容裡提 json 檔名或欄位名**，也不要寫「無 X」這種非事件。
-8. 全部用繁體中文。"""
+6. `positioning` 6~10 列，**一列一個市場**（加權／櫃買／成交金額／台積電／三大法人／
+   新台幣／美股／費半／美債／原油…），不要把數個市場擠進同一列。
+7. `life` 三~四塊與市場無關（政策與權益／健康與生活／下一代／科技與生活），可自由發揮。
+8. 讀者看不到這些 JSON，**不要在內容裡提 json 檔名或欄位名**，也不要寫「無 X」這種非事件。
+9. 全部用繁體中文。"""
 
 REPAIR = """\n\n你上一版有以下違規，請重出完整 JSON（不是只給 diff），並修掉每一條：\n{bad}"""
 
