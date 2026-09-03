@@ -106,6 +106,15 @@
   .qbtn{background:var(--card-hover);border:1px solid var(--accent);color:var(--txt);border-radius:9px;
     padding:7px 16px;font-size:.86rem;cursor:pointer;user-select:none;white-space:nowrap}
   .qbtn:hover{background:#24365c}
+  /* 行事曆（除權息／分割減資）2026-09-03 */
+  .warncard{border-color:#7a4a2a;background:#241a12}
+  .warncard.now{border-color:#8f3b3b;background:#2a1616}
+  .cflag{display:inline-block;font-size:.7rem;padding:1px 7px;border-radius:999px;
+    border:1px solid var(--line);color:var(--muted);margin-left:6px;vertical-align:2px}
+  .cflag.hot{border-color:#8f3b3b;color:#ff8f8f}
+  .cflag.prov{border-color:#7a4a2a;color:#e0a35c}
+  .chead{font-size:1rem;font-weight:700;margin-bottom:2px}
+  .cdays{float:right;font-size:.8rem;color:var(--muted);font-weight:400}
   /* 摘要分析 */
   .insight-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:10px 0;line-height:1.75;font-size:.92rem}
   .slink{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent)}
@@ -162,6 +171,7 @@
     <div class="tab" data-tab="daily">每日晨報</div>
     <div class="tab" data-tab="morning">昨日市場</div>
     <div class="tab" data-tab="insight">摘要分析</div>
+    <div class="tab" data-tab="cal">行事曆</div>
     <div class="tab" data-tab="track">個股追蹤</div>
   </div>
 
@@ -189,12 +199,22 @@
 
   <div id="insightView" style="display:none"></div>
 
+  <div id="calView" style="display:none">
+    <div id="calHalt"><div class="empty">載入中…</div></div>
+    <div class="bar">
+      <div class="row"><span class="lbl">未來</span><span id="calDayChips" style="display:contents"></span></div>
+      <div class="row"><span class="lbl">市場</span><span id="calMktChips" style="display:contents"></span></div>
+    </div>
+    <div id="calExdiv"></div>
+  </div>
+
   <div id="trackView" style="display:none"></div>
 
   <footer>
     資料來源：FinMind · TaiwanStockNews（新聞）／
     <a href="https://github.com/cowowboy/taiwan-flow-live-v2">taiwan-flow-live-v2</a>（昨日市場）｜過濾規格見
     <a href="https://github.com/cowowboy/taiwan-stock-news">taiwan-stock-news</a>
+    ｜行事曆：證交所／櫃買中心公開公告
     <span id="siteVer" hidden></span>
   </footer>
 </div>
@@ -1044,20 +1064,121 @@ document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
   document.getElementById("dailyView").style.display = tab === "daily" ? "" : "none";
   document.getElementById("morningView").style.display = tab === "morning" ? "" : "none";
   document.getElementById("insightView").style.display = tab === "insight" ? "" : "none";
+  document.getElementById("calView").style.display = tab === "cal" ? "" : "none";
   document.getElementById("trackView").style.display = tab === "track" ? "" : "none";
   const SUBS = {
     news: "投信／外資連買股的近日新聞，經來源白名單過濾後，依產業別與對大盤影響度分層。",
     daily: "每日晨報：今日三件事、開盤前定位、本週關鍵事件與生活情報，每日台北時間 07:30 更新。AI 研判非保證、非投資顧問服務。",
     morning: "昨日市場與開盤參考：期指開盤參考、隔夜美股、法人籌碼與除權息（資料源：taiwan-flow-live-v2）。",
     insight: "AI 摘要分析：彙整新聞焦點與晨報籌碼，由 Claude 生成洞見。token 自備、只存本機。非投資建議。",
+    cal: "公司行動行事曆：未來的除權息，以及股票分割（面額變更）與減資的「舊股停止交易期」——那幾天部位是凍結的，不能買也不能賣。資料源：證交所與櫃買中心公開公告。非投資建議。",
     track: "個股追蹤（第一批：基本面）：自選股＋持股診斷股的每日新聞、每月營收、每季財報。資料經 taiwan-flow-live-v2 Worker 即時代理 FinMind。非投資建議。",
   };
   document.getElementById("pageSub").textContent = SUBS[tab] || SUBS.news;
   if (tab === "daily") { const f = document.getElementById("dailyFrame"); if (!f.src) f.src = "daily-brief.html?t=" + Date.now(); }
   if (tab === "morning") loadMorning();
   if (tab === "insight") renderInsight();
+  if (tab === "cal") loadCal();
   if (tab === "track") loadTrack();
 });
+
+// ── 行事曆：除權息 ＋ 分割/減資的停止交易期（2026-09-03）──────────────────
+// 這一頁的重點不是除權息，是**停牌**：面額變更與減資要換發股票，舊股會有
+// 一段完全不能交易的期間（實測 5~7 個交易日），部位在那幾天是凍結的。
+// 資料由 build_corporate_actions.py 每天兩班產出，來源是證交所與櫃買的公開公告。
+let CAL = null, CAL_DAYS = 30, CAL_MKT = "all";
+
+async function loadCal(){
+  if (CAL) { renderCal(); return; }
+  try{
+    const r = await fetch("corp_actions.json?t=" + Date.now());
+    CAL = r.ok ? await r.json() : null;
+  }catch(e){ CAL = null; }
+  renderCal();
+}
+
+function calToday(){ return new Date(Date.now() + 8*3600e3).toISOString().slice(0,10); }
+
+function calCard(e, today){
+  const halted = e.halt_start && e.halt_end && e.halt_start <= today && today <= e.halt_end;
+  const kind = e.kind === "split" ? "股票分割（面額變更）" : "減資";
+  const par = (e.par_before && e.par_after)
+    ? `面額 ${e.par_before} 元 → ${e.par_after} 元` : "";
+  const div = e.price_divisor ? `復牌參考價 ＝ 最後交易日收盤價 ÷ ${e.price_divisor}` : "";
+  // 缺的欄位一律寫「公告未載」，絕不用鄰近事件的值去補
+  const na = '<span class="mut">公告未載</span>';
+  const span = (e.halt_start && e.halt_end)
+    ? `${e.halt_start} ~ ${e.halt_end}`
+      + (e.halt_weekdays ? `（約 ${e.halt_weekdays} 個平日）` : "")
+      + `<span class="cflag">${e.halt_source === "公告" ? "公告載明" : "由前後日推算"}</span>`
+    : na;
+  const left = e.days_ahead;
+  const badge = halted
+    ? '<span class="cflag hot">現正停牌中</span>'
+    : (left != null && left >= 0 ? `<span class="cdays">復牌還有 ${left} 天</span>` : "");
+  return `<div class="mcard warncard${halted ? " now" : ""}">
+    <div class="chead">${badge}${esc(e.code)} ${esc(e.name)}
+      <span class="cflag">${esc(e.market)}</span>
+      <span class="cflag">${kind}</span>
+      ${e.provisional ? '<span class="cflag prov">計畫未經核備，日期可能再變</span>' : ""}</div>
+    <table class="mtable">
+      <tr><td>舊股最後交易日</td><td><b>${e.last_trade ? esc(e.last_trade) : na}</b></td></tr>
+      <tr><td>停止交易（不能買賣）</td><td><b>${span}</b></td></tr>
+      <tr><td>新股上市／櫃買賣日</td><td><b>${e.resume ? esc(e.resume) : na}</b></td></tr>
+    </table>
+    ${par || div ? `<div class="mut" style="margin-top:6px;font-size:.82rem">${[par,div].filter(Boolean).join("　·　")}</div>` : ""}
+  </div>`;
+}
+
+function renderCal(){
+  const hz = document.getElementById("calHalt"), ez = document.getElementById("calExdiv");
+  if (!CAL) {
+    hz.innerHTML = '<div class="empty">行事曆資料載入失敗。</div>'; ez.innerHTML = ""; return;
+  }
+  const today = calToday();
+  // 停牌區間還沒結束的都要留著——已經停牌中的比還沒開始的更該看見
+  const acts = (CAL.actions || []).filter(e =>
+    (e.resume && e.resume >= today) || (e.halt_end && e.halt_end >= today));
+  acts.sort((a,b) => (a.resume || a.halt_end || "9999").localeCompare(b.resume || b.halt_end || "9999"));
+  hz.innerHTML = '<div class="msection">停止交易預告</div>'
+    + (acts.length ? acts.map(e => calCard(e, today)).join("")
+       : '<div class="mcard"><span class="mut">目前沒有進行中或即將發生的分割／減資停牌。</span>'
+         + '<div class="mut" style="font-size:.8rem;margin-top:6px">'
+         + '公告由程式每天兩班累積，公司一發布就會出現在這裡。</div></div>');
+
+  const chip = (id, val, cur, txt) =>
+    `<span class="chip${val === cur ? " active" : ""}" data-${id}="${val}">${txt}</span>`;
+  document.getElementById("calDayChips").innerHTML =
+    [7,14,30,60].map(d => chip("cd", d, CAL_DAYS, d + " 天")).join("");
+  document.getElementById("calMktChips").innerHTML =
+    [["all","全部"],["上市","上市"],["上櫃","上櫃"]].map(([v,t]) => chip("cm", v, CAL_MKT, t)).join("");
+  document.querySelectorAll("[data-cd]").forEach(c =>
+    c.onclick = () => { CAL_DAYS = +c.dataset.cd; renderCal(); });
+  document.querySelectorAll("[data-cm]").forEach(c =>
+    c.onclick = () => { CAL_MKT = c.dataset.cm; renderCal(); });
+
+  const ex = (CAL.exdiv || []).filter(e =>
+    e.date >= today && (e.days_ahead == null || e.days_ahead <= CAL_DAYS)
+    && (CAL_MKT === "all" || e.market === CAL_MKT));
+  const by = {};
+  ex.forEach(e => (by[e.date] = by[e.date] || []).push(e));
+  const dates = Object.keys(by).sort();
+  ez.innerHTML = `<div class="msection">除權息預告（未來 ${CAL_DAYS} 天，${ex.length} 檔）</div>`
+    + (dates.length ? dates.map(d => `<div class="mcard">
+        <div class="chead">${d}<span class="cdays">${by[d].length} 檔</span></div>
+        <table class="mtable">
+          <tr><th>代號</th><th>名稱</th><th>市場</th><th>權/息</th><th>現金股利</th><th>配股率</th></tr>
+          ${by[d].map(e => `<tr><td>${esc(e.code)}</td><td>${esc(e.name)}</td>
+            <td>${esc(e.market)}</td><td>${esc(e.kind || "")}</td>
+            <td>${e.cash != null ? e.cash : "—"}</td>
+            <td>${e.stock_ratio != null ? e.stock_ratio : "—"}</td></tr>`).join("")}
+        </table></div>`).join("")
+       : '<div class="empty">這段期間沒有符合條件的除權息。</div>');
+
+  const gen = CAL.generated_at ? CAL.generated_at.slice(0,16).replace("T"," ") : "";
+  ez.innerHTML += `<div class="mut" style="font-size:.78rem;margin:10px 2px 0">
+    產製於 ${gen}（台北）·「停止交易」期間該公司無股可買賣，非投資建議。</div>`;
+}
 
 // 晨報 iframe 自動高度（2026-08-30）：daily-brief.html 內嵌 script 會 postMessage 回報
 // scrollHeight，這裡接手把 iframe 撐到內容高，消除「外層＋iframe」雙層捲動。
