@@ -1,0 +1,84 @@
+name: 公司行動前瞻行事曆
+
+# 除權息預告 + 股票分割(面額變更)/減資 → corp_actions.json
+#
+# 四個來源全部免金鑰,所以這班不需要 FINMIND_TOKEN:
+#   除權息  TWSE rwd/zh/exRight/TWT48U、TPEx openapi/v1/tpex_exright_prepost
+#   分割減資 TWSE opendata/t187ap04_L、TPEx openapi/v1/mopsfin_t187ap04_O
+# (FinMind 的 TaiwanStockSplitPrice / DividendResult 是「生效當天」才有,
+#  提前量 0 天,對前瞻行事曆沒用——實測見 corp_actions.py 檔頭。)
+#
+# **每天跑,含週末**:重大訊息不挑交易日發(世紀 5314 在 18:54 發、寶雅 5904 在 07:00 發)。
+# 一天兩班:
+#   07:20 台北 —— 趕在 07:52 每日晨報排程之前,讓晨報的「本週關鍵事件」能引用
+#   21:20 台北 —— 收當日盤後才發的公告
+# 這支是累積式的(每次跟既有 corp_actions.json 合併去重),所以偶爾漏一班不會缺資料;
+# 公告會在來源 feed 裡留三個月(寶雅主旨:「公告期間:115年7月2日至115年10月1日」)。
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: '20 23 * * *'   # 07:20 台北（晨報 07:52 之前）
+    - cron: '20 13 * * *'   # 21:20 台北（收盤後公告）
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: corp-actions
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 解析器自我測試（不連外網）
+        # 先跑測試再抓資料:解析器壞掉時寧可整班失敗,也不要寫出一份
+        # 「看起來正常但少了一半事件」的行事曆——那種靜默失敗沒人會發現。
+        run: python tests/test_corp_actions.py
+
+      - name: 抓取並合併
+        run: python build_corporate_actions.py
+
+      - name: Commit corp_actions.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add corp_actions.json
+          if git diff --cached --quiet; then
+            echo "corp_actions.json 無變化，跳過 commit"
+            exit 0
+          fi
+          git commit -m "corp actions $(date -u '+%Y-%m-%d %H:%M UTC')"
+          # push 補 rebase 重試,沿用 build-news.yml 的慣例(2026-08-09 事故)。
+          # 本班 commit 只含 corp_actions.json,衝突必在該檔;rebase 期間
+          # 「theirs」才是本班版本——但本檔是累積式的,直接取本班版本會丟掉
+          # origin 上別班已合併進去的事件,所以衝突時改為重跑一次(讀到最新的檔再合併)。
+          for i in 1 2 3 4 5; do
+            if git pull --rebase origin "${GITHUB_REF_NAME}"; then
+              if git push origin HEAD:"${GITHUB_REF_NAME}"; then exit 0; fi
+            else
+              git rebase --abort || true
+              git reset --hard "origin/${GITHUB_REF_NAME}" || true
+              python build_corporate_actions.py
+              git add corp_actions.json
+              git diff --cached --quiet || git commit -m "corp actions $(date -u '+%Y-%m-%d %H:%M UTC')"
+            fi
+            sleep 4
+          done
+          echo "::error::push 重試 5 次仍失敗"
+          exit 1
+
+      - name: Notify failure
+        if: failure() || cancelled()
+        uses: ./.github/actions/notify-failure
+        with:
+          pipeline: corp-actions

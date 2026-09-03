@@ -10,6 +10,8 @@ on:
       - "news_curation.py"
       - "brief_tools.py"
       - "build_brief.py"
+      - "corp_actions.py"
+      - "build_corporate_actions.py"
       - "tests/**"
       - ".github/workflows/test.yml"
   pull_request:
@@ -18,6 +20,8 @@ on:
       - "news_curation.py"
       - "brief_tools.py"
       - "build_brief.py"
+      - "corp_actions.py"
+      - "build_corporate_actions.py"
       - "tests/**"
   workflow_dispatch: {}
 
@@ -50,6 +54,9 @@ jobs:
 
       - name: 晨報硬預算
         run: python tests/test_brief_tools.py
+
+      - name: 公司行動公告解析
+        run: python tests/test_corp_actions.py
       - name: Notify failure
         # cancelled 也要告警：跑一半被取消（GitHub 端異常或誤按）同樣代表該場沒產出，
         # 而 failure() 在 cancelled 時不成立（2026-07-24 postmkt pm 場靜默消失的教訓）
