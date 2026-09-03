@@ -171,14 +171,35 @@ python tests/test_incremental.py                               # 增量正確性
 | 角色 | 負責 |
 |---|---|
 | 排程 cloud session（台北一~五 07:52） | 讀資料、網路搜尋、判讀與組稿 → 產出 content JSON |
-| `brief_tools.py render` | 版式、存檔輪替（只留 7 期）、硬預算校驗（正文 ≤5,000 漢字） |
+| `brief_tools.py render` | 版式、存檔輪替（只留 7 期）、硬預算校驗（字數上下限、必填欄、行事曆日期） |
 | `templates/brief_{head,tail}.html` | CSS 與 `</body>` 前的 iframe 自動高度 script（原樣保留） |
 
 分工的理由：session 擅長判讀，不擅長每天重寫 516 行 HTML 又記得輪替存檔。
 把後者交給程式後，硬預算是**強制**而不是寫在 prompt 裡祈禱——
 `brief_tools.py render` 不符規範會 exit 1 且不寫檔。
 
+### 字數為什麼要有下限
+
+第一版的 schema 從頭到尾只寫「≤N 字」。2026-09-03 第 28 期與上游同日並排，
+正文 **3,464 vs 5,064 漢字**，而 1,545 字的落差幾乎全部集中在生活區塊
+（85 vs 1,630）——模型看到的全是上限，自然貼著上限以下寫，只用掉預算的 69%。
+
+所以 `LIMITS` 改成 `(下限, 上限)` 兩端都擋。同批修掉的還有：
+
+| 缺陷 | 現在由程式擋下 |
+|---|---|
+| 生活區塊寫成一行標題 | `life.note` 200~500 字，`life` 3~4 塊 |
+| 三件事只有標題＋一句話，沒有判讀層、沒有來源 | `top3` 新增必填 `source`／`source_url`（須 `https://`），版式固定輸出編號＋`【判讀】`＋來源連結 |
+| 「本週關鍵事件」飄到月中（第 28 期 7 則裡只有 2 則在本週） | 非空時至少 4 則的日期要真的落在本週（週一~週日），程式自己解析 `when` 裡的 M/D |
+| 寫出「台股今日無除權息個股（morning.json exdiv 欄為空）」 | 任何欄位不得出現 json 檔名或「欄為空」；`week_events` 不得寫「無 X」非事件 |
+| 超出總預算時只知道超標、不知道要削哪 | 失敗時印出各區塊漢字數 |
+
+`tests/test_brief_tools.py` 把上面每一條都釘成 CI 會擋的失敗，
+並額外驗「所有下限相加（1,400 字）遠低於總上限」——避免上下限互相鎖死到無解。
+
 - `python3 brief_tools.py schema` — 印出 content JSON 的格式
-- `python3 brief_tools.py check` — 校驗現有檔案
+- `python3 brief_tools.py check` — 校驗現有檔案（含判讀／來源連結是否齊備）
 - `build_brief.py` + `build-brief.yml` — **備援**，直接呼叫 Anthropic API（約 $6/月），
-  只能手動觸發。它沒有網路搜尋，所以 `week_events` 只能留空。
+  只能手動觸發。它沒有網路搜尋，所以 `week_events` 只能留空（留空是合法的）。
+  版式與校驗共用 `brief_tools`，不再自帶 render 複本，兩條路徑的版式不會分岔；
+  違規時會帶著違規清單重問一次模型再寫檔。
