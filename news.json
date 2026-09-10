@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-10T13:11:20+08:00",
+ "generated_at": "2026-09-10T14:13:35+08:00",
  "lookback_days": 5,
  "trading_days": [
   "2026-09-04",
@@ -9,8 +9,8 @@
   "2026-09-10"
  ],
  "pool_size": 150,
- "stocks_with_news": 76,
- "total_news": 368,
+ "stocks_with_news": 73,
+ "total_news": 370,
  "coverage": {
   "dates": [
    "2026-09-03",
@@ -23,159 +23,219 @@
    "2026-09-10"
   ],
   "codes": [
-   "1514",
-   "8215",
-   "1102",
-   "4736",
-   "6719",
-   "2371",
-   "1907",
-   "2606",
-   "1605",
-   "1229",
-   "1477",
-   "6805",
    "5876",
+   "1229",
+   "1102",
+   "6805",
+   "2371",
+   "4736",
+   "1907",
+   "8215",
+   "6719",
+   "1605",
+   "2606",
+   "1477",
+   "1514",
    "8454",
-   "4961",
-   "1802",
-   "1210",
-   "3015",
-   "3443",
-   "2393",
-   "2618",
-   "2023",
-   "3680",
-   "2489",
-   "2603",
-   "2421",
-   "2912",
-   "9907",
-   "5871",
-   "6121",
-   "1609",
-   "2049",
-   "2493",
-   "4904",
-   "6577",
-   "2353",
-   "2303",
-   "2891",
-   "2528",
-   "2884",
-   "8996",
-   "2547",
-   "2851",
-   "2633",
-   "3532",
-   "2207",
-   "1104",
-   "2892",
-   "2002",
-   "3017",
-   "1227",
-   "6509",
-   "3037",
-   "6187",
-   "6196",
-   "1560",
-   "2360",
-   "2247",
-   "3045",
-   "8926",
-   "8016",
-   "2454",
-   "3679",
-   "1434",
-   "3703",
-   "1503",
-   "2597",
-   "3014",
-   "1608",
-   "2542",
-   "1815",
-   "2382",
-   "3374",
    "2455",
-   "4979",
-   "2412",
-   "3702",
-   "1440",
-   "1504",
-   "6515",
-   "6743",
-   "8109",
-   "2548",
-   "6510",
-   "6505",
-   "2903",
-   "6282",
-   "2543",
-   "2520",
-   "2887",
-   "6763",
-   "3653",
-   "6191",
-   "2605",
-   "3711",
+   "2382",
+   "2528",
+   "8926",
    "6278",
-   "9910",
-   "2404",
-   "2204",
-   "1101",
-   "8358",
-   "2352",
-   "3105",
-   "1904",
-   "6177",
-   "2351",
+   "6515",
+   "3443",
+   "2887",
+   "2851",
+   "1227",
+   "1815",
+   "3653",
+   "6763",
+   "2543",
    "2206",
-   "2885",
-   "1313",
-   "2712",
-   "8089",
-   "6609",
-   "6486",
-   "6834",
-   "4764",
-   "1454",
-   "5452",
-   "3303",
-   "8227",
-   "1341",
-   "5521",
-   "5314",
-   "4558",
-   "5251",
-   "1445",
-   "1725",
-   "1598",
-   "3492",
-   "2834",
-   "1312",
-   "8038",
+   "2023",
+   "6121",
+   "8358",
+   "2633",
+   "1503",
+   "2493",
+   "6196",
+   "3703",
+   "5871",
+   "1904",
+   "4904",
+   "3711",
+   "6282",
+   "1560",
+   "4979",
+   "2360",
+   "3017",
+   "1104",
+   "6177",
+   "2404",
+   "1802",
+   "2353",
+   "8996",
+   "2351",
+   "2002",
+   "9907",
+   "2547",
+   "2207",
+   "6577",
+   "3014",
+   "6187",
+   "2393",
+   "2421",
+   "6505",
+   "1608",
+   "1434",
+   "1440",
+   "2912",
+   "8016",
+   "3532",
+   "2891",
+   "2454",
+   "6510",
+   "2605",
+   "2548",
+   "3037",
+   "3680",
+   "2352",
+   "3015",
+   "6743",
+   "9910",
+   "2618",
+   "3679",
+   "2247",
+   "2542",
+   "2489",
+   "2204",
+   "2520",
+   "8109",
+   "2597",
+   "3702",
+   "1101",
+   "3105",
+   "6509",
+   "2884",
+   "1504",
+   "2903",
+   "1210",
+   "2303",
+   "1609",
+   "4961",
+   "3045",
+   "3374",
+   "2049",
+   "2603",
+   "2892",
+   "2412",
+   "6191",
+   "3529",
+   "2545",
+   "2453",
+   "2020",
+   "3027",
+   "2250",
+   "5525",
+   "2015",
+   "2227",
+   "1439",
+   "6937",
+   "7835",
+   "2540",
    "1586",
-   "6902",
-   "2614",
-   "9945",
-   "1773",
-   "2820",
-   "3628",
-   "1616",
-   "3025",
-   "6841",
-   "6615",
-   "8112",
-   "5306",
-   "6235",
-   "6651",
-   "1512",
-   "2849",
-   "2482",
-   "2228"
+   "9940",
+   "5706",
+   "2007",
+   "8072",
+   "8464",
+   "5356",
+   "01004T",
+   "6443",
+   "5309",
+   "8936",
+   "1340",
+   "3092",
+   "2852",
+   "3708",
+   "2201",
+   "6655",
+   "8487",
+   "3379",
+   "4401",
+   "6223",
+   "3296",
+   "6625",
+   "1313",
+   "2239",
+   "9926",
+   "3419",
+   "6689",
+   "1455",
+   "9944"
   ]
  },
  "stocks": [
+  {
+   "stock_id": "6223",
+   "name": "旺矽",
+   "industry": "半導體業",
+   "heavyweight": false,
+   "weight_per": 4.5582,
+   "count": 7,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-10 07:50:00",
+     "source": "FTNN新聞",
+     "title": "目標價狂喊8000元以上！這「光測試大廠」EPS拚破百元、旺矽8月營收暴增70％ CPO把身價越推越高 - FTNN 新聞網",
+     "link": "https://www.ftnn.com.tw/news/577682",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-10 03:00:00",
+     "source": "工商時報",
+     "title": "致茂、旺矽外資齊聲唱多- 日報 - 工商時報",
+     "link": "https://www.ctee.com.tw/news/20260910700215-439901",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-10 03:00:00",
+     "source": "工商時報",
+     "title": "CPO帶旺光測試 外資齊聲唱多致茂、旺矽 目標價太驚人！ - 工商時報",
+     "link": "https://www.ctee.com.tw/news/20260910700215-439901",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-08 18:37:25",
+     "source": "TechNews 科技新報",
+     "title": "旺矽8月營收20.48 億元 - TechNews 科技新報",
+     "link": "https://finance.technews.tw/2026/09/08/mpi-6223-202608-financial-report/",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-08 16:37:03",
+     "source": "自由時報系",
+     "title": "三星布局矽光子採用台積電驗證探針台 旺矽受惠 - 自由財經",
+     "link": "https://ec.ltn.com.tw/article/breakingnews/5567134",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-08 12:55:56",
+     "source": "自由時報系",
+     "title": "在台灣沒有競爭對手 旺矽今年有望逐季成長 - 自由時報",
+     "link": "https://stock.ltn.com.tw/article/eu0cbkyetfua",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-06 17:00:00",
+     "source": "經濟日報",
+     "title": "旺矽探針卡 獲三星採用 - 經濟日報",
+     "link": "https://money.udn.com/money/story/5612/9740365",
+     "impact": "stock"
+    }
+   ]
+  },
   {
    "stock_id": "2454",
    "name": "聯發科",
@@ -527,6 +587,45 @@
      "source": "自由時報系",
      "title": "法說會速報》穩懋去年EPS4元 首季營收估季減7-9% - 自由時報",
      "link": "https://stock.ltn.com.tw/article/jtmvkkvcabs0",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "3529",
+   "name": "力旺",
+   "industry": "半導體業",
+   "heavyweight": false,
+   "weight_per": 1.6255,
+   "count": 4,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-09 02:13:40",
+     "source": "UDN",
+     "title": "最牛一輪／力旺犀利 統一72亮眼 - UDN",
+     "link": "https://udn.com/news/story/7255/9742297",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-07 16:52:05",
+     "source": "TechNews 科技新報",
+     "title": "力旺8月營收3.57 億元 - TechNews 科技新報",
+     "link": "https://finance.technews.tw/2026/09/07/ememory-3529-202608-financial-report/",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-04 14:38:01",
+     "source": "理財周刊",
+     "title": "「不懂力旺就買台積電」菁姐一席話爆紅！力旺7月營收創高、H1 EPS年增逾36% 股價卻仍困年線下 - 理財周刊",
+     "link": "https://www.moneyweekly.com.tw/ArticleData/Info/Article/246947",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-04 00:44:11",
+     "source": "自由時報系",
+     "title": "千金股解密—力旺3529 - 自由時報",
+     "link": "https://stock.ltn.com.tw/article/6a7rgybkc5q1",
      "impact": "stock"
     }
    ]
@@ -1515,24 +1614,6 @@
    ]
   },
   {
-   "stock_id": "2885",
-   "name": "元大金",
-   "industry": "金融保險",
-   "heavyweight": true,
-   "weight_per": 0.603,
-   "count": 1,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-04 13:44:00",
-     "source": "今周刊",
-     "title": "凱基金、國泰金...金融股爆發現在可以買？蔡明翰點名「這3檔」還有肉：不買富邦金、元大金理由曝光 - 今周刊",
-     "link": "https://www.businesstoday.com.tw/article/category/183008/post/202609040020/",
-     "impact": "heavy"
-    }
-   ]
-  },
-  {
    "stock_id": "2360",
    "name": "致茂",
    "industry": "其他電子業",
@@ -1997,24 +2078,6 @@
      "title": "玉山金 挑逾120天 - UDN",
      "link": "https://udn.com/news/story/7255/9733071?from=udn-relatednews_ch2",
      "impact": "heavy"
-    }
-   ]
-  },
-  {
-   "stock_id": "5314",
-   "name": "世紀*",
-   "industry": "半導體業",
-   "heavyweight": false,
-   "weight_per": 0.3937,
-   "count": 1,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-08 10:37:22",
-     "source": "自由時報系",
-     "title": "世紀*解禁出關再亮燈！連2日漲停 委買逾1.58萬張 - 自由財經",
-     "link": "https://ec.ltn.com.tw/amp/article/breakingnews/5566557",
-     "impact": "stock"
     }
    ]
   },
@@ -2544,6 +2607,31 @@
    ]
   },
   {
+   "stock_id": "5309",
+   "name": "系統電",
+   "industry": "電子零組件業",
+   "heavyweight": false,
+   "weight_per": 0.1129,
+   "count": 2,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-08 12:45:11",
+     "source": "鉅亨(cnyes)",
+     "title": "系統電IPC、無人機第二成長曲線成形 Q4營收估逐步成長 - news.cnyes.com",
+     "link": "https://news.cnyes.com/news/id/6600323",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-07 15:17:50",
+     "source": "TechNews 科技新報",
+     "title": "系統電8月營收月增2.7% - TechNews 科技新報",
+     "link": "https://finance.technews.tw/2026/09/07/sg-5309-202608-financial-report/",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
    "stock_id": "6805",
    "name": "富世達",
    "industry": "電子工業",
@@ -2959,49 +3047,6 @@
    ]
   },
   {
-   "stock_id": "8227",
-   "name": "巨有科技",
-   "industry": "半導體業",
-   "heavyweight": false,
-   "weight_per": 0.0561,
-   "count": 2,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-10 09:40:00",
-     "source": "FTNN新聞",
-     "title": "青雲、光鼎、天瀚、世紀*再飆漲停！電子股光罩、全友齊亮燈 巨有科技、浩宇生醫攻頂鎖不住 - FTNN 新聞網",
-     "link": "https://www.ftnn.com.tw/news/577724",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-10 09:09:00",
-     "source": "MoneyDJ",
-     "title": "巨有科技4奈米估Q4挹注，先進製程布局升級- 新聞 - MoneyDJ",
-     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=60f84b08-d8ee-46c6-9983-428e3de18b36",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
-   "stock_id": "9945",
-   "name": "潤泰新",
-   "industry": "其他",
-   "heavyweight": false,
-   "weight_per": 0.0526,
-   "count": 1,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-06 20:26:07",
-     "source": "鉅亨(cnyes)",
-     "title": "潤泰新 7 月營收月減 26.9%，但累計年增 33.9%：當月營收不代表這家公司 - 鉅亨號",
-     "link": "https://hao.cnyes.com/post/266384",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
    "stock_id": "9910",
    "name": "豐泰",
    "industry": "其他",
@@ -3088,31 +3133,6 @@
    ]
   },
   {
-   "stock_id": "8112",
-   "name": "至上",
-   "industry": "電子工業",
-   "heavyweight": false,
-   "weight_per": 0.0341,
-   "count": 2,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-08 17:22:16",
-     "source": "TechNews 科技新報",
-     "title": "至上8月營收月減47.0% - TechNews 科技新報",
-     "link": "https://finance.technews.tw/2026/09/08/supreme-8112-202608-financial-report/",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-08 17:01:12",
-     "source": "UDN",
-     "title": "至上營收／8月407億元、年增155% 前八月3,783億元創同期新高 - UDN",
-     "link": "https://udn.com/news/story/7252/9741941",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
    "stock_id": "1907",
    "name": "永豐餘",
    "industry": "造紙工業",
@@ -3126,24 +3146,6 @@
      "source": "經濟日報",
      "title": "榮成前主管涉竊營業秘密一審判刑 永豐餘駁取得資料 - 經濟日報",
      "link": "https://money.udn.com/money/story/5613/9728717",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
-   "stock_id": "1773",
-   "name": "勝一",
-   "industry": "化學工業",
-   "heavyweight": false,
-   "weight_per": 0.0327,
-   "count": 1,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-08 10:30:20",
-     "source": "鉅亨(cnyes)",
-     "title": "【優分析即時新聞】勝一(1773)8月營收年增44.62%創高，電子級溶劑占比拉高至75.8%、台積電依賴度破四成 - news.cnyes.com",
-     "link": "https://news.cnyes.com/news/id/6600262",
      "impact": "stock"
     }
    ]
@@ -3223,6 +3225,52 @@
      "source": "經濟日報",
      "title": "華科集團整合 精成科擬收購精星100%股權、精星將終止上櫃 - 經濟日報",
      "link": "https://money.udn.com/money/story/5612/9488843",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "2015",
+   "name": "豐興",
+   "industry": "鋼鐵工業",
+   "heavyweight": false,
+   "weight_per": 0.0247,
+   "count": 5,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-10 03:53:16",
+     "source": "UDN",
+     "title": "豐興8月營收年增9% - UDN",
+     "link": "https://udn.com/news/story/7252/9744731",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-09 17:48:34",
+     "source": "UDN",
+     "title": "豐興營收／8月23億元、年增9.67% 後市看俏 - UDN",
+     "link": "https://udn.com/news/story/7252/9744482",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-07 16:16:37",
+     "source": "UDN",
+     "title": "豐興鋼筋價連二漲 每公噸漲300元 - udn",
+     "link": "https://udn.com/news/story/7241/9739606",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-07 12:00:30",
+     "source": "鉅亨(cnyes)",
+     "title": "豐興鋼筋盤價連二漲 買氣升溫客戶詢價積極 - news.cnyes.com",
+     "link": "https://news.cnyes.com/news/id/6599159",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-07 10:49:00",
+     "source": "MoneyDJ",
+     "title": "原料成本高掛，豐興調漲廢鋼、鋼筋價格- 新聞 - MoneyDJ",
+     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=dc31fc4c-da98-4a8e-a73e-cd57c57a0dbe",
      "impact": "stock"
     }
    ]
@@ -3378,49 +3426,6 @@
    ]
   },
   {
-   "stock_id": "1312",
-   "name": "國喬",
-   "industry": "塑膠工業",
-   "heavyweight": false,
-   "weight_per": 0.0156,
-   "count": 2,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-10 10:30:43",
-     "source": "自由時報系",
-     "title": "焦點股》國喬︰8月營收年增近9成 股價站回15元 - 自由時報",
-     "link": "https://stock.ltn.com.tw/article/nhxgdbct4g61",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-09 19:50:25",
-     "source": "鉅亨(cnyes)",
-     "title": "營收速報 - 國喬(1312)8月營收23.81億元年增率高達89.23％ - news.cnyes.com",
-     "link": "https://news.cnyes.com/news/id/6601933",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
-   "stock_id": "2820",
-   "name": "華票",
-   "industry": "金融保險",
-   "heavyweight": false,
-   "weight_per": 0.0147,
-   "count": 1,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-07 10:25:00",
-     "source": "FTNN新聞",
-     "title": "金融股如何設停利點？他華票設1.2倍PB開始賣 網點關鍵：並非固定公式 - FTNN 新聞網",
-     "link": "https://www.ftnn.com.tw/news/576729",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
    "stock_id": "3014",
    "name": "聯陽",
    "industry": "半導體業",
@@ -3452,6 +3457,42 @@
      "source": "鉅亨(cnyes)",
      "title": "天鈺 8 月營收年增 50%：驅動 IC 出貨增加，價格與組合不能省略 - 鉅亨號",
      "link": "https://hao.cnyes.com/post/266584",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "9940",
+   "name": "信義",
+   "industry": "其他",
+   "heavyweight": false,
+   "weight_per": 0.0099,
+   "count": 1,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-08 22:26:51",
+     "source": "經濟日報",
+     "title": "日本客戶占比衝上四成 信義房屋不動產東京再展三田店第二家 - 經濟日報",
+     "link": "https://money.udn.com/money/story/5621/9742538",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "2545",
+   "name": "皇翔",
+   "industry": "建材營造",
+   "heavyweight": false,
+   "weight_per": 0.0086,
+   "count": 1,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-04 17:00:00",
+     "source": "經濟日報",
+     "title": "全民炒股建商也瘋股 皇翔建設投資台積電等獲利逾7.7億 超過首季財報 - 經濟日報",
+     "link": "https://money.udn.com/money/story/5621/9508649",
      "impact": "stock"
     }
    ]
@@ -3493,6 +3534,24 @@
    ]
   },
   {
+   "stock_id": "3708",
+   "name": "上緯投控",
+   "industry": "化學工業",
+   "heavyweight": false,
+   "weight_per": 0.0063,
+   "count": 1,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-07 08:25:48",
+     "source": "鉅亨(cnyes)",
+     "title": "上緯投控:公告本公司名稱由「上緯國際投資控股股份有限公司」更名為「上緯國際控股股份有限公司」，公告期間：115年6月11日至115年9月10日。 - news.cnyes.com",
+     "link": "https://news.cnyes.com/news/id/6598956",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
    "stock_id": "8215",
    "name": "明基材",
    "industry": "光電業",
@@ -3506,84 +3565,6 @@
      "source": "鉅亨(cnyes)",
      "title": "明基材Xpore雲林廠通過bluesign評估 晉升Level 3系統系統合作夥伴 - news.cnyes.com",
      "link": "https://news.cnyes.com/news/id/6599251",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
-   "stock_id": "1598",
-   "name": "岱宇",
-   "industry": "生技醫療業",
-   "heavyweight": false,
-   "weight_per": 0.0024,
-   "count": 7,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-09 06:17:00",
-     "source": "工商時報",
-     "title": "岱宇加速無人載具事業發展- 產業 - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260908701912-430503",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-09 02:18:07",
-     "source": "UDN",
-     "title": "岱宇攻無人機 明年貢獻營收 - UDN",
-     "link": "https://udn.com/news/story/7252/9742378",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-08 21:19:49",
-     "source": "經濟日報",
-     "title": "岱宇法說會／下半年商用、家用雙引擎加溫 無人載具明年開始貢獻營收 - 經濟日報",
-     "link": "https://money.udn.com/money/story/5612/9742446",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-08 17:04:40",
-     "source": "自由時報系",
-     "title": "岱宇虧轉盈 無人載具明年出貨挑戰千台 - 自由財經",
-     "link": "https://ec.ltn.com.tw/amp/article/breakingnews/5567174",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-08 16:17:44",
-     "source": "鉅亨(cnyes)",
-     "title": "岱宇商用與家用帶動全年營收雙位數增 無人載具明年可望批量生產 - news.cnyes.com",
-     "link": "https://news.cnyes.com/news/id/6600432",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-08 14:28:00",
-     "source": "MoneyDJ",
-     "title": "岱宇董座:今年重回成長拚轉盈，明年增長期加速- 新聞 - MoneyDJ",
-     "link": "https://www.moneydj.com/z/DJA/News/DJANewsDetail_FAE57E38-973E-465C-89FA-3CC0E27DF286.djhtm",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-07 19:15:07",
-     "source": "環球生技月刊",
-     "title": "岱宇(1598)9/8受邀參加統一證券舉辦之法說會 - 環球生技月刊",
-     "link": "https://news.gbimonthly.com/tw/invest/show.php?num=90018",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
-   "stock_id": "1454",
-   "name": "台富",
-   "industry": "紡織纖維",
-   "heavyweight": false,
-   "weight_per": 0.0011,
-   "count": 1,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-07 12:20:00",
-     "source": "MoneyDJ",
-     "title": "台富下半年審慎保守，訂單估與上半年相近- 新聞 - MoneyDJ",
-     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=cfc0e490-7e48-4b0b-96ed-9ce1b393ed78",
      "impact": "stock"
     }
    ]
