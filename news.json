@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T15:11:20+08:00",
+ "generated_at": "2026-09-11T16:13:40+08:00",
  "lookback_days": 5,
  "trading_days": [
   "2026-09-07",
@@ -9,8 +9,8 @@
   "2026-09-11"
  ],
  "pool_size": 150,
- "stocks_with_news": 70,
- "total_news": 339,
+ "stocks_with_news": 63,
+ "total_news": 253,
  "coverage": {
   "dates": [
    "2026-09-06",
@@ -21,159 +21,293 @@
    "2026-09-11"
   ],
   "codes": [
-   "2528",
-   "1101",
-   "3443",
-   "3045",
-   "2412",
-   "2477",
    "6122",
-   "4736",
-   "3014",
-   "3189",
+   "6026",
+   "8924",
+   "4420",
+   "8938",
+   "6703",
+   "6577",
    "1504",
-   "1229",
-   "3005",
-   "1802",
-   "2207",
-   "9933",
-   "1102",
-   "5876",
-   "2352",
-   "3679",
+   "2477",
+   "3014",
+   "4105",
+   "5209",
    "8215",
+   "1101",
+   "3045",
+   "8109",
+   "3189",
+   "3078",
+   "4736",
    "6531",
    "6743",
-   "3017",
+   "2207",
    "2002",
-   "2892",
-   "2885",
-   "2454",
-   "2884",
-   "4722",
-   "2404",
-   "6509",
-   "2206",
-   "2753",
-   "6703",
-   "3015",
-   "8938",
-   "5871",
-   "2547",
-   "6191",
-   "3006",
-   "3711",
-   "2387",
-   "2374",
-   "1712",
-   "3653",
-   "3380",
-   "2606",
-   "2303",
-   "2393",
-   "6577",
-   "1907",
-   "2455",
-   "2851",
-   "1904",
-   "6510",
-   "6282",
-   "6121",
-   "4904",
-   "1104",
-   "2023",
-   "2353",
-   "6177",
-   "5880",
-   "2609",
-   "2903",
-   "6505",
-   "3515",
-   "2542",
-   "9907",
-   "3264",
-   "2880",
-   "6026",
-   "6719",
-   "6257",
-   "2247",
-   "2603",
-   "1605",
-   "2495",
-   "1210",
-   "8924",
-   "5347",
-   "3037",
-   "2357",
-   "3532",
-   "4420",
-   "2204",
-   "6206",
+   "3017",
    "3105",
-   "2883",
-   "1560",
-   "1303",
-   "1503",
-   "2371",
-   "6196",
-   "1477",
-   "1215",
-   "8926",
-   "1440",
-   "8109",
+   "3005",
    "3374",
+   "6510",
+   "5876",
+   "2892",
+   "1229",
+   "1802",
+   "3443",
+   "2528",
+   "9933",
+   "5347",
+   "6509",
+   "1102",
+   "2352",
+   "6121",
+   "2412",
+   "3679",
+   "6227",
+   "1215",
+   "1104",
+   "5871",
+   "6684",
+   "3711",
+   "1440",
+   "3379",
+   "5481",
    "6805",
-   "2637",
-   "3008",
-   "1323",
-   "2390",
-   "6441",
-   "6834",
-   "6649",
-   "2612",
-   "1604",
-   "5203",
-   "3259",
-   "9946",
-   "3466",
-   "4137",
-   "6156",
-   "3257",
-   "4572",
-   "5210",
-   "5381",
-   "3516",
-   "2464",
-   "2221",
-   "1773",
-   "3236",
-   "2916",
-   "5244",
-   "2348",
-   "6165",
-   "1414",
-   "6835",
-   "4729",
-   "1455",
-   "2429",
-   "2736",
-   "1702",
-   "1532",
+   "3666",
+   "2455",
+   "3526",
+   "2454",
+   "6532",
+   "5498",
+   "2603",
    "6274",
+   "5353",
    "8440",
-   "6275",
-   "2718",
-   "2536",
-   "6470",
-   "3558",
+   "6187",
+   "8227",
+   "6130",
+   "1904",
+   "6217",
+   "6284",
+   "3680",
+   "2374",
+   "9907",
+   "2596",
+   "3516",
+   "3037",
+   "4173",
+   "5287",
+   "5312",
+   "3491",
    "6134",
-   "6605",
-   "8011",
-   "2723",
-   "2241"
+   "5403",
+   "6261",
+   "4966",
+   "6649",
+   "6683",
+   "6651",
+   "2387",
+   "6719",
+   "6282",
+   "3438",
+   "2606",
+   "8071",
+   "3372",
+   "6177",
+   "3259",
+   "5278",
+   "4729",
+   "3444",
+   "2883",
+   "8183",
+   "4907",
+   "3284",
+   "8926",
+   "4527",
+   "4904",
+   "6126",
+   "4561",
+   "6248",
+   "2643",
+   "1712",
+   "8299",
+   "3205",
+   "6508",
+   "6523",
+   "8426",
+   "1336",
+   "3577",
+   "2637",
+   "8066",
+   "6593",
+   "2023",
+   "2753",
+   "2353",
+   "2851",
+   "4908",
+   "2204",
+   "3625",
+   "6270",
+   "3558",
+   "2609",
+   "2729",
+   "2495",
+   "6716",
+   "2542",
+   "1569",
+   "6245",
+   "2547",
+   "8050",
+   "8089",
+   "2404",
+   "6171",
+   "5880",
+   "6191",
+   "2206",
+   "2732",
+   "1303",
+   "5314",
+   "3006",
+   "5245",
+   "6223",
+   "8049"
   ]
  },
  "stocks": [
+  {
+   "stock_id": "6223",
+   "name": "旺矽",
+   "industry": "半導體業",
+   "heavyweight": false,
+   "weight_per": 4.7003,
+   "count": 7,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-10 07:50:00",
+     "source": "FTNN新聞",
+     "title": "目標價狂喊8000元以上！這「光測試大廠」EPS拚破百元、旺矽8月營收暴增70％ CPO把身價越推越高 - FTNN 新聞網",
+     "link": "https://www.ftnn.com.tw/news/577682",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-10 03:00:00",
+     "source": "工商時報",
+     "title": "致茂、旺矽外資齊聲唱多- 日報 - 工商時報",
+     "link": "https://www.ctee.com.tw/news/20260910700215-439901",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-10 03:00:00",
+     "source": "工商時報",
+     "title": "CPO帶旺光測試 外資齊聲唱多致茂、旺矽 目標價太驚人！ - 工商時報",
+     "link": "https://www.ctee.com.tw/news/20260910700215-439901",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-09 17:00:00",
+     "source": "經濟日報",
+     "title": "旺矽探針卡 獲三星採用 - 經濟日報",
+     "link": "https://money.udn.com/money/story/5612/9740365",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-08 18:37:25",
+     "source": "TechNews 科技新報",
+     "title": "旺矽8月營收20.48 億元 - TechNews 科技新報",
+     "link": "https://finance.technews.tw/2026/09/08/mpi-6223-202608-financial-report/",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-08 16:37:03",
+     "source": "自由時報系",
+     "title": "三星布局矽光子採用台積電驗證探針台 旺矽受惠 - 自由財經",
+     "link": "https://ec.ltn.com.tw/article/breakingnews/5567134",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-08 12:55:56",
+     "source": "自由時報系",
+     "title": "在台灣沒有競爭對手 旺矽今年有望逐季成長 - 自由時報",
+     "link": "https://stock.ltn.com.tw/article/eu0cbkyetfua",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "8299",
+   "name": "群聯",
+   "industry": "半導體業",
+   "heavyweight": false,
+   "weight_per": 4.1673,
+   "count": 9,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-10 03:53:16",
+     "source": "UDN",
+     "title": "群聯8月合併營收月增4% 華新科增2.8% - UDN",
+     "link": "https://udn.com/news/story/7252/9744791",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-10 03:00:00",
+     "source": "工商時報",
+     "title": "記憶體有錢也不一定買得到！群聯8月營收創新高潘健成點出AI不可逆趨勢- 日報 - 工商時報",
+     "link": "https://www.ctee.com.tw/news/20260910700210-439901",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-09 18:22:03",
+     "source": "UDN",
+     "title": "群聯營收／8月282億元 月增4%、年增376%創歷史新高 - UDN",
+     "link": "https://udn.com/news/story/7252/9744582",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-09 18:20:18",
+     "source": "自由時報系",
+     "title": "群聯8月營收再創新高 年增377％ - 自由時報",
+     "link": "https://stock.ltn.com.tw/article/jck7mcbz5hue",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-09 17:51:07",
+     "source": "經濟日報",
+     "title": "群聯營收／8月282億元、雙創新高 潘健成：地端 AI 下一步推向全球 | 櫃買動態 | 證券 - 經濟日報",
+     "link": "https://money.udn.com/money/story/11074/9744488",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-09 17:51:07",
+     "source": "經濟日報",
+     "title": "群聯營收／8月282億元、雙創新高 潘健成：地端 AI 下一步推向全球 - 經濟日報",
+     "link": "https://money.udn.com/money/story/11074/9744488?from=edn_search_tag_result",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-09 17:24:35",
+     "source": "TechNews 科技新報",
+     "title": "群聯8月營收282.76 億元 - TechNews 科技新報",
+     "link": "https://finance.technews.tw/2026/09/09/phison-8299-202608-financial-report/",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-09 16:52:00",
+     "source": "工商時報",
+     "title": "年增達377％！群聯8月營收逾282億元創高- 產業 - 工商時報",
+     "link": "https://www.ctee.com.tw/news/20260909701648-430502",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-08 10:46:00",
+     "source": "今周刊",
+     "title": "華邦電、南亞科、群聯…記憶體股最新目標價！這檔飆半根漲停…三星海力士庫存剩不到10天，台廠能吃肉？ - 今周刊",
+     "link": "https://www.businesstoday.com.tw/article/category/183008/post/202609080001/",
+     "impact": "stock"
+    }
+   ]
+  },
   {
    "stock_id": "5347",
    "name": "世界",
@@ -246,38 +380,6 @@
    ]
   },
   {
-   "stock_id": "3264",
-   "name": "欣銓",
-   "industry": "半導體業",
-   "heavyweight": false,
-   "weight_per": 1.0323,
-   "count": 3,
-   "market_count": 1,
-   "news": [
-    {
-     "date": "2026-09-11 01:08:31",
-     "source": "UDN",
-     "title": "欣銓 兩檔人氣旺 - udn.com",
-     "link": "https://udn.com/news/story/7255/9747126",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-10 11:53:00",
-     "source": "MoneyDJ",
-     "title": "欣銓8月營收連六月創新高 Q3挑戰雙位數季增 - 台股 - 新聞 - MoneyDJ",
-     "link": "https://m.moneydj.com/f1a.aspx?a=b0a54bbc-435f-4081-9b77-5d7215ea4d5a&c=MB06",
-     "impact": "market"
-    },
-    {
-     "date": "2026-09-10 11:53:00",
-     "source": "MoneyDJ",
-     "title": "欣銓8月營收連六月創新高Q3挑戰雙位數季增- 新聞 - MoneyDJ",
-     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=b0a54bbc-435f-4081-9b77-5d7215ea4d5a",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
    "stock_id": "3374",
    "name": "精材",
    "industry": "半導體業",
@@ -321,6 +423,287 @@
    ]
   },
   {
+   "stock_id": "3491",
+   "name": "昇達科",
+   "industry": "通信網路業",
+   "heavyweight": false,
+   "weight_per": 0.903,
+   "count": 4,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-10 03:53:16",
+     "source": "UDN",
+     "title": "昇達科8月營收月增四成 鐳洋增16.2% - UDN",
+     "link": "https://udn.com/news/story/7252/9744787",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-08 10:20:36",
+     "source": "理財周刊",
+     "title": "SpaceX市值重返2兆美元！昇達科8月營收月增39.55%年增93.19% 太空股重新啟航 - 理財周刊",
+     "link": "https://www.moneyweekly.com.tw/ArticleData/Info/Article/247395",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-08 09:20:00",
+     "source": "MoneyDJ",
+     "title": "昇達科8月營收回升，Q4迎全年高峰- 新聞 - MoneyDJ",
+     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=04b42652-9505-4a08-9e2d-e99c9605615b",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-07 11:10:12",
+     "source": "理財周刊",
+     "title": "昇達科衝破1500元大關背後：是低軌衛星真霸主，還是120倍本益比的高空走鋼索？ - 理財周刊",
+     "link": "https://www.moneyweekly.com.tw/ArticleData/Info/Article/247209",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "3680",
+   "name": "家登",
+   "industry": "半導體業",
+   "heavyweight": false,
+   "weight_per": 0.4621,
+   "count": 8,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-10 12:07:30",
+     "source": "鉅亨(cnyes)",
+     "title": "家登8月營收創同期新高 下半年營運續強 - news.cnyes.com",
+     "link": "https://news.cnyes.com/news/id/6602762",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-10 08:53:33",
+     "source": "UDN",
+     "title": "家登營收／8月8.4億元 美國新廠下一季開始投產 - udn.com",
+     "link": "https://udn.com/news/story/7252/9745412",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-10 08:42:29",
+     "source": "TechNews 科技新報",
+     "title": "家登8月營收8.40 億元 - TechNews 科技新報",
+     "link": "https://finance.technews.tw/2026/09/10/gudeng-3680-202608-financial-report/",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-09 16:30:04",
+     "source": "鉅亨(cnyes)",
+     "title": "【優分析即時新聞】家登(3680)跳空漲停！台積電、ASML推12吋High-NA光罩，何時貢獻營收？ - news.cnyes.com",
+     "link": "https://news.cnyes.com/news/id/6601570",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-09 10:55:12",
+     "source": "UDN",
+     "title": "台積電攜 ASML 攻12吋光罩！家登、光罩跳空漲停 High NA 新商機浮現 - UDN",
+     "link": "https://udn.com/news/story/7252/9743314",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-09 10:42:24",
+     "source": "自由時報系",
+     "title": "焦點股》家登：先進製程需求旺 亮燈漲停 - 自由財經",
+     "link": "https://ec.ltn.com.tw/article/breakingnews/5567820",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-09 10:30:00",
+     "source": "FTNN新聞",
+     "title": "High NA EUV概念股點火！「14檔漲停衝鋒」玉晶光1110元亮燈、家登漲停 世紀、青雲也亮燈 - FTNN 新聞網",
+     "link": "https://www.ftnn.com.tw/news/577403",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-09 09:45:00",
+     "source": "FTNN新聞",
+     "title": "耀穎、世紀*、浩宇生醫再飆漲停！半導體光罩、家登、凱鈺齊亮燈 南電、光聖、聯亞攻頂鎖不住 - FTNN 新聞網",
+     "link": "https://www.ftnn.com.tw/news/577385",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "5314",
+   "name": "世紀*",
+   "industry": "半導體業",
+   "heavyweight": false,
+   "weight_per": 0.3775,
+   "count": 3,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-11 10:25:00",
+     "source": "FTNN新聞",
+     "title": "翻4倍夢碎！世紀*連4漲停後突殺跌停、14萬張賣單「逃命」 股民嘆：看來沒機會打開了 - FTNN 新聞網",
+     "link": "https://www.ftnn.com.tw/news/578079",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-10 14:11:11",
+     "source": "自由時報系",
+     "title": "世紀*連拉4根漲停 「妖」氣沖天 - 自由財經",
+     "link": "https://ec.ltn.com.tw/article/breakingnews/5569343",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-08 10:37:22",
+     "source": "自由時報系",
+     "title": "世紀*解禁出關再亮燈！連2日漲停 委買逾1.58萬張 - 自由財經",
+     "link": "https://ec.ltn.com.tw/amp/article/breakingnews/5566557",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "6683",
+   "name": "雍智科技",
+   "industry": "半導體業",
+   "heavyweight": false,
+   "weight_per": 0.325,
+   "count": 1,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-11 08:55:00",
+     "source": "MoneyDJ",
+     "title": "雍智科技前8月營收年增30%；下半年看逐季創高- 新聞 - MoneyDJ",
+     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=f73ed3af-2209-4b80-ac4a-b88c325ad837",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "4105",
+   "name": "東洋",
+   "industry": "生技醫療業",
+   "heavyweight": false,
+   "weight_per": 0.1718,
+   "count": 2,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-11 12:46:42",
+     "source": "今周刊",
+     "title": "我不買金融股了！神基、東洋、櫻花...存股總編公開2027年4檔「除息早鳥股」：提早進場賺二次配息 - 今周刊",
+     "link": "https://www.businesstoday.com.tw/article/category/183008/post/202609100019/",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-09 18:32:21",
+     "source": "環球生技月刊",
+     "title": "東洋(4105)9/16受邀參加國泰證券舉辦之線上法人說明會 - 環球生技月刊",
+     "link": "https://news.gbimonthly.com/tw/invest/show.php?num=90062&kind=21",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "3526",
+   "name": "凡甲",
+   "industry": "電子零組件業",
+   "heavyweight": false,
+   "weight_per": 0.1689,
+   "count": 2,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-09 09:34:16",
+     "source": "UDN",
+     "title": "凡甲營收8月4.17億元 創同期新高 - UDN",
+     "link": "https://udn.com/news/story/7252/9743067",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-08 16:43:10",
+     "source": "TechNews 科技新報",
+     "title": "凡甲8月營收4.17 億元 - TechNews 科技新報",
+     "link": "https://finance.technews.tw/2026/09/08/alltop-3526-202608-financial-report/",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "4908",
+   "name": "前鼎",
+   "industry": "通信網路業",
+   "heavyweight": false,
+   "weight_per": 0.1592,
+   "count": 4,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-10 15:25:00",
+     "source": "FTNN新聞",
+     "title": "光通訊綠紅交錯！「這檔」8月營收年增152%噴逾半根 前鼎、汎銓漲3%、致茂、華星光摔6% - FTNN 新聞網",
+     "link": "https://www.ftnn.com.tw/news/577881",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-10 12:31:01",
+     "source": "鉅亨(cnyes)",
+     "title": "〈焦點股〉業績亮眼推升股價上揚 光聖、前鼎逆風強漲半根停板 - news.cnyes.com",
+     "link": "https://news.cnyes.com/news/id/6602775",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-10 12:00:09",
+     "source": "鉅亨(cnyes)",
+     "title": "前鼎(4908)輝達Spectrum-X量產+7月獲利飆140%！CPO爆發前夕!？ - news.cnyes.com",
+     "link": "https://news.cnyes.com/news/id/6602766",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-09 16:07:00",
+     "source": "FTNN新聞",
+     "title": "矽光子漲勢佳！「2檔千金股」一度亮燈漲停 前鼎、大立光、穩懋都勁揚5% - FTNN 新聞網",
+     "link": "https://www.ftnn.com.tw/news/577547",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "6261",
+   "name": "久元",
+   "industry": "半導體業",
+   "heavyweight": false,
+   "weight_per": 0.0933,
+   "count": 1,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-10 15:57:51",
+     "source": "TechNews 科技新報",
+     "title": "久元8月營收3.45 億元 - TechNews 科技新報",
+     "link": "https://finance.technews.tw/2026/09/09/ytec-6261-202608-financial-report/",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "5287",
+   "name": "數字",
+   "industry": "電子商務業",
+   "heavyweight": false,
+   "weight_per": 0.0796,
+   "count": 1,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-10 18:08:59",
+     "source": "UDN",
+     "title": "數字營收／8月2.05億元、月增3.16％ 創歷史次高 - UDN",
+     "link": "https://udn.com/news/story/7252/9746943?from=udn-relatednews_ch2",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
    "stock_id": "3558",
    "name": "神準",
    "industry": "通信網路業",
@@ -339,27 +722,170 @@
    ]
   },
   {
-   "stock_id": "2221",
-   "name": "大甲",
-   "industry": "其他",
+   "stock_id": "2729",
+   "name": "瓦城",
+   "industry": "觀光事業",
    "heavyweight": false,
-   "weight_per": 0.0292,
+   "weight_per": 0.0592,
+   "count": 2,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-11 09:09:00",
+     "source": "MoneyDJ",
+     "title": "瓦城8月營收創同期高，海內外拓點Q3添動能- 新聞 - MoneyDJ",
+     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=6f623e8f-88f9-4904-a47a-86789e6b22d7",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-10 17:21:23",
+     "source": "UDN",
+     "title": "瓦城營收／8月6.12億元、年增2.44%創同期新高 海內外第3季添動能 - UDN",
+     "link": "https://udn.com/news/story/7252/9746824",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "8227",
+   "name": "巨有科技",
+   "industry": "半導體業",
+   "heavyweight": false,
+   "weight_per": 0.0575,
+   "count": 3,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-11 10:00:47",
+     "source": "鉅亨(cnyes)",
+     "title": "【優分析即時新聞】巨有科技(8227)8月營收年增42.25%回穩，12奈米撐盤、4奈米NRE最快Q4認列 - news.cnyes.com",
+     "link": "https://news.cnyes.com/news/id/6604338",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-10 09:40:00",
+     "source": "FTNN新聞",
+     "title": "青雲、光鼎、天瀚、世紀*再飆漲停！電子股光罩、全友齊亮燈 巨有科技、浩宇生醫攻頂鎖不住 - FTNN 新聞網",
+     "link": "https://www.ftnn.com.tw/news/577724",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-10 09:09:00",
+     "source": "MoneyDJ",
+     "title": "巨有科技4奈米估Q4挹注，先進製程布局升級- 新聞 - MoneyDJ",
+     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=60f84b08-d8ee-46c6-9983-428e3de18b36",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "6532",
+   "name": "瑞耘",
+   "industry": "半導體業",
+   "heavyweight": false,
+   "weight_per": 0.0327,
+   "count": 1,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-09 18:34:55",
+     "source": "TechNews 科技新報",
+     "title": "瑞耘8月營收月減12.9% - TechNews 科技新報",
+     "link": "https://finance.technews.tw/2026/09/09/ct-6532-202608-financial-report/",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "3444",
+   "name": "利機",
+   "industry": "電子通路業",
+   "heavyweight": false,
+   "weight_per": 0.0326,
+   "count": 2,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-11 10:15:00",
+     "source": "MoneyDJ",
+     "title": "利機8月營收年增27%，載板能見度至明年下半年- 新聞 - MoneyDJ",
+     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=c793a1f7-7395-4bc9-9efa-6edf2e9ea74e",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-08 12:11:00",
+     "source": "MoneyDJ",
+     "title": "利機均熱片貢獻升溫，營運動能看俏- 新聞 - MoneyDJ",
+     "link": "https://www.moneydj.com/KMDJ/News/NewsViewer.aspx?a=b87a96ce-2f6b-4e05-afe4-cf0b92d3b5c7",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "2732",
+   "name": "六角",
+   "industry": "觀光事業",
+   "heavyweight": false,
+   "weight_per": 0.0269,
+   "count": 1,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-09 09:01:00",
+     "source": "MoneyDJ",
+     "title": "六角/王座8月營收同創高，看好旺季與展店添動能- 新聞 - MoneyDJ",
+     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=93d34eca-745e-43c4-ab9a-1687e6c2dc5b",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "2643",
+   "name": "捷迅",
+   "industry": "航運業",
+   "heavyweight": false,
+   "weight_per": 0.0196,
+   "count": 2,
+   "market_count": 0,
+   "news": [
+    {
+     "date": "2026-09-09 09:02:00",
+     "source": "MoneyDJ",
+     "title": "捷迅8月營收近九個月高，年底前傳統旺季業績看好- 新聞 - MoneyDJ",
+     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=bbafef47-759d-4b5f-8cda-69418ae288ba",
+     "impact": "stock"
+    },
+    {
+     "date": "2026-09-08 15:12:34",
+     "source": "UDN",
+     "title": "捷迅營收／8月7.99億元、月增13.5% 三大引擎齊發 實現提升獲利目標 - UDN",
+     "link": "https://udn.com/news/story/7252/9741650",
+     "impact": "stock"
+    }
+   ]
+  },
+  {
+   "stock_id": "6248",
+   "name": "沛波",
+   "industry": "鋼鐵工業",
+   "heavyweight": false,
+   "weight_per": 0.0152,
    "count": 2,
    "market_count": 1,
    "news": [
     {
-     "date": "2026-09-10 10:24:00",
+     "date": "2026-09-10 16:22:00",
      "source": "MoneyDJ",
-     "title": "大甲訂單排至明年，營運成長動能延續- 新聞 - MoneyDJ",
-     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=71592b92-9ff5-4d16-8c35-50407849726a",
-     "impact": "stock"
+     "title": "天候因素影響，沛波8月營收轉雙減 - 台股 - 新聞 - MoneyDJ",
+     "link": "https://m.moneydj.com/f1a.aspx?a=190e7943-6e3b-4929-8f98-171dbf6a96bf&c=MB06",
+     "impact": "market"
     },
     {
-     "date": "2026-09-10 10:24:00",
+     "date": "2026-09-10 16:22:00",
      "source": "MoneyDJ",
-     "title": "大甲訂單排至明年，營運成長動能延續 - 台股 - 新聞 - MoneyDJ",
-     "link": "https://m.moneydj.com/f1a.aspx?a=71592b92-9ff5-4d16-8c35-50407849726a&c=MB06",
-     "impact": "market"
+     "title": "天候因素影響，沛波8月營收轉雙減- 新聞 - MoneyDJ",
+     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=190e7943-6e3b-4929-8f98-171dbf6a96bf",
+     "impact": "stock"
     }
    ]
   },
@@ -545,357 +1071,6 @@
      "source": "今周刊",
      "title": "輝達砸35億美元投資聯發科，真正目的不只NVLink！拆解這場交易背後的「三個關鍵問題」 - 今周刊",
      "link": "https://www.businesstoday.com.tw/article/category/183015/post/202609070002/",
-     "impact": "heavy"
-    }
-   ]
-  },
-  {
-   "stock_id": "2303",
-   "name": "聯電",
-   "industry": "半導體業",
-   "heavyweight": true,
-   "weight_per": 0.0,
-   "count": 24,
-   "market_count": 7,
-   "news": [
-    {
-     "date": "2026-09-11 10:16:57",
-     "source": "經濟日報",
-     "title": "聯電利多抗賣壓 美系重申正向 - 經濟日報",
-     "link": "https://money.udn.com/money/story/5710/9748039",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-10 13:28:50",
-     "source": "UDN",
-     "title": "台股開低！個股成交第一友達 零股成交第一0050 聯電兩邊都進入前五大 - UDN",
-     "link": "https://udn.com/news/story/123006/9746144",
-     "impact": "market"
-    },
-    {
-     "date": "2026-09-10 13:00:00",
-     "source": "FTNN新聞",
-     "title": "輝達注資+天璣9600晶片發表在即助陣！「IC設計巨擘」站上4.7K轟231億 聯電持平飆238億元 - FTNN 新聞網",
-     "link": "https://www.ftnn.com.tw/news/577828",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-10 03:00:00",
-     "source": "工商時報",
-     "title": "聯電營收年月雙增- 日報 - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260910700294-439901",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-10 01:45:02",
-     "source": "經濟日報",
-     "title": "聯電、致茂 認購火熱 | 權證特區 | 證券 - 經濟日報",
-     "link": "https://money.udn.com/money/story/5739/9744785",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-09 15:31:00",
-     "source": "FTNN新聞",
-     "title": "賣場行情喊燒！「這檔面板」5連紅再爆58.7萬張奪成交王 聯電8月營收連6月成長報喜也成焦點 - FTNN 新聞網",
-     "link": "https://www.ftnn.com.tw/news/577522",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-09 11:50:00",
-     "source": "FTNN新聞",
-     "title": "AI、記憶體題材燒不停！聯電亮眼營收推漲近5％奪成交王「這檔」再搭缺貨漲價潮獲法人上喊220元目標價發威 - FTNN 新聞網",
-     "link": "https://www.ftnn.com.tw/news/577449",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-09 10:31:00",
-     "source": "FTNN新聞",
-     "title": "台股這波太狂！聯發科、聯電助攻 3檔ETF今年「含息報酬破百」名單曝光 - FTNN 新聞網",
-     "link": "https://www.ftnn.com.tw/news/577417",
-     "impact": "market"
-    },
-    {
-     "date": "2026-09-09 03:00:00",
-     "source": "工商時報",
-     "title": "聯發科、聯電威力強 00913、00935、00891今年報酬率突破100％ - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260909700318-439901",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-08 20:30:00",
-     "source": "FTNN新聞",
-     "title": "安全帶係好！聯電上演一日行情、遭外資重砍逾88億元 緯創、群創、鴻海全變提款機 - FTNN 新聞網",
-     "link": "https://www.ftnn.com.tw/news/577313",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-08 20:30:00",
-     "source": "FTNN新聞",
-     "title": "安全帶繫好！聯電上演一日行情、遭外資重砍逾88億元 緯創、群創、鴻海全變提款機 - FTNN 新聞網",
-     "link": "https://www.ftnn.com.tw/news/577313",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-08 18:03:59",
-     "source": "UDN",
-     "title": "外資買超132億元 買超華邦電9.2萬張最多 但聯電遭大賣終止連三買 - UDN",
-     "link": "https://udn.com/news/story/7251/9742088",
-     "impact": "market"
-    },
-    {
-     "date": "2026-09-08 17:50:00",
-     "source": "FTNN新聞",
-     "title": "台股跌220點仍有亮點！「這檔面板」狂湧62.2萬張奪成交王 聯電營收創近4年新高同受矚 - FTNN 新聞網",
-     "link": "https://www.ftnn.com.tw/news/577241",
-     "impact": "market"
-    },
-    {
-     "date": "2026-09-08 16:38:37",
-     "source": "自由時報系",
-     "title": "聯電才漲停就慘摔4.2％！「它」竟狂砍6.38萬張 百萬股東傻眼 - 自由時報",
-     "link": "https://stock.ltn.com.tw/article/f6ca88hnwahk",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-08 09:23:00",
-     "source": "工商時報",
-     "title": "聯電還會飆？量縮拉回就是買點？分析師曝4大利多將成爆發引擎- 證券 - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260908700552-430201",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-08 03:00:00",
-     "source": "工商時報",
-     "title": "聯電營運動能續強- 日報 - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260908700229-439901",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 19:10:00",
-     "source": "工商時報",
-     "title": "9／7台股雷達｜聯電飆漲停聯發科、台虹題材撐盤原因一次看- 證券 - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260907701687-430204",
-     "impact": "market"
-    },
-    {
-     "date": "2026-09-07 17:37:00",
-     "source": "今周刊",
-     "title": "台股48K將至？外資、三大法人爆買1138億，友達、力積電、華邦電、聯電…第一名買賣超逾15萬張 - 今周刊",
-     "link": "https://www.businesstoday.com.tw/article/category/183008/post/202609070032/",
-     "impact": "market"
-    },
-    {
-     "date": "2026-09-07 17:19:14",
-     "source": "UDN",
-     "title": "AI沒泡沫！外資喊話 聯電鎖漲停、台積電喊漲準備飛 - udn.com",
-     "link": "https://udn.com/news/story/7252/9739735",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 16:12:52",
-     "source": "自由時報系",
-     "title": "投信狂買近百億！聯電只排第2 這檔敲逾1.5萬張最搶手 - 自由財經",
-     "link": "https://ec.ltn.com.tw/article/breakingnews/5565920",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 14:45:00",
-     "source": "今周刊",
-     "title": "聯電漲停原因！股價143元放量繼續衝，外資2天默默買超4.8萬張…要追嗎？目標價、進場價位曝光 - 今周刊",
-     "link": "https://www.businesstoday.com.tw/article/category/183008/post/202609070012/",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 12:40:12",
-     "source": "自由時報系",
-     "title": "聯電8月營收衝近4年高點 今爆量32萬張攻漲停143元 - 自由財經",
-     "link": "https://ec.ltn.com.tw/article/breakingnews/5565623",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 11:11:29",
-     "source": "經濟日報",
-     "title": "重返榮耀！聯電8月營收創近四年新高 股價急拉漲停、站上季線 - 經濟日報",
-     "link": "https://money.udn.com/money/story/5710/9738844",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 10:35:17",
-     "source": "UDN",
-     "title": "費半點火台股衝破4.7萬點 聯發科一度漲停、聯電亮燈 - UDN",
-     "link": "https://udn.com/news/story/7251/9738741",
-     "impact": "market"
-    }
-   ]
-  },
-  {
-   "stock_id": "3008",
-   "name": "大立光",
-   "industry": "光電業",
-   "heavyweight": true,
-   "weight_per": 0.0,
-   "count": 23,
-   "market_count": 7,
-   "news": [
-    {
-     "date": "2026-09-11 14:30:07",
-     "source": "鉅亨(cnyes)",
-     "title": "大立光(3008)盤中V轉475元！8月營收年減16%，CPO能撐起下一個萬金夢？ - news.cnyes.com",
-     "link": "https://news.cnyes.com/news/id/6604533",
-     "impact": "market"
-    },
-    {
-     "date": "2026-09-11 10:09:06",
-     "source": "UDN",
-     "title": "大立光及玉晶光逆勢揚 外資降評卻調高目標價 - UDN",
-     "link": "https://udn.com/news/story/7252/9748020",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-10 10:40:00",
-     "source": "FTNN新聞",
-     "title": "蘋果秋季新品亮相！推首款摺疊iPhone Duo 法人看好3檔台股喊「買進」：大立光上榜 - FTNN 新聞網",
-     "link": "https://www.ftnn.com.tw/news/577746",
-     "impact": "market"
-    },
-    {
-     "date": "2026-09-09 18:19:00",
-     "source": "FTNN新聞",
-     "title": "光電股紅通通！「光學大廠」出關首日亮燈攻千元、大立光回彈半根 友達收連5紅、天瀚同飆漲停 - FTNN 新聞網",
-     "link": "https://www.ftnn.com.tw/news/577557",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-09 16:07:00",
-     "source": "FTNN新聞",
-     "title": "矽光子漲勢佳！「2檔千金股」一度亮燈漲停 前鼎、大立光、穩懋都勁揚5% - FTNN 新聞網",
-     "link": "https://www.ftnn.com.tw/news/577547",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-09 11:29:00",
-     "source": "工商時報",
-     "title": "聯發科股價複製大立光？財經專家揭密：輝達入股只是「第一層」 真正原因與台積電有關- 證券 - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260909700942-430201",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-09 02:14:03",
-     "source": "UDN",
-     "title": "大立光、玉晶光 四檔靚 - UDN",
-     "link": "https://udn.com/news/story/7255/9742308",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-08 14:42:58",
-     "source": "理財周刊",
-     "title": "瑞銀一紙報告打醒CPO夢？大立光崩跌兩日 全球10大廠商浮上檯面 台廠上詮光聖搶先卡位 - 理財周刊",
-     "link": "https://www.moneyweekly.com.tw/ArticleData/Info/Article/247442",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-08 12:18:21",
-     "source": "經濟日報",
-     "title": "大立光因外資報告降評喊賣被錯殺？分析師曝絕佳買點位置 - 經濟日報",
-     "link": "https://money.udn.com/money/story/5710/9741199",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-08 03:06:42",
-     "source": "UDN",
-     "title": "瑞銀變臉降評喊賣大立光 目標價維持5,000元 - UDN",
-     "link": "https://udn.com/news/story/7251/9740344",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-08 02:32:02",
-     "source": "經濟日報",
-     "title": "大立光衝刺 CPO 資本支出將創高 - 經濟日報",
-     "link": "https://money.udn.com/money/story/5612/9740357",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 17:45:22",
-     "source": "經濟日報",
-     "title": "大立光股價摔跌停 大出市場意外！外資指主因原來是這個 - 經濟日報",
-     "link": "https://money.udn.com/money/story/5710/9739795",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 17:00:00",
-     "source": "經濟日報",
-     "title": "台積電攜手聯發科拉高台股！收盤上漲775點 大立光苦吞跌停 - 經濟日報",
-     "link": "https://money.udn.com/money/story/5607/9739232",
-     "impact": "market"
-    },
-    {
-     "date": "2026-09-07 17:00:00",
-     "source": "經濟日報",
-     "title": "大立光、雙鴻、聯鈞等飆股被「關」 股價齊挫 - 經濟日報",
-     "link": "https://money.udn.com/money/story/5607/9731701",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 17:00:00",
-     "source": "經濟日報",
-     "title": "蘋果將推新機 台積電、鴻海、大立光等積極備貨迎商機 - 經濟日報",
-     "link": "https://money.udn.com/money/story/5612/9736913",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 14:49:00",
-     "source": "MoneyDJ",
-     "title": "台股收漲775點站上4萬7 台積電漲50元、大立光慘摔跌停- 新聞 - MoneyDJ",
-     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=7c364ddd-439f-47f9-b47d-aeed4cfc5aab",
-     "impact": "market"
-    },
-    {
-     "date": "2026-09-07 14:35:00",
-     "source": "FTNN新聞",
-     "title": "台股狂飆775點重返4萬7！「綠能環保」漲近3%最風光、2檔亮燈漲停光電慘摔大立光重挫740元鎖跌停 - FTNN 新聞網",
-     "link": "https://www.ftnn.com.tw/news/576846",
-     "impact": "market"
-    },
-    {
-     "date": "2026-09-07 14:00:04",
-     "source": "鉅亨(cnyes)",
-     "title": "【優分析即時新聞】大立光(3008)跌停！CPO量產沒那麼快、手機鏡頭旺季不旺，242%漲幅面臨修正 - news.cnyes.com",
-     "link": "https://news.cnyes.com/news/id/6599243",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 11:50:00",
-     "source": "今周刊",
-     "title": "信驊、鴻勁、致茂…高價股爆發領台股衝破47000！大立光為何跌停？台達電也傳雜音，現在能買嗎？ - 今周刊",
-     "link": "https://www.businesstoday.com.tw/article/category/183008/post/202609070017/",
-     "impact": "market"
-    },
-    {
-     "date": "2026-09-07 11:25:28",
-     "source": "自由時報系",
-     "title": "焦點股》大立光：9月拉貨看升難撐 股價下探 - 自由財經",
-     "link": "https://ec.ltn.com.tw/amp/article/breakingnews/5565516",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 09:48:56",
-     "source": "經濟日報",
-     "title": "台股衝過47K 大立光跌破7千關卡 外資說它的 CPO 故事... - 經濟日報",
-     "link": "https://money.udn.com/money/amp/story/5607/9738625",
-     "impact": "market"
-    },
-    {
-     "date": "2026-09-07 09:42:00",
-     "source": "工商時報",
-     "title": "8月營收不如預期大立光陷7千元保衛戰！法人：「CPO」才是下一張王牌- 證券 - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260907700582-430201",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 03:00:00",
-     "source": "工商時報",
-     "title": "法人挺世芯、大立光權證靚- 日報 - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260907700223-439901",
      "impact": "heavy"
     }
    ]
@@ -1340,291 +1515,6 @@
    ]
   },
   {
-   "stock_id": "2357",
-   "name": "華碩",
-   "industry": "電子工業",
-   "heavyweight": true,
-   "weight_per": 0.0,
-   "count": 13,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-11 03:00:00",
-     "source": "工商時報",
-     "title": "華碩、富世達高價股受矚目- 日報 - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260911700289-439901",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-11 00:07:21",
-     "source": "經濟日報",
-     "title": "華碩宣布20億美元 ECB 完成訂價 轉換價1,384.6元溢價4成 - 經濟日報",
-     "link": "https://money.udn.com/money/story/5612/9747615",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-10 15:51:56",
-     "source": "鉅亨(cnyes)",
-     "title": "華碩積極打造全方位AI生態系 第三度登上《TIME》全球最佳企業 - 鉅亨網",
-     "link": "https://m.cnyes.com/news/id/6602658",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-10 04:09:05",
-     "source": "UDN",
-     "title": "華碩營收衝高！8月達949億元 同期最佳 - UDN",
-     "link": "https://udn.com/news/story/7252/9744686",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-10 03:49:24",
-     "source": "UDN",
-     "title": "華碩營收衝高！8月達949億元同期最佳| 個股情報| 股市 - UDN",
-     "link": "https://udn.com/news/story/7252/9744686?from=udn-catelistnews_ch2",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-09 22:02:00",
-     "source": "工商時報",
-     "title": "AI伺服器放量挹注華碩8月業績衝單月次高- 產業 - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260909702223-430502",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-09 16:48:20",
-     "source": "鉅亨(cnyes)",
-     "title": "華碩8月營收950億元月年雙增 AI伺服器、PC產品走強 - news.cnyes.com",
-     "link": "https://news.cnyes.com/news/id/6601563",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-09 16:12:18",
-     "source": "TechNews 科技新報",
-     "title": "華碩8月營收月增12.9% - TechNews 科技新報",
-     "link": "https://finance.technews.tw/2026/09/09/asustek-2357-202608-financial-report/",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-09 15:53:33",
-     "source": "自由時報系",
-     "title": "AI伺服器出貨強勁！華碩8月營收歷史次高年增51.17％ - 自由財經",
-     "link": "https://ec.ltn.com.tw/article/breakingnews/5568337",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 20:45:00",
-     "source": "工商時報",
-     "title": "華碩前進首爾辦AI Tech 從雲端到邊緣端全面擴展AI基建生態系商機- 產業 - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260907701793-430503",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 16:30:30",
-     "source": "鉅亨(cnyes)",
-     "title": "華碩深化夥伴策略合作 全球AI Tech高峰會揭示全方位解決方案 - news.cnyes.com",
-     "link": "https://news.cnyes.com/news/id/6599337",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 16:04:00",
-     "source": "MoneyDJ",
-     "title": "華碩全球AI Tech高峰會揭示全方位解決方案- 新聞 - MoneyDJ",
-     "link": "https://www.moneydj.com/z/DJA/News/DJANewsDetail_ACED33A6-62A0-40E2-8715-BCD15BF7BF64.djhtm",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 07:27:21",
-     "source": "自由時報系",
-     "title": "高效算力帶著走！華碩推出首款UGen 300 USB AI加速器 - 自由時報",
-     "link": "https://stock.ltn.com.tw/article/skwzhenanhwm",
-     "impact": "heavy"
-    }
-   ]
-  },
-  {
-   "stock_id": "2884",
-   "name": "玉山金",
-   "industry": "金融保險",
-   "heavyweight": true,
-   "weight_per": 0.0,
-   "count": 12,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-11 03:00:00",
-     "source": "工商時報",
-     "title": "凱基金、玉山金權證看旺- 日報 - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260911700295-439901",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-10 14:17:48",
-     "source": "鉅亨(cnyes)",
-     "title": "玉山金(2884)跨入「金控2.0」！併三商壽補齊版圖，2027年迎來真正驗收期 - news.cnyes.com",
-     "link": "https://news.cnyes.com/news/print/6602767",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-09 17:00:00",
-     "source": "經濟日報",
-     "title": "三商壽嫁玉山金 9月1日終止上市 股票最後交易日訂8月19日 - 經濟日報",
-     "link": "https://money.udn.com/money/story/5613/9625194",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-08 17:00:00",
-     "source": "經濟日報",
-     "title": "兩樁整併將撼動金控資產排名！玉山金進前五 「新國票」脫末座了？ - 經濟日報",
-     "link": "https://money.udn.com/money/story/5613/9725743",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-08 13:40:56",
-     "source": "自由時報系",
-     "title": "玉山金攻上45元大關創新高 股民嗨喊：50元不遠了 - 自由時報",
-     "link": "https://stock.ltn.com.tw/article/pggtws5ndnea",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-08 11:26:38",
-     "source": "UDN",
-     "title": "玉山金短短7個交易日大漲逾15% 股價衝上45元再創新高 - UDN",
-     "link": "https://udn.com/news/story/7239/9741013",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-08 02:09:22",
-     "source": "UDN",
-     "title": "玉山金、國票金前八月犀利 同寫歷史同期新紀錄 - UDN",
-     "link": "https://udn.com/news/story/7239/9740142",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-08 02:09:22",
-     "source": "UDN",
-     "title": "玉山金、國票金前八月犀利同寫歷史同期新紀錄| 金融要聞| 產經 - UDN",
-     "link": "https://udn.com/news/story/7239/9740142",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 21:06:57",
-     "source": "自由時報系",
-     "title": "玉山金前8月大賺280.4億 創史上同期新高 - 自由財經",
-     "link": "https://ec.ltn.com.tw/article/breakingnews/5566241",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 16:26:24",
-     "source": "經濟日報",
-     "title": "玉山金獲利／前八月280億元 續創歷年新高、年增20% EPS 1.73元 - 經濟日報",
-     "link": "https://money.udn.com/money/amp/story/5613/9739625",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 11:54:00",
-     "source": "工商時報",
-     "title": "《金融股》玉山金日本布局再下一城大阪出張所開業- 證券 - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260907700972-430201",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 01:23:40",
-     "source": "經濟日報",
-     "title": "玉山金、中信金 四檔靚 - 經濟日報",
-     "link": "https://money.udn.com/money/amp/story/5739/9737997",
-     "impact": "heavy"
-    }
-   ]
-  },
-  {
-   "stock_id": "6505",
-   "name": "台塑化",
-   "industry": "油電燃氣業",
-   "heavyweight": true,
-   "weight_per": 0.0,
-   "count": 11,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-10 03:57:42",
-     "source": "UDN",
-     "title": "全民權證／台塑化 押逾150天 - UDN",
-     "link": "https://udn.com/news/amp/story/7255/9744797",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-10 03:00:00",
-     "source": "工商時報",
-     "title": "業績報喜台塑化嗨翻亮燈- 日報 - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260910700221-439901",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-10 01:42:06",
-     "source": "經濟日報",
-     "title": "台塑化 押逾150天 - 經濟日報",
-     "link": "https://money.udn.com/money/story/5739/9744797",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-09 17:06:00",
-     "source": "今周刊",
-     "title": "台塑化漲停理由不只美伊互轟，主菜是它、連外資都轉買1.3萬張！台塑台化南亞…老手更愛這檔「原因曝光」 - 今周刊",
-     "link": "https://www.businesstoday.com.tw/article/category/183008/post/202609090047/",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-09 12:55:31",
-     "source": "鉅亨(cnyes)",
-     "title": "〈焦點股〉台塑化8月營收年增四寶居冠 股價強漲逾9％ - news.cnyes.com",
-     "link": "https://news.cnyes.com/news/id/6601458",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-09 11:56:50",
-     "source": "經濟日報",
-     "title": "台塑四寶8月營收開出 台塑化成黑馬、股價飆逾8% - 經濟日報",
-     "link": "https://money.udn.com/money/amp/story/5710/9743502",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-09 09:41:40",
-     "source": "自由時報系",
-     "title": "焦點股》台塑化:油價走揚助攻 8月營收大增 - 自由財經",
-     "link": "https://ec.ltn.com.tw/article/breakingnews/5567748",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-09 09:41:40",
-     "source": "自由時報系",
-     "title": "焦點股》台塑化:油價走揚助攻 8月營收大漲股價帶頭猛攻 - 自由財經",
-     "link": "https://ec.ltn.com.tw/article/breakingnews/5567748",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-08 18:23:47",
-     "source": "經濟日報",
-     "title": "台塑化9月產能利用率逾九成 預期汽、柴油價差維持強勢 - 經濟日報",
-     "link": "https://money.udn.com/money/amp/story/5710/9742141",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-08 14:15:08",
-     "source": "UDN",
-     "title": "台塑四寶公布營收 南亞創50個月新高 台塑化受惠油價大漲年、月雙增 - UDN",
-     "link": "https://udn.com/news/story/7252/9741498",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-07 14:44:16",
-     "source": "理財周刊",
-     "title": "台塑化煉油利差改善 遇油價再起 第三季開工率升溫 - 理財周刊",
-     "link": "https://www.moneyweekly.com.tw/ArticleData/Info/Article/247263",
-     "impact": "heavy"
-    }
-   ]
-  },
-  {
    "stock_id": "2883",
    "name": "凱基金",
    "industry": "金融保險",
@@ -1798,59 +1688,6 @@
    ]
   },
   {
-   "stock_id": "1503",
-   "name": "士電",
-   "industry": "電機機械",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 6,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-11 09:05:00",
-     "source": "MoneyDJ",
-     "title": "士電T4廠2027年9月投產，客戶超前下訂單- 新聞 - MoneyDJ",
-     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=e7fa14a3-2592-49bb-85ed-0d4784bb1561",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-11 00:19:37",
-     "source": "UDN",
-     "title": "士電新廠產能 預訂一空 - udn.com",
-     "link": "https://udn.com/news/story/7252/9747174",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-10 19:13:27",
-     "source": "UDN",
-     "title": "士電法說會／AI 重電設備瘋搶！北美客戶一次訂10台 還得被迫漲價 - UDN",
-     "link": "https://udn.com/news/story/7252/9747066",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-10 18:46:01",
-     "source": "鉅亨(cnyes)",
-     "title": "士電在手訂單超過600億元 已開始承接2029至2030年訂單 - news.cnyes.com",
-     "link": "https://news.cnyes.com/news/id/6603651",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-10 18:33:34",
-     "source": "自由時報系",
-     "title": "士電在手訂單逾600億元 訂單能見度達2030年 - 自由時報",
-     "link": "https://stock.ltn.com.tw/article/gxy1j93gpklw",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-10 16:59:00",
-     "source": "MoneyDJ",
-     "title": "士電在手訂單逾600億，主要集中於明後年交貨- 新聞 - MoneyDJ",
-     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=bc2db545-7543-4032-89d1-8e472cf24afb",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
    "stock_id": "2353",
    "name": "宏碁",
    "industry": "電子工業",
@@ -2010,59 +1847,6 @@
    ]
   },
   {
-   "stock_id": "6257",
-   "name": "矽格",
-   "industry": "半導體業",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 6,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-08 09:00:00",
-     "source": "MoneyDJ",
-     "title": "AI需求旺+新產能開出矽格下半年營運續衝鋒- 新聞 - MoneyDJ",
-     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=9ef78709-1a59-40b9-b718-fcbc880dac3e",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-08 03:00:00",
-     "source": "工商時報",
-     "title": "AI封測火力全開力成、京元電、矽格8月營收年月雙增「這家」面板級封裝產能已被包下- 日報 - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260908700201-439901",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-07 18:14:20",
-     "source": "UDN",
-     "title": "矽格單月營收持續突破20億元 續創新高 - UDN",
-     "link": "https://udn.com/news/story/7252/9739864",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-07 18:14:20",
-     "source": "UDN",
-     "title": "矽格單月營收持續突破20億元續創新高| 個股情報| 股市 - UDN",
-     "link": "https://udn.com/news/story/7252/9739864?from=udn-ch1_breaknews-1-99-news",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-07 17:30:16",
-     "source": "經濟日報",
-     "title": "矽格營收／8月20.7億元 月增近3%、年增近29% - 經濟日報",
-     "link": "https://money.udn.com/money/story/5710/9739759?from=edn_search_result",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-07 17:12:05",
-     "source": "TechNews 科技新報",
-     "title": "矽格8月營收月增2.7% - TechNews 科技新報",
-     "link": "https://finance.technews.tw/2026/09/07/sigurd-6257-202608-financial-report/",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
    "stock_id": "1101",
    "name": "台泥",
    "industry": "水泥工業",
@@ -2105,52 +1889,6 @@
      "title": "明知亞泥比較好！葉育碩卻選台泥原因曝光 - 鏡週刊Mirror Media",
      "link": "https://www.mirrormedia.mg/external/amp/setn_1904296",
      "impact": "heavy"
-    }
-   ]
-  },
-  {
-   "stock_id": "1702",
-   "name": "南僑",
-   "industry": "食品工業",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 5,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-10 10:51:42",
-     "source": "鉅亨(cnyes)",
-     "title": "中聯油脂問題油 泰山提告並求償 繼南僑後福壽今提出聲明反擊 - news.cnyes.com",
-     "link": "https://news.cnyes.com/news/id/6602703",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-09 02:47:55",
-     "source": "UDN",
-     "title": "中聯油脂案 南僑聲明 要求泰山勿再卸責濫訴 - UDN",
-     "link": "https://udn.com/news/story/7241/9742596",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-08 16:07:20",
-     "source": "鉅亨(cnyes)",
-     "title": "中聯問題油生波 泰山今提告並求償10億元 南僑：最早發現且未隱匿 - news.cnyes.com",
-     "link": "https://news.cnyes.com/news/id/6600402",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-08 14:54:08",
-     "source": "UDN",
-     "title": "回應泰山求償10億元 南僑：深感遺憾與無法理解 - UDN",
-     "link": "https://udn.com/news/story/7241/9741600",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-08 12:43:56",
-     "source": "鉅亨(cnyes)",
-     "title": "中聯油品事件再掀波 泰山今提告中聯、福壽、福懋及南僑求償10億元 - news.cnyes.com",
-     "link": "https://news.cnyes.com/news/id/6595271",
-     "impact": "stock"
     }
    ]
   },
@@ -2201,52 +1939,6 @@
    ]
   },
   {
-   "stock_id": "2371",
-   "name": "大同",
-   "industry": "電機機械",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 5,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-11 09:03:00",
-     "source": "MoneyDJ",
-     "title": "大同強化海外佈局，進軍澳洲鎖定光儲商機- 新聞 - MoneyDJ",
-     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=d8b0b5fe-4dc2-4b9c-a16a-68760c844027",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-11 01:33:08",
-     "source": "UDN",
-     "title": "大同8月合併營收月增19% 富邦媒增6% - udn.com",
-     "link": "https://udn.com/news/story/7252/9747167?from=udn-relatednews_ch2",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-10 17:08:37",
-     "source": "UDN",
-     "title": "大同營收／8月營收43.8億元！月增19%、年減11.4% 設澳洲子公司拓光儲商機 - UDN",
-     "link": "https://udn.com/news/story/7252/9746788",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-10 17:04:26",
-     "source": "鉅亨(cnyes)",
-     "title": "大同8月營收43.83億元年減逾1成 設立澳洲子公司攻光儲商機 - news.cnyes.com",
-     "link": "https://news.cnyes.com/news/id/6603006",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-10 15:52:28",
-     "source": "自由時報系",
-     "title": "大同8月營收月增年減 強化澳洲電力市場耕耘 - 自由時報",
-     "link": "https://stock.ltn.com.tw/article/cl06wekn9ssm",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
    "stock_id": "2455",
    "name": "全新",
    "industry": "通信網路業",
@@ -2288,98 +1980,6 @@
      "source": "自由時報系",
      "title": "焦點股》全新：美系券商加持 狂飆站穩500元大關 - 自由時報",
      "link": "https://stock.ltn.com.tw/article/8mdz558hta4y",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
-   "stock_id": "2885",
-   "name": "元大金",
-   "industry": "金融保險",
-   "heavyweight": true,
-   "weight_per": 0.0,
-   "count": 5,
-   "market_count": 2,
-   "news": [
-    {
-     "date": "2026-09-11 13:49:42",
-     "source": "UDN",
-     "title": "元大金前8月賺499億元、EPS 3.60元！8月單月獲利70億…網：委屈金| 台股雜談| 股市 - UDN",
-     "link": "https://udn.com/news/story/12806/9748417",
-     "impact": "market"
-    },
-    {
-     "date": "2026-09-11 02:34:48",
-     "source": "UDN",
-     "title": "元大金、華南金前八月犀利稅後純益寫同期新高| 個股情報| 股市 - UDN",
-     "link": "https://udn.com/news/story/7252/9747477",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-11 02:34:48",
-     "source": "UDN",
-     "title": "元大金、華南金前八月犀利 稅後純益寫同期新高 - UDN",
-     "link": "https://udn.com/news/story/7252/9747477",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-10 17:57:03",
-     "source": "自由時報系",
-     "title": "台股量能衝高 元大金8月獲利再創新高 - 自由時報",
-     "link": "https://stock.ltn.com.tw/article/abjs5dsrqz5c",
-     "impact": "market"
-    },
-    {
-     "date": "2026-09-10 17:17:57",
-     "source": "UDN",
-     "title": "元大金獲利／前八月近500億元、創同期新高 EPS達3.6元 - UDN",
-     "link": "https://udn.com/news/story/7252/9746816?from=udn-relatednews_ch2",
-     "impact": "heavy"
-    }
-   ]
-  },
-  {
-   "stock_id": "3532",
-   "name": "台勝科",
-   "industry": "半導體業",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 5,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-10 14:04:36",
-     "source": "理財周刊",
-     "title": "股價暴漲300%、本益比飆破300倍！台勝科上半年還在虧損，產能已被AI搶到全面滿載？ - 理財周刊",
-     "link": "https://www.moneyweekly.com.tw/ArticleData/Info/Article/247915",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-09 14:25:00",
-     "source": "FTNN新聞",
-     "title": "矽晶圓真的復活了！台勝科8月營收大增29％ 環球晶產線逼近滿載、價格也喊漲 - FTNN 新聞網",
-     "link": "https://www.ftnn.com.tw/news/577354",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-09 03:00:00",
-     "source": "工商時報",
-     "title": "環球晶、台勝科8月業績強- 日報 - 工商時報",
-     "link": "https://www.ctee.com.tw/news/20260909700220-439901",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-08 14:51:43",
-     "source": "TechNews 科技新報",
-     "title": "台勝科8月營收13.32 億元 - TechNews 科技新報",
-     "link": "https://finance.technews.tw/2026/09/08/fst-3532-202608-financial-report/",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-08 11:01:38",
-     "source": "鉅亨(cnyes)",
-     "title": "【優分析即時新聞】台勝科(3532)營收創近30個月新高，8吋PMIC/DDIC漲價、12吋記憶體滿載雙引擎啟動 - 鉅亨網",
-     "link": "https://m.cnyes.com/news/id/6600280",
      "impact": "stock"
     }
    ]
@@ -2458,45 +2058,6 @@
      "source": "自由時報系",
      "title": "台灣大併精誠完成後 營收超車中華電 - 自由財經",
      "link": "https://ec.ltn.com.tw/article/paper/1769984",
-     "impact": "heavy"
-    }
-   ]
-  },
-  {
-   "stock_id": "2880",
-   "name": "華南金",
-   "industry": "金融保險",
-   "heavyweight": true,
-   "weight_per": 0.0,
-   "count": 4,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-11 10:53:00",
-     "source": "今周刊",
-     "title": "華南金今年漲44％、第一金只有29％...賺得差不多，股價為何差一截？便宜的VS漲得快的，存股該選誰？ - 今周刊",
-     "link": "https://www.businesstoday.com.tw/article/category/183008/post/202609110007/",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-10 20:15:09",
-     "source": "鉅亨(cnyes)",
-     "title": "公股華南金搶先報喜！前8月爆賺240億創新高年增近4成 EPS 1.71元 - news.cnyes.com",
-     "link": "https://news.cnyes.com/news/id/6603972",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-10 19:42:47",
-     "source": "經濟日報",
-     "title": "華南金獲利／前八月賺逾240億元、年增近4成 四子公司齊創高 - 經濟日報",
-     "link": "https://money.udn.com/money/amp/story/5613/9747104",
-     "impact": "heavy"
-    },
-    {
-     "date": "2026-09-10 16:53:10",
-     "source": "UDN",
-     "title": "華南金獲利／前八月逾240億元、年增39.2% 續創同期新高 - UDN",
-     "link": "https://udn.com/news/amp/story/7252/9746747",
      "impact": "heavy"
     }
    ]
@@ -2619,38 +2180,6 @@
    ]
   },
   {
-   "stock_id": "1560",
-   "name": "中砂",
-   "industry": "電機機械",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 3,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-11 13:00:04",
-     "source": "鉅亨(cnyes)",
-     "title": "中砂(1560)先進製程吃到下一站！2奈米營收暴增84%，1.4奈米也來了 - news.cnyes.com",
-     "link": "https://news.cnyes.com/news/id/6604477",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-11 10:48:47",
-     "source": "自由時報系",
-     "title": "焦點股》中砂：跳空飆漲逾8％ 創下新天價 - 自由財經",
-     "link": "https://ec.ltn.com.tw/article/breakingnews/5570295",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-10 03:57:42",
-     "source": "UDN",
-     "title": "中砂、家登權證四檔活力旺| 權證期貨| 股市 - UDN",
-     "link": "https://udn.com/news/story/7255/9744790",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
    "stock_id": "2207",
    "name": "和泰車",
    "industry": "汽車工業",
@@ -2710,63 +2239,6 @@
      "source": "鉅亨(cnyes)",
      "title": "光學元件廠佳能8月營收13.13億元改寫10年來新高年增34% - news.cnyes.com",
      "link": "https://news.cnyes.com/news/id/6599301",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
-   "stock_id": "6196",
-   "name": "帆宣",
-   "industry": "其他電子業",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 3,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-08 12:59:44",
-     "source": "鉅亨(cnyes)",
-     "title": "帆宣 8 月營收年增 84%：工程收入成長，現金流為何要一起看 - 鉅亨號",
-     "link": "https://hao.cnyes.com/post/266588",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-07 16:53:07",
-     "source": "TechNews 科技新報",
-     "title": "帆宣8月營收月減4.0% - TechNews 科技新報",
-     "link": "https://finance.technews.tw/2026/09/07/mic-6196-202608-financial-report/",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-07 06:45:00",
-     "source": "FTNN新聞",
-     "title": "先進封裝躍升「系統整合」！法人點名「這10檔台廠」迎契機 新應材、帆宣目標價曝光 - FTNN 新聞網",
-     "link": "https://www.ftnn.com.tw/news/576681",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
-   "stock_id": "1323",
-   "name": "永裕",
-   "industry": "塑膠工業",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 2,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-11 11:09:00",
-     "source": "MoneyDJ",
-     "title": "永裕前8月營收年增近10%，看好獲利成長優於營收- 新聞 - MoneyDJ",
-     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=5b2e9b26-a81e-4853-b184-d9d81b942b77",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-10 15:26:29",
-     "source": "UDN",
-     "title": "永裕營收／8月2.13億元 年、月雙增 高值化訂單占比提升 - UDN",
-     "link": "https://udn.com/news/story/7252/9746515",
      "impact": "stock"
     }
    ]
@@ -2847,31 +2319,6 @@
    ]
   },
   {
-   "stock_id": "3515",
-   "name": "華擎",
-   "industry": "電子工業",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 2,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-10 15:22:13",
-     "source": "TechNews 科技新報",
-     "title": "華擎8月營收月減42.2% - TechNews 科技新報",
-     "link": "https://finance.technews.tw/2026/09/10/asrock-3515-202608-financial-report/",
-     "impact": "stock"
-    },
-    {
-     "date": "2026-09-07 13:21:00",
-     "source": "MoneyDJ",
-     "title": "華擎伺服器動能升溫，下半年看逐季走強- 新聞 - MoneyDJ",
-     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=3761420e-56f1-40fb-845e-514f6ca29535",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
    "stock_id": "5880",
    "name": "合庫金",
    "industry": "金融保險",
@@ -2940,24 +2387,6 @@
    ]
   },
   {
-   "stock_id": "1773",
-   "name": "勝一",
-   "industry": "化學工業",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 1,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-08 10:30:20",
-     "source": "鉅亨(cnyes)",
-     "title": "【優分析即時新聞】勝一(1773)8月營收年增44.62%創高，電子級溶劑占比拉高至75.8%、台積電依賴度破四成 - news.cnyes.com",
-     "link": "https://news.cnyes.com/news/id/6600262",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
    "stock_id": "1802",
    "name": "台玻",
    "industry": "玻璃陶瓷",
@@ -3007,24 +2436,6 @@
      "source": "TechNews 科技新報",
      "title": "精元8月營收14.31 億元 - TechNews 科技新報",
      "link": "https://finance.technews.tw/2026/09/10/sunrex-2387-202608-financial-report/",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
-   "stock_id": "2393",
-   "name": "億光",
-   "industry": "光電業",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 1,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-07 10:00:00",
-     "source": "MoneyDJ",
-     "title": "億光8月營收年增14%，下半年估成長- 新聞 - MoneyDJ",
-     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=51ff85aa-4497-4f14-8d62-76f5ca5c0dfc",
      "impact": "stock"
     }
    ]
@@ -3151,96 +2562,6 @@
      "source": "TechNews 科技新報",
      "title": "聯陽8月營收6.31 億元 - TechNews 科技新報",
      "link": "https://finance.technews.tw/2026/09/08/ite-3014-202608-financial-report/",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
-   "stock_id": "3380",
-   "name": "明泰",
-   "industry": "通信網路業",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 1,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-08 13:04:31",
-     "source": "經濟日報",
-     "title": "明泰攻 AI 資料中心市場 - 經濟日報",
-     "link": "https://money.udn.com/money/story/5710/9022173)",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
-   "stock_id": "3653",
-   "name": "健策",
-   "industry": "電子工業",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 1,
-   "market_count": 1,
-   "news": [
-    {
-     "date": "2026-09-10 10:25:00",
-     "source": "ETtoday",
-     "title": "台股殺逾600點散熱股抗跌　奇鋐、健策營收看俏 - ETtoday財經雲",
-     "link": "https://finance.ettoday.net/news/3234805",
-     "impact": "market"
-    }
-   ]
-  },
-  {
-   "stock_id": "4137",
-   "name": "麗豐-KY",
-   "industry": "化學生技醫療",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 1,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-08 23:07:06",
-     "source": "genetinfo.com",
-     "title": "麗豐-KY(4137) 8月營收達新台幣2.88億元 月減9.58%年減10.71% 旺季續衝平均單店業績成長 財政補貼收入人民幣1,800萬元已入帳(9/8日股價77.1元) - genetinfo.com",
-     "link": "https://www.genetinfo.com/investment/featured/item/97993.html",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
-   "stock_id": "4572",
-   "name": "駐龍",
-   "industry": "電機機械",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 1,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-07 11:30:00",
-     "source": "MoneyDJ",
-     "title": "駐龍董座看H2需求回升，今/明年本業持續成長- 新聞 - MoneyDJ",
-     "link": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=d2fe2764-1490-4eca-ae58-b2ea41c25399",
-     "impact": "stock"
-    }
-   ]
-  },
-  {
-   "stock_id": "4722",
-   "name": "國精化",
-   "industry": "化學生技醫療",
-   "heavyweight": false,
-   "weight_per": 0.0,
-   "count": 1,
-   "market_count": 0,
-   "news": [
-    {
-     "date": "2026-09-07 18:53:00",
-     "source": "經濟日報",
-     "title": "國精化營收／8月4.1億元、年增24.14% 高階 CCL 材料出貨放大 - 經濟日報",
-     "link": "https://money.udn.com/money/story/5710/9739908?from=edn_newest_index",
      "impact": "stock"
     }
    ]
