@@ -1,67 +1,27 @@
 {
  "schema": 1,
- "generated_at": "2026-09-14T09:05:08+08:00",
- "date": "2026-09-14",
+ "generated_at": "2026-09-15T02:39:27+08:00",
+ "date": "2026-09-15",
  "exdiv": [
-  {
-   "date": "2026-09-15",
-   "code": "00936",
-   "name": "台新永續高息中小",
-   "market": "上市",
-   "kind": "息",
-   "cash": 0.16,
-   "stock_ratio": null,
-   "days_ahead": 1
-  },
-  {
-   "date": "2026-09-15",
-   "code": "00962",
-   "name": "台新AI優息動能",
-   "market": "上市",
-   "kind": "息",
-   "cash": 0.25,
-   "stock_ratio": null,
-   "days_ahead": 1
-  },
-  {
-   "date": "2026-09-15",
-   "code": "009803",
-   "name": "玉山市值動能50",
-   "market": "上市",
-   "kind": "息",
-   "cash": 0.9,
-   "stock_ratio": null,
-   "days_ahead": 1
-  },
-  {
-   "date": "2026-09-15",
-   "code": "01009T",
-   "name": "王道圓滿R1",
-   "market": "上市",
-   "kind": "息",
-   "cash": 0.130476,
-   "stock_ratio": null,
-   "days_ahead": 1
-  },
-  {
-   "date": "2026-09-15",
-   "code": "6924",
-   "name": "榮惠-KY創",
-   "market": "上市",
-   "kind": "息",
-   "cash": 3.5,
-   "stock_ratio": null,
-   "days_ahead": 1
-  },
   {
    "date": "2026-09-16",
    "code": "00404A",
    "name": "主動聯博動能50",
    "market": "上市",
    "kind": "息",
+   "cash": 0.36,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00687B",
+   "name": "國泰20年美債",
+   "market": "上櫃",
+   "kind": "除息",
    "cash": null,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -69,9 +29,39 @@
    "name": "富邦臺灣優質高息",
    "market": "上市",
    "kind": "息",
+   "cash": 0.11,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00740B",
+   "name": "富邦全球投等債",
+   "market": "上櫃",
+   "kind": "除息",
    "cash": null,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00741B",
+   "name": "富邦全球非投等債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00764B",
+   "name": "群益25年美債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -79,9 +69,129 @@
    "name": "國泰北美科技",
    "market": "上市",
    "kind": "息",
+   "cash": 6.0,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00772B",
+   "name": "中信高評級公司債",
+   "market": "上櫃",
+   "kind": "除息",
    "cash": null,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00773B",
+   "name": "中信優先金融債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00777B",
+   "name": "凱基AAA至A公司債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00778B",
+   "name": "凱基金融債20+",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00779B",
+   "name": "凱基美債25+",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00781B",
+   "name": "國泰A級科技債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00792B",
+   "name": "群益A級公司債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00840B",
+   "name": "凱基IG精選15+",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00859B",
+   "name": "群益0-1年美債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00862B",
+   "name": "中信投資級公司債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00863B",
+   "name": "中信全球電信債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00890B",
+   "name": "凱基ESG BBB債15+",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -89,9 +199,9 @@
    "name": "中信綠能及電動車",
    "market": "上市",
    "kind": "息",
-   "cash": null,
+   "cash": 1.45,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -99,9 +209,9 @@
    "name": "富邦特選高股息30",
    "market": "上市",
    "kind": "息",
-   "cash": null,
+   "cash": 0.075,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -109,9 +219,9 @@
    "name": "凱基優選高股息30",
    "market": "上市",
    "kind": "息",
-   "cash": null,
+   "cash": 0.6,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -119,9 +229,9 @@
    "name": "群益台灣精選高息",
    "market": "上市",
    "kind": "息",
-   "cash": null,
+   "cash": 1.1,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -131,7 +241,17 @@
    "kind": "息",
    "cash": 1.0,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00933B",
+   "name": "國泰10Y+金融債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -139,9 +259,9 @@
    "name": "中信成長高股息",
    "market": "上市",
    "kind": "息",
-   "cash": null,
+   "cash": 0.33,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -149,9 +269,19 @@
    "name": "野村臺灣新科技50",
    "market": "上市",
    "kind": "息",
+   "cash": 1.83,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00937B",
+   "name": "群益ESG投等債20+",
+   "market": "上櫃",
+   "kind": "除息",
    "cash": null,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -161,7 +291,7 @@
    "kind": "息",
    "cash": 0.25,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -169,9 +299,9 @@
    "name": "野村趨勢動能高息",
    "market": "上市",
    "kind": "息",
-   "cash": null,
+   "cash": 0.109,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -179,9 +309,19 @@
    "name": "凱基美國非投等債",
    "market": "上市",
    "kind": "息",
+   "cash": 0.097,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00948B",
+   "name": "中信優息投資級債",
+   "market": "上櫃",
+   "kind": "除息",
    "cash": null,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -189,9 +329,19 @@
    "name": "凱基台灣AI50",
    "market": "上市",
    "kind": "息",
-   "cash": null,
+   "cash": 0.12,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00957B",
+   "name": "兆豐US優選投等債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 0.063,
+   "stock_ratio": null,
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -199,9 +349,9 @@
    "name": "FT臺灣永續高息",
    "market": "上市",
    "kind": "息",
-   "cash": null,
+   "cash": 0.19,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -209,9 +359,9 @@
    "name": "中信全球高股息",
    "market": "上市",
    "kind": "息",
-   "cash": null,
+   "cash": 0.1,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -219,9 +369,9 @@
    "name": "中信亞太高股息",
    "market": "上市",
    "kind": "息",
-   "cash": null,
+   "cash": 0.2,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -229,9 +379,9 @@
    "name": "野村日本動能高息",
    "market": "上市",
    "kind": "息",
-   "cash": null,
+   "cash": 0.22,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -239,9 +389,9 @@
    "name": "富邦旗艦50",
    "market": "上市",
    "kind": "息",
-   "cash": null,
+   "cash": 0.189,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -249,9 +399,19 @@
    "name": "富邦淨零ESG50",
    "market": "上市",
    "kind": "息",
+   "cash": 0.215,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00980D",
+   "name": "主動聯博投等入息",
+   "market": "上櫃",
+   "kind": "除息",
    "cash": null,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -259,9 +419,19 @@
    "name": "主動統一台股增長",
    "market": "上市",
    "kind": "息",
+   "cash": 0.63,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00981D",
+   "name": "主動中信非投等債",
+   "market": "上櫃",
+   "kind": "除息",
    "cash": null,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -269,9 +439,19 @@
    "name": "平衡凱基雙核收息",
    "market": "上市",
    "kind": "息",
+   "cash": 0.082,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "00982B",
+   "name": "FT投資級債20+",
+   "market": "上櫃",
+   "kind": "除息",
    "cash": null,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -279,9 +459,9 @@
    "name": "主動富邦動態入息",
    "market": "上市",
    "kind": "息",
-   "cash": null,
+   "cash": 0.052,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -291,7 +471,7 @@
    "kind": "息",
    "cash": 1.0,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -299,9 +479,9 @@
    "name": "主動富邦複合收益",
    "market": "上市",
    "kind": "息",
-   "cash": null,
+   "cash": 0.061,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -309,9 +489,9 @@
    "name": "主動野村臺灣高息",
    "market": "上市",
    "kind": "息",
-   "cash": null,
+   "cash": 0.29,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -321,7 +501,17 @@
    "kind": "息",
    "cash": 0.2,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-09-16",
+   "code": "1599",
+   "name": "宏佳騰",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 0.5,
+   "stock_ratio": null,
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -331,7 +521,7 @@
    "kind": "息",
    "cash": 7.000001,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -341,7 +531,7 @@
    "kind": "息",
    "cash": 3.05,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-16",
@@ -351,7 +541,7 @@
    "kind": "權",
    "cash": null,
    "stock_ratio": null,
-   "days_ahead": 2
+   "days_ahead": 1
   },
   {
    "date": "2026-09-17",
@@ -361,7 +551,7 @@
    "kind": "息",
    "cash": null,
    "stock_ratio": null,
-   "days_ahead": 3
+   "days_ahead": 2
   },
   {
    "date": "2026-09-17",
@@ -371,7 +561,7 @@
    "kind": "息",
    "cash": null,
    "stock_ratio": null,
-   "days_ahead": 3
+   "days_ahead": 2
   },
   {
    "date": "2026-09-17",
@@ -381,7 +571,17 @@
    "kind": "息",
    "cash": null,
    "stock_ratio": null,
-   "days_ahead": 3
+   "days_ahead": 2
+  },
+  {
+   "date": "2026-09-17",
+   "code": "00853B",
+   "name": "統一美債10年Aa-A",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 2
   },
   {
    "date": "2026-09-17",
@@ -391,7 +591,57 @@
    "kind": "息",
    "cash": null,
    "stock_ratio": null,
-   "days_ahead": 3
+   "days_ahead": 2
+  },
+  {
+   "date": "2026-09-17",
+   "code": "00985D",
+   "name": "主動貝萊德優投等",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 2
+  },
+  {
+   "date": "2026-09-17",
+   "code": "00986D",
+   "name": "主動復華金融債息",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 2
+  },
+  {
+   "date": "2026-09-17",
+   "code": "00998A",
+   "name": "主動復華金融股息",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 2
+  },
+  {
+   "date": "2026-09-17",
+   "code": "4420",
+   "name": "光明",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 2.0,
+   "stock_ratio": null,
+   "days_ahead": 2
+  },
+  {
+   "date": "2026-09-17",
+   "code": "4533",
+   "name": "協易機",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 0.1775947,
+   "stock_ratio": null,
+   "days_ahead": 2
   },
   {
    "date": "2026-09-17",
@@ -401,7 +651,17 @@
    "kind": "息",
    "cash": 1.074628,
    "stock_ratio": null,
-   "days_ahead": 3
+   "days_ahead": 2
+  },
+  {
+   "date": "2026-09-17",
+   "code": "5498",
+   "name": "凱崴",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 0.25,
+   "stock_ratio": null,
+   "days_ahead": 2
   },
   {
    "date": "2026-09-18",
@@ -411,7 +671,7 @@
    "kind": "息",
    "cash": null,
    "stock_ratio": null,
-   "days_ahead": 4
+   "days_ahead": 3
   },
   {
    "date": "2026-09-18",
@@ -421,7 +681,7 @@
    "kind": "息",
    "cash": null,
    "stock_ratio": null,
-   "days_ahead": 4
+   "days_ahead": 3
   },
   {
    "date": "2026-09-18",
@@ -431,7 +691,17 @@
    "kind": "息",
    "cash": null,
    "stock_ratio": null,
-   "days_ahead": 4
+   "days_ahead": 3
+  },
+  {
+   "date": "2026-09-21",
+   "code": "00697B",
+   "name": "元大美債7-10",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 6
   },
   {
    "date": "2026-09-21",
@@ -441,7 +711,117 @@
    "kind": "息",
    "cash": null,
    "stock_ratio": null,
+   "days_ahead": 6
+  },
+  {
+   "date": "2026-09-21",
+   "code": "00751B",
+   "name": "元大AAA至A公司債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 6
+  },
+  {
+   "date": "2026-09-21",
+   "code": "00787B",
+   "name": "元大10年IG醫療債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 6
+  },
+  {
+   "date": "2026-09-21",
+   "code": "00967B",
+   "name": "元大優息美債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 6
+  },
+  {
+   "date": "2026-09-21",
+   "code": "00968B",
+   "name": "元大優息投等債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 6
+  },
+  {
+   "date": "2026-09-21",
+   "code": "00981B",
+   "name": "第一金優選非投債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 6
+  },
+  {
+   "date": "2026-09-21",
+   "code": "3260",
+   "name": "威剛",
+   "market": "上櫃",
+   "kind": "除權息",
+   "cash": 18.00773559,
+   "stock_ratio": null,
+   "days_ahead": 6
+  },
+  {
+   "date": "2026-09-21",
+   "code": "5314",
+   "name": "世紀*",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 0.04852674,
+   "stock_ratio": null,
+   "days_ahead": 6
+  },
+  {
+   "date": "2026-09-22",
+   "code": "8042",
+   "name": "金山電",
+   "market": "上櫃",
+   "kind": "除權",
+   "cash": null,
+   "stock_ratio": null,
    "days_ahead": 7
+  },
+  {
+   "date": "2026-09-23",
+   "code": "00836B",
+   "name": "永豐10年A公司債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 8
+  },
+  {
+   "date": "2026-09-23",
+   "code": "00856B",
+   "name": "永豐1-3年美公債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 8
+  },
+  {
+   "date": "2026-09-23",
+   "code": "00857B",
+   "name": "永豐20年美公債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 8
   },
   {
    "date": "2026-09-23",
@@ -451,7 +831,27 @@
    "kind": "息",
    "cash": null,
    "stock_ratio": null,
-   "days_ahead": 9
+   "days_ahead": 8
+  },
+  {
+   "date": "2026-09-23",
+   "code": "00958B",
+   "name": "永豐ESG銀行債15+",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 8
+  },
+  {
+   "date": "2026-09-23",
+   "code": "00990B",
+   "name": "國泰收益非投等債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 8
   },
   {
    "date": "2026-09-23",
@@ -461,7 +861,17 @@
    "kind": "息",
    "cash": 2.4,
    "stock_ratio": null,
-   "days_ahead": 9
+   "days_ahead": 8
+  },
+  {
+   "date": "2026-09-23",
+   "code": "1595",
+   "name": "川寶",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 0.46744739,
+   "stock_ratio": null,
+   "days_ahead": 8
   },
   {
    "date": "2026-09-23",
@@ -471,7 +881,7 @@
    "kind": "息",
    "cash": 1.5,
    "stock_ratio": null,
-   "days_ahead": 9
+   "days_ahead": 8
   },
   {
    "date": "2026-09-23",
@@ -481,7 +891,17 @@
    "kind": "息",
    "cash": 4.0,
    "stock_ratio": null,
-   "days_ahead": 9
+   "days_ahead": 8
+  },
+  {
+   "date": "2026-09-23",
+   "code": "4109",
+   "name": "加捷生醫",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 0.2,
+   "stock_ratio": null,
+   "days_ahead": 8
   },
   {
    "date": "2026-09-23",
@@ -491,7 +911,7 @@
    "kind": "息",
    "cash": 1.007326,
    "stock_ratio": null,
-   "days_ahead": 9
+   "days_ahead": 8
   },
   {
    "date": "2026-09-24",
@@ -501,7 +921,7 @@
    "kind": "權息",
    "cash": 0.5,
    "stock_ratio": 0.04999999,
-   "days_ahead": 10
+   "days_ahead": 9
   },
   {
    "date": "2026-09-29",
@@ -511,7 +931,7 @@
    "kind": "息",
    "cash": 0.5,
    "stock_ratio": null,
-   "days_ahead": 15
+   "days_ahead": 14
   },
   {
    "date": "2026-09-29",
@@ -521,7 +941,7 @@
    "kind": "息",
    "cash": 0.8,
    "stock_ratio": null,
-   "days_ahead": 15
+   "days_ahead": 14
   },
   {
    "date": "2026-09-30",
@@ -531,7 +951,7 @@
    "kind": "息",
    "cash": 0.221074,
    "stock_ratio": null,
-   "days_ahead": 16
+   "days_ahead": 15
   },
   {
    "date": "2026-10-01",
@@ -541,7 +961,17 @@
    "kind": "息",
    "cash": 0.2,
    "stock_ratio": null,
-   "days_ahead": 17
+   "days_ahead": 16
+  },
+  {
+   "date": "2026-10-01",
+   "code": "6523",
+   "name": "達爾膚",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 2.0,
+   "stock_ratio": null,
+   "days_ahead": 16
   },
   {
    "date": "2026-10-01",
@@ -551,7 +981,7 @@
    "kind": "息",
    "cash": 5.0,
    "stock_ratio": null,
-   "days_ahead": 17
+   "days_ahead": 16
   },
   {
    "date": "2026-10-06",
@@ -561,6 +991,16 @@
    "kind": "權息",
    "cash": 0.4,
    "stock_ratio": 0.08,
+   "days_ahead": 21
+  },
+  {
+   "date": "2026-10-07",
+   "code": "2890",
+   "name": "永豐金",
+   "market": "上市",
+   "kind": "權",
+   "cash": null,
+   "stock_ratio": null,
    "days_ahead": 22
   },
   {
@@ -571,7 +1011,7 @@
    "kind": "息",
    "cash": 1.0,
    "stock_ratio": null,
-   "days_ahead": 23
+   "days_ahead": 22
   },
   {
    "date": "2026-10-07",
@@ -581,7 +1021,37 @@
    "kind": "息",
    "cash": 0.533326,
    "stock_ratio": null,
-   "days_ahead": 23
+   "days_ahead": 22
+  },
+  {
+   "date": "2026-10-12",
+   "code": "1565",
+   "name": "精華",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 5.8,
+   "stock_ratio": null,
+   "days_ahead": 27
+  },
+  {
+   "date": "2026-10-22",
+   "code": "8102",
+   "name": "傑霖科技",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 0.9,
+   "stock_ratio": null,
+   "days_ahead": 37
+  },
+  {
+   "date": "2026-10-22",
+   "code": "8936",
+   "name": "國統",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 3.0,
+   "stock_ratio": null,
+   "days_ahead": 37
   },
   {
    "date": "2026-10-28",
@@ -591,7 +1061,17 @@
    "kind": "息",
    "cash": 0.6,
    "stock_ratio": null,
-   "days_ahead": 44
+   "days_ahead": 43
+  },
+  {
+   "date": "2026-11-05",
+   "code": "5523",
+   "name": "豐謙",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 0.5,
+   "stock_ratio": null,
+   "days_ahead": 51
   }
  ],
  "actions": [
@@ -626,7 +1106,7 @@
    "subject": "公告本公司股票面額由「新台幣10元」變更為「新台幣5元」 公告期間：115年7月22日至115年10月21日",
    "clause": "第53款",
    "fact_date": "2026-06-24",
-   "announce_date": "2026-09-10",
+   "announce_date": "2026-09-13",
    "last_trade": null,
    "halt_start": null,
    "halt_end": null,
@@ -638,7 +1118,7 @@
    "provisional": false,
    "halt_source": null,
    "halt_weekdays": null,
-   "days_ahead": -14,
+   "days_ahead": -15,
    "_key": "4747|2026-06-24|公告本公司股票面額由「新台幣10元」變更為「新台幣5元」公告期間：115年7月2"
   },
   {
@@ -1006,7 +1486,7 @@
    "provisional": true,
    "halt_source": null,
    "halt_weekdays": null,
-   "days_ahead": 56,
+   "days_ahead": 55,
    "_key": "4534|2026-09-03|公告本公司訂定減資基準日、減資換發股票基準日及減資換股作業計畫等相關事宜"
   },
   {
@@ -1144,7 +1624,7 @@
    "provisional": true,
    "halt_source": null,
    "halt_weekdays": null,
-   "days_ahead": 52,
+   "days_ahead": 51,
    "_key": "4534|2026-09-04|公告本公司訂定減資基準日、減資換發股票基準日及減資換股作業計畫等相關事宜(舊股票"
   },
   {
@@ -1236,7 +1716,7 @@
    "provisional": false,
    "halt_source": "推算",
    "halt_weekdays": 7,
-   "days_ahead": -7,
+   "days_ahead": -8,
    "_key": "6949|2026-07-13|公告本公司股票面額由「新台幣10元」變更為「新台幣0.5元」，公告期間：115年"
   },
   {
@@ -1282,7 +1762,7 @@
    "provisional": false,
    "halt_source": "公告",
    "halt_weekdays": 8,
-   "days_ahead": 23,
+   "days_ahead": 22,
    "_key": "3632|2026-09-08|公告本公司辦理減資資本變更登記完成暨換股作業時程(更正115/8/13及115/"
   },
   {
@@ -1604,7 +2084,7 @@
    "provisional": true,
    "halt_source": "公告",
    "halt_weekdays": 7,
-   "days_ahead": 45,
+   "days_ahead": 44,
    "_key": "5355|2026-09-10|公告本公司董事長訂定減資換發股票基準日及減資換發股票作業計畫等相關事宜"
   },
   {
@@ -1742,7 +2222,7 @@
    "provisional": false,
    "halt_source": "公告",
    "halt_weekdays": 7,
-   "days_ahead": 15,
+   "days_ahead": 14,
    "_key": "1441|2026-09-03|公告本公司訂定減資換股作業計劃及減資換發股票基準日"
   },
   {
@@ -1765,7 +2245,7 @@
    "provisional": false,
    "halt_source": "公告",
    "halt_weekdays": 7,
-   "days_ahead": 15,
+   "days_ahead": 14,
    "_key": "1441|2026-09-03|[更正其他應敘明事項]公告本公司訂定減資換股作業計劃及減資換發股票基準日"
   },
   {
@@ -1788,7 +2268,7 @@
    "provisional": true,
    "halt_source": "公告",
    "halt_weekdays": 5,
-   "days_ahead": 23,
+   "days_ahead": 22,
    "_key": "5301|2026-09-02|公告本公司調整減資換發股票作業計畫"
   },
   {
@@ -1811,7 +2291,7 @@
    "provisional": false,
    "halt_source": "公告",
    "halt_weekdays": 7,
-   "days_ahead": 28,
+   "days_ahead": 27,
    "_key": "3085|2026-08-20|公告本公司減資基準日、換股作業計畫及減資換發股票基準日等相關事項(更新最後交易日"
   },
   {
@@ -1834,7 +2314,7 @@
    "provisional": false,
    "halt_source": "推算",
    "halt_weekdays": 8,
-   "days_ahead": 35,
+   "days_ahead": 34,
    "_key": "4155|2026-09-03|本公司董事長訂定現金減資換股基準日暨換發股票作業計畫等相關事宜"
   },
   {
@@ -1857,7 +2337,7 @@
    "provisional": false,
    "halt_source": "推算",
    "halt_weekdays": 8,
-   "days_ahead": 43,
+   "days_ahead": 42,
    "_key": "6142|2026-09-10|公告本公司訂定減資換發股票作業計畫"
   }
  ]
