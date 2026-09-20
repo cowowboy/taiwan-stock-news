@@ -26,6 +26,7 @@ import datetime as dt
 import html
 import json
 import re
+import unicodedata
 import sys
 from pathlib import Path
 
@@ -34,6 +35,10 @@ TPE = dt.timezone(dt.timedelta(hours=8))
 ARCHIVE_KEEP = 7
 BODY_MAX_HAN = 5000
 WEEK_MIN_IN_WEEK = 4        # week_events 非空時,至少要有幾則真的落在本週
+# 美股週一假日（MLK／總統日／勞動節…）時,台北週二晨報引用的是上週五＝4 天,
+# 正好卡在門檻上。留 5 天,晨報或上游晚一天產出時才不會逢連假就誤擋整區。
+STALE_MAX_DAYS = 5
+DATE_FMT = re.compile(r"\d{4}-\d{2}-\d{2}")
 
 LIMITS = {                  # 欄位 → (下限, 上限) 漢字數;兩端都擋
     "top3.title": (12, 30), "top3.why": (40, 90),
@@ -42,15 +47,24 @@ LIMITS = {                  # 欄位 → (下限, 上限) 漢字數;兩端都擋
     "stocks.note": (16, 40),
     "calls.basis": (50, 150), "calls.mechanism": (50, 150), "calls.invalid": (40, 150),
     "news.why": (16, 60),
+
     "life.note": (200, 500),
     "quote": (40, 100),
 }
 COUNTS = {"top3": (3, 3), "positioning": (6, 10), "stocks": (3, 6),
-          "calls": (3, 3), "news": (6, 12), "life": (3, 4), "week_events": (0, 12)}
+          "calls": (3, 3), "news": (6, 12), "life": (3, 4), "week_events": (0, 12),
+          "us_sectors": (0, 6)}
 # positioning.fact 幾乎都是數字,用漢字數量它會誤殺(「46,164.72」是 0 漢字),改數全長。
 # 上限存在的理由:定位表一列一個市場,不是把四個市場擠成一句話——
 # 上游第 28 期是 12 列各自獨立,我方第 30 期只有 6 列、其中兩列各塞了四個市場。
-LIMITS_CHARS = {"positioning.fact": (4, 60)}
+CHAR_HINT = {  # 字元數違規時附的提示語,不同欄位要給不同方向
+    "positioning.fact": "（一列一個市場，數字照寫不要寫成句子）",
+    "us_sectors.view": "（一句位置判讀，數字不用寫，程式會自己排）",
+}
+LIMITS_CHARS = {"positioning.fact": (4, 60),
+                # view 是這一區唯一的自由文字,字數上界也全靠它——
+                # g 來自固定名單、其餘都是數字,所以族群區的最壞字數是有界的。
+                "us_sectors.view": (4, 24)}
 REQUIRED = {
     "top3": ("title", "why", "source", "source_url"),
     "positioning": ("market", "fact", "view"),
@@ -59,12 +73,74 @@ REQUIRED = {
     "calls": ("title", "basis", "mechanism", "invalid"),
     "news": ("cat", "title", "why"),
     "life": ("cat", "note"),
+    "us_sectors": ("g", "view"),
 }
 # 讀者不該看到內部欄位名。實例:第 28 期寫了「台股今日無除權息個股(morning.json exdiv 欄為空)」
 LEAK = re.compile(r"[A-Za-z][\w-]*\.json|欄位?為空|欄位?是空")
 NON_EVENT = re.compile(r"^\s*(今日|本日|本週|當日)?\s*無")   # 「無 X」不是事件
+# ── 昨夜美股族群 ──────────────────────────────────────────────
+# 由來:2026-09-17 光通訊核心 −0.08%／收在區間 10%,被依單日指標寫成「熄火」;
+# 9/18 就是 +3.96%／收在區間 58%。一天的數字撐不起趨勢敘述。
+#
+# **這一區的數字不讓模型用文字重打,照抄上游的數值,字串由程式組。**
+# 前三版都是拿樣式規則去管自由文字,三次都被繞過去,而且是同一個原因——
+# 寫的人永遠比過濾器有更多表達空間:
+#   v1 禁字表   「熄火」擋掉就寫「退燒」「人氣散去」「籌碼鬆動」。7 句漏 6 句。
+#   v2 漢字上限 一句判決只要 4~6 個漢字,而真實寫法本身就用掉 6 個,
+#               兩者在長度這個維度上不可分離。30 句漏 27 句。
+#   v3 白名單   擋得住漢字,擋不住英文/注音/emoji/相容漢字;而且 g 欄還在用
+#               v1 那套禁字表,15 句攻擊 15 句全過。
+# 所以改掉問題本身:chg/pos/vr/t20 是數字欄位（照抄上游）,g 必須是上游那組
+# 固定名稱之一,只有 view 是自由文字。
+# 附帶好處:全形半形、分隔符號、字數失控、標籤重複這些問題全部消失。
+#
+# **誠實說清楚這一區擋得住什麼**:view 仍然寫得出「動能熄火」——那是判讀欄,
+# 本來就該能寫判讀,驗證分不出「熄火」是講昨夜還是講多週。真正在防的是
+# **版面**:chg/pos/vr 與 t20 就排在 view 旁邊,寫錯會當場自相矛盾,
+# 而且那些數字不是它寫的。這是「讓錯誤顯眼」,不是「讓錯誤不可能」。
+# 驗證只保證一件事:view 裡不會出現**它自己編的數字**。
 
-SCHEMA = """content.json 結構（全部欄位必填，括號內為則數，字數為漢字數的下限~上限）:
+# 上游 taiwan-flow-live-v2 的 src/build_us_sectors.py 的 SECTORS 定義。
+# 上游加族群時這裡要跟著加——**刻意做成顯式耦合**:族群名是照抄的,
+# 不是自由填的,寧可少一組也不要讓這欄變回自由文字。
+SECTOR_NAMES = {
+    "光通訊核心", "光通訊上游", "AI／GPU", "半導體設備", "記憶體", "類比／功率",
+    "封測", "材料／基板", "連接器", "EDA／IP", "網通", "IT 方案／通路", "光罩",
+}
+# view 裡的數字偵測。原本用 \d 只擋到 Unicode Nd,「跌三趴」「退至①分位」
+# 「僅⅔」「Ⅲ級支撐」全部漏掉——而「跌三趴」正好就是要擋的那種夾帶。
+# Nd/Nl/No 三類涵蓋阿拉伯、全形、羅馬、圈號、上下標、分數;中文數字另外列。
+# 代價是「一路走低」這種慣用語也會被擋。這個取捨是刻意的:
+# 誤擋只會得到一則可修的違規訊息,漏擋會讓錯的數字上線。
+CJK_NUM = "〇一二三四五六七八九十百千萬億兩半參壹貳叁肆伍陸柒捌玖拾佰仟"
+
+
+def _is_num(ch: str) -> bool:
+    return ch in CJK_NUM or unicodedata.category(ch) in ("Nd", "Nl", "No")
+
+
+def find_number(s: str) -> str:
+    """回傳第一串連續數字字元,沒有就回空字串。
+
+    引整串而不是單一字元:「近20日」報「出現數字 2」讀起來像沒看懂,
+    報「出現數字 20」才指得到人看得出來的東西。
+    """
+    for i, ch in enumerate(s):
+        if _is_num(ch):
+            j = i
+            while j < len(s) and _is_num(s[j]):
+                j += 1
+            return s[i:j]
+    return ""
+
+
+# 數字欄位的合理範圍。擋的是「抄錯欄位」「抄成字串」,不是抄錯值——
+# 後者沒有辦法在這裡驗,只能靠 prompt 要求照抄。
+NUM_RANGE = {"chg": (-50.0, 50.0), "pos": (0.0, 100.0),
+             "vr": (0.0, 50.0), "t20": (-95.0, 500.0)}
+
+SCHEMA_TMPL = """content.json 結構（括號內為則數；未標「字元」者為漢字數的下限~上限）。
+us_sectors 可整區缺席，其餘欄位必填：
 
 {
   "top3": [{                                                             (恰好 3)
@@ -84,6 +160,34 @@ SCHEMA = """content.json 結構（全部欄位必填，括號內為則數，字�
   "news":        [{"cat": "法規|要聞|經濟", "title": "",
                    "why": "16~60", "source": "", "detail": ""}]           (6~12)
   "life":        [{"cat": "", "note": "200~500字"}]                       (3~4)
+  "us_sectors":  [{"g": "族群名", "chg": 3.96, "pos": 58, "vr": 1.82,
+                   "t20": -5.9, "view": "4~24字元的一句判讀"}]           (0~6)
+  "us_sectors_date": "來源檔的資料日 YYYY-MM-DD"（us_sectors 非空時必填）
+                 資料源：taiwan-flow-live-v2 的 data/us_sector_flow.json。
+                 **g 與四個數字一律照抄該檔，不要改寫、不要自己算**：
+                   g    必須是下列之一（程式比對固定名單，一字不改）：
+                        {sector_names}
+                        來源檔若出現名單外的族群，代表 brief_tools.py 要補，
+                        先把那一組跳過、照常出刊，不要改寫名稱去硬湊。
+                   chg  當日漲跌%（必填）　pos 收在當日區間%　vr 量比
+                   t20  近 20 日報酬%　　　資料不足時上游給 null，照抄 null
+                   數字要是 JSON 數值，不是字串（"3.96" 會被擋）。
+                   合理範圍 chg ±50、pos 0~100、vr 0~50、t20 −95~500，
+                   超出代表抄錯欄位。
+                 **挑哪幾組**：當日 chg 最高兩組、最低兩組，再加上與「今日關注
+                 個股」對得上的組，至多 6 組。不要只挑支持某個敘事的組。
+                 **版面上的「昨夜」那一格是程式用這些數字排的，你不用寫。**
+                   → 所以不會有「+3.96%／收在區間 58%／量比 1.82」這種欄位，
+                     也不要把數字寫進 view。
+                 view 是這區唯一的自由文字，寫一句位置判讀，如「仍在修正段」。
+                   它旁邊就是 t20，所以這裡本來就該寫多週的位置，不是昨夜的漲跌。
+                   **不准出現任何數字**——阿拉伯、全形、中文數字（三、十、兩）、
+                   羅馬數字、圈號①、上下標、分數½ 都算。連帶會擋掉「一路走低」
+                   這種慣用語，換個寫法即可。
+                 該檔的 date 若不是最近一個美股交易日，整區留空（寧缺勿舊）；
+                 us_sectors_date 距今超過 5 天，程式會擋。
+                 validated=false 的族群成分尚未驗證，view 要保守寫。
+                 reliable=false（組內離散大或成分缺漏）代表組平均不具代表性。
   "quote":       "40~100字，至多 2 段"
 }
 
@@ -94,6 +198,10 @@ SCHEMA = """content.json 結構（全部欄位必填，括號內為則數，字�
   * 任何欄位不得出現 json 檔名或「欄為空」這類內部用語
   * week_events 不得寫「無 X」這種非事件
 存檔輪替、期號遞增、時戳這三件事由程式處理，你不用管。"""
+
+
+SCHEMA = SCHEMA_TMPL.replace(
+    "{sector_names}", "、".join(sorted(SECTOR_NAMES)))
 
 
 def han(s: str) -> int:
@@ -132,6 +240,11 @@ def validate(c: dict, today: dt.date | None = None) -> list[str]:
 
     for arr, fields in REQUIRED.items():
         for i, x in enumerate(c.get(arr) or []):
+            # 模型把陣列寫成字串陣列時,以前會在這裡噴 AttributeError traceback。
+            # 違規清單才是它修得動的東西,traceback 不是。
+            if not isinstance(x, dict):
+                bad.append(f"{arr}[{i}] 應該是物件，實得 {type(x).__name__}")
+                continue
             for f in fields:
                 if not str(x.get(f, "")).strip():
                     bad.append(f"{arr}[{i}].{f} 缺漏")
@@ -139,40 +252,97 @@ def validate(c: dict, today: dt.date | None = None) -> list[str]:
     for path, (lo, hi) in LIMITS_CHARS.items():
         arr, _, field = path.partition(".")
         for i, x in enumerate(c.get(arr) or []):
+            if not isinstance(x, dict):
+                continue                      # 型別問題已由 REQUIRED 迴圈回報
             n = len(str(x.get(field, "")).strip())
             if not (lo <= n <= hi):
                 bad.append(f"{arr}[{i}].{field} {n} 字元，應為 {lo}~{hi}"
-                           f"（一列一個市場，數字照寫不要寫成句子）")
+                           + CHAR_HINT.get(path, ""))
 
     for path, (lo, hi) in LIMITS.items():
         arr, _, field = path.partition(".")
-        vals = ([(f"{arr}[{i}].{field}", x.get(field, "")) for i, x in enumerate(c.get(arr) or [])]
+        vals = ([(f"{arr}[{i}].{field}", x.get(field, ""))
+                 for i, x in enumerate(c.get(arr) or []) if isinstance(x, dict)]
                 if field else [(arr, c.get(arr, ""))])
         for label, v in vals:
             n = han(v)
             if n < lo:
-                bad.append(f"{label} 只有 {n} 字 < 下限 {lo}（寫得太薄）")
+                bad.append(f"{label} 只有 {n} 漢字 < 下限 {lo}（寫得太薄）")
             elif n > hi:
-                bad.append(f"{label} {n} 字 > 上限 {hi}")
+                bad.append(f"{label} {n} 漢字 > 上限 {hi}"
+                           + CHAR_HINT.get(path, ""))
 
     for i, x in enumerate(c.get("top3") or []):
+        if not isinstance(x, dict):
+            continue                          # 型別問題已由 REQUIRED 迴圈回報
         if not str(x.get("source_url", "")).startswith("https://"):
             bad.append(f"top3[{i}].source_url 必須是 https:// 開頭的連結")
 
     evs = c.get("week_events") or []
     if evs:
-        hit = sum(1 for e in evs if in_this_week(e.get("when", ""), today))
+        hit = sum(1 for e in evs
+                   if isinstance(e, dict) and in_this_week(e.get("when", ""), today))
         if hit < WEEK_MIN_IN_WEEK:
             mon = today - dt.timedelta(days=today.weekday())
             bad.append(f"week_events 只有 {hit} 則落在本週"
                        f"（{mon:%m/%d}~{mon + dt.timedelta(days=6):%m/%d}），"
                        f"至少要 {WEEK_MIN_IN_WEEK} 則")
     for i, e in enumerate(evs):
-        if NON_EVENT.match(str(e.get("what", ""))):
+        if isinstance(e, dict) and NON_EVENT.match(str(e.get("what", ""))):
             bad.append(f"week_events[{i}].what 是「無 X」的非事件，不要列")
+
+    if c.get("us_sectors"):
+        raw = c.get("us_sectors_date")
+        ds = str(raw).strip() if isinstance(raw, str) else ""
+        # 先全字串比對再 parse:date.fromisoformat 連 "20260902" 和 "2026-W36-2"
+        # 都收,而 str(20260902.0) 會把 .0 吞掉——等於非字串型別完全沒擋到。
+        d0 = None
+        if DATE_FMT.fullmatch(ds):
+            try:
+                d0 = dt.date.fromisoformat(ds)
+            except ValueError:
+                d0 = None
+        if not str(raw or "").strip():
+            bad.append("有 us_sectors 就必須給 us_sectors_date（來源檔的資料日，"
+                       "YYYY-MM-DD），否則沒人擋得住拿舊資料當昨夜")
+        elif d0 is None:
+            bad.append(f"us_sectors_date「{raw}」不是合法的 YYYY-MM-DD 日期")
+        elif (age := (today - d0).days) < 0:
+            bad.append(f"us_sectors_date {ds} 是未來日期（比今天晚 {-age} 天）")
+        elif age > STALE_MAX_DAYS:
+            bad.append(f"us_sectors_date {ds} 距今 {age} 天——這是來源停更了，整區請留空")
+
+    for i, x in enumerate(c.get("us_sectors") or []):
+        if not isinstance(x, dict):
+            bad.append(f"us_sectors[{i}] 不是物件")
+            continue
+        if (g := str(x.get("g", "")).strip()) not in SECTOR_NAMES:
+            bad.append(f"us_sectors[{i}].g「{g}」不是已知族群名"
+                       f"——照抄來源檔的 g 欄，不要改寫、不要加註")
+        for f, (lo, hi) in NUM_RANGE.items():
+            v = x.get(f)
+            if v is None:
+                # pos/vr/t20 上游資料不足時就是 null,照抄 null 是對的;chg 不行。
+                if f != "chg":
+                    continue
+                bad.append(f"us_sectors[{i}].chg 必填，不可為 null"
+                           f"（pos／vr／t20 才可以是 null）")
+            elif isinstance(v, bool) or not isinstance(v, (int, float)):
+                bad.append(f"us_sectors[{i}].{f} 要照抄來源檔的數值，"
+                           f"不是字串或文字（實得 {v!r}）")
+            elif not (lo <= v <= hi):
+                bad.append(f"us_sectors[{i}].{f} = {v} 超出合理範圍 {lo}~{hi}，"
+                           f"是不是抄錯欄位")
+        # view 是唯一的自由文字,而它旁邊就是 t20——判讀寫在這裡是對的。
+        # 但數字不准出現:數字都有自己的欄位,寫進 view 就是繞過照抄。
+        if ch := find_number(str(x.get("view", ""))):
+            bad.append(f"us_sectors[{i}].view 出現數字「{ch}」"
+                       f"——數字都有自己的欄位，這裡只寫一句判讀")
 
     for arr in REQUIRED:
         for i, x in enumerate(c.get(arr) or []):
+            if not isinstance(x, dict):
+                continue                      # 型別問題已由 REQUIRED 迴圈回報
             for f, v in x.items():
                 if m := LEAK.search(str(v)):
                     bad.append(f"{arr}[{i}].{f} 洩漏內部用語「{m.group(0)}」")
@@ -216,13 +386,45 @@ def render_body(c: dict, date: str, edition: int, gen_at: str, archive: str) -> 
         + "</article>" for n in c["news"])
     life = "\n".join(f"      <section><h3>{esc(x['cat'])}</h3><p>{esc(x['note'])}</p></section>"
                      for x in c["life"])
+    # 族群區可以整個不存在（上游檔缺席或過期）。缺就連標題帶目錄一起不出現,
+    # 不要留一個空殼區塊讓讀者以為當天沒有族群輪動。
+    secs = c.get("us_sectors") or []
+    sectors_date = f"（{esc(c.get('us_sectors_date', ''))}）" if secs else ""
+    sectors_nav = '<a href="#sec-sectors">族群</a>｜' if secs else ""
+
+    def num(v, unit="%", sign=True, nd=2):
+        """數字欄的統一排版。上游資料不足會給 null,顯示破折號而不是 0。"""
+        if not isinstance(v, (int, float)) or isinstance(v, bool) or v != v:
+            return "—"                        # v != v 擋 NaN
+        return f"{v:+.{nd}f}{unit}" if sign else f"{v:.{nd}f}{unit}"
+
+    # 「昨夜」這一格由程式組,模型只照抄數字。前三版讓模型自己寫這格,
+    # 三次都被寫成趨勢敘述——問題不在規則不夠嚴,在它本來就不該是自由文字。
+    sectors_block = (f"""
+  <section class="block" id="sec-sectors">
+    <h2>昨夜美股族群{sectors_date}</h2>
+    <div class="poswrap">
+    <table class="pos"><thead><tr><th>族群</th><th>昨夜</th><th>近20日</th><th>位置</th></tr></thead>
+      <tbody>
+""" + "\n".join(
+        f"      <tr><td>{esc(x['g'])}</td>"
+        f"<td>{num(x.get('chg'))}／收在區間 {num(x.get('pos'), '%', sign=False, nd=0)}"
+        f"／量比 {num(x.get('vr'), '', sign=False)}</td>"
+        # t20 上游是 1 位小數（build_us_sectors.py 的 round(...,1)）,
+        # 印 2 位是虛假精度
+        f"<td>{num(x.get('t20'), nd=1)}</td><td>{esc(x['view'].strip())}</td></tr>"
+        for x in secs) + """
+      </tbody></table>
+    </div>
+  </section>
+""") if secs else ""
 
     return f"""  <header class="masthead">
     <h1>每日晨報</h1>
     <p class="meta">{date} · 第 {edition} 期 · 速讀版 · 產製於 {gen_at}</p>
   </header>
 
-  <nav class="toc"><a href="#sec-three">三件事</a>｜<a href="#sec-pos">定位</a>｜<a href="#sec-week">本週</a>｜<a href="#sec-stocks">個股</a>｜<a href="#sec-calls">判讀</a>｜<a href="#sec-news">要聞</a>｜<a href="#sec-life">生活</a>｜<a href="#sec-final">一句話</a></nav>
+  <nav class="toc"><a href="#sec-three">三件事</a>｜<a href="#sec-pos">定位</a>｜{sectors_nav}<a href="#sec-week">本週</a>｜<a href="#sec-stocks">個股</a>｜<a href="#sec-calls">判讀</a>｜<a href="#sec-news">要聞</a>｜<a href="#sec-life">生活</a>｜<a href="#sec-final">一句話</a></nav>
 
   <section class="block" id="sec-three">
     <h2>今日三件事</h2>
@@ -237,6 +439,7 @@ def render_body(c: dict, date: str, edition: int, gen_at: str, archive: str) -> 
       </tbody></table>
   </section>
 
+{sectors_block}
   <section class="block" id="sec-week">
     <h2>本週關鍵事件</h2>
     <ul class="cal">
