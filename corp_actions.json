@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated_at": "2026-10-02T02:54:29+08:00",
+ "generated_at": "2026-10-02T10:15:50+08:00",
  "date": "2026-10-02",
  "exdiv": [
   {
@@ -652,6 +652,16 @@
    "cash": null,
    "stock_ratio": null,
    "days_ahead": 17
+  },
+  {
+   "date": "2026-10-20",
+   "code": "00991B",
+   "name": "貝萊德A級公司債",
+   "market": "上市",
+   "kind": "息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 18
   },
   {
    "date": "2026-10-20",
@@ -1318,7 +1328,7 @@
    "subject": "公告本公司股票面額由「新台幣10元」變更為「新台幣0.5元」， 公告期間：115年08月06日至115年11月05日。",
    "clause": "第51款",
    "fact_date": "2026-07-13",
-   "announce_date": "2026-09-30",
+   "announce_date": "2026-10-01",
    "last_trade": "2026-08-26",
    "halt_start": "2026-08-27",
    "halt_end": "2026-09-06",
@@ -2574,6 +2584,29 @@
    "halt_weekdays": null,
    "days_ahead": null,
    "_key": "6180|2026-09-29|代重要子公司橘子支行動支付(股)公司辦理減資彌補虧損致債權人公告"
+  },
+  {
+   "kind": "reduce",
+   "code": "2409",
+   "name": "友達",
+   "market": "上市",
+   "subject": "代重要子公司 AUO (L) Corp.公告 董事會決議辦理現金減資",
+   "clause": "第11款",
+   "fact_date": "2026-10-01",
+   "announce_date": "2026-10-01",
+   "last_trade": null,
+   "halt_start": null,
+   "halt_end": null,
+   "base_date": null,
+   "resume": null,
+   "par_before": null,
+   "par_after": null,
+   "price_divisor": null,
+   "provisional": false,
+   "halt_source": null,
+   "halt_weekdays": null,
+   "days_ahead": null,
+   "_key": "2409|2026-10-01|代重要子公司AUO(L)Corp.公告董事會決議辦理現金減資"
   },
   {
    "kind": "reduce",
