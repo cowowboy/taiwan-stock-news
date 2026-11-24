@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated_at": "2026-11-24T08:55:04+08:00",
+ "generated_at": "2026-11-24T14:57:31+08:00",
  "date": "2026-11-24",
  "exdiv": [
   {
@@ -292,6 +292,16 @@
    "cash": 1.0,
    "stock_ratio": null,
    "days_ahead": 16
+  },
+  {
+   "date": "2026-12-18",
+   "code": "5278",
+   "name": "尚凡*",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 0.30810707,
+   "stock_ratio": null,
+   "days_ahead": 24
   },
   {
    "date": "2026-12-21",
@@ -3646,6 +3656,29 @@
    "halt_weekdays": null,
    "days_ahead": null,
    "_key": "2707|2026-11-23|代重要子公司SilksGlobalHolding,Limited公告變更每股面額"
+  },
+  {
+   "kind": "reduce",
+   "code": "6496",
+   "name": "科懋",
+   "market": "上櫃",
+   "subject": "公告本公司辦理庫藏股減資完成實收資本額變更登記",
+   "clause": "第36款",
+   "fact_date": "2026-11-23",
+   "announce_date": "2026-11-23",
+   "last_trade": null,
+   "halt_start": null,
+   "halt_end": null,
+   "base_date": null,
+   "resume": null,
+   "par_before": null,
+   "par_after": null,
+   "price_divisor": null,
+   "provisional": false,
+   "halt_source": null,
+   "halt_weekdays": null,
+   "days_ahead": null,
+   "_key": "6496|2026-11-23|公告本公司辦理庫藏股減資完成實收資本額變更登記"
   },
   {
    "kind": "reduce",
