@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generated_at": "2026-11-25T07:01:41+08:00",
+ "generated_at": "2026-11-25T13:25:43+08:00",
  "date": "2026-11-25",
  "exdiv": [
   {
@@ -10,6 +10,16 @@
    "market": "上市",
    "kind": "息",
    "cash": 0.33,
+   "stock_ratio": null,
+   "days_ahead": 1
+  },
+  {
+   "date": "2026-11-26",
+   "code": "6523",
+   "name": "達爾膚",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 4.0,
    "stock_ratio": null,
    "days_ahead": 1
   },
@@ -54,11 +64,51 @@
    "days_ahead": 6
   },
   {
+   "date": "2026-12-01",
+   "code": "00986B",
+   "name": "FT金融債10+",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 6
+  },
+  {
+   "date": "2026-12-01",
+   "code": "4735",
+   "name": "豪展",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 0.5,
+   "stock_ratio": null,
+   "days_ahead": 6
+  },
+  {
    "date": "2026-12-02",
    "code": "00406A",
    "name": "主動中信台灣收益",
    "market": "上市",
    "kind": "息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 7
+  },
+  {
+   "date": "2026-12-02",
+   "code": "00950B",
+   "name": "凱基A級公司債",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 7
+  },
+  {
+   "date": "2026-12-02",
+   "code": "00966B",
+   "name": "統一ESG投等債15+",
+   "market": "上櫃",
+   "kind": "除息",
    "cash": null,
    "stock_ratio": null,
    "days_ahead": 7
@@ -79,6 +129,36 @@
    "name": "群益優選非投等債",
    "market": "上市",
    "kind": "息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 8
+  },
+  {
+   "date": "2026-12-03",
+   "code": "00959B",
+   "name": "大華投等美債15Y+",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 8
+  },
+  {
+   "date": "2026-12-03",
+   "code": "00983B",
+   "name": "大華優利美公債20",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 8
+  },
+  {
+   "date": "2026-12-03",
+   "code": "00984B",
+   "name": "大華優利美A債15",
+   "market": "上櫃",
+   "kind": "除息",
    "cash": null,
    "stock_ratio": null,
    "days_ahead": 8
@@ -114,6 +194,16 @@
    "days_ahead": 8
   },
   {
+   "date": "2026-12-03",
+   "code": "6160",
+   "name": "欣技",
+   "market": "上櫃",
+   "kind": "除權",
+   "cash": null,
+   "stock_ratio": null,
+   "days_ahead": 8
+  },
+  {
    "date": "2026-12-04",
    "code": "2345",
    "name": "智邦",
@@ -130,6 +220,16 @@
    "market": "上市",
    "kind": "息",
    "cash": 0.199892,
+   "stock_ratio": null,
+   "days_ahead": 9
+  },
+  {
+   "date": "2026-12-04",
+   "code": "4749",
+   "name": "新應材",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 4.5,
    "stock_ratio": null,
    "days_ahead": 9
   },
@@ -184,6 +284,26 @@
    "days_ahead": 13
   },
   {
+   "date": "2026-12-10",
+   "code": "8942",
+   "name": "森鉅",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 1.0,
+   "stock_ratio": null,
+   "days_ahead": 15
+  },
+  {
+   "date": "2026-12-18",
+   "code": "5278",
+   "name": "尚凡*",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 0.30810707,
+   "stock_ratio": null,
+   "days_ahead": 23
+  },
+  {
    "date": "2026-12-21",
    "code": "1817",
    "name": "凱撒衛",
@@ -194,6 +314,16 @@
    "days_ahead": 26
   },
   {
+   "date": "2026-12-29",
+   "code": "6488",
+   "name": "環球晶",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 6.0,
+   "stock_ratio": null,
+   "days_ahead": 34
+  },
+  {
    "date": "2026-12-30",
    "code": "1707",
    "name": "葡萄王",
@@ -202,6 +332,16 @@
    "cash": 1.9,
    "stock_ratio": null,
    "days_ahead": 35
+  },
+  {
+   "date": "2027-01-05",
+   "code": "5483",
+   "name": "中美晶",
+   "market": "上櫃",
+   "kind": "除息",
+   "cash": 2.8,
+   "stock_ratio": null,
+   "days_ahead": 41
   }
  ],
  "actions": [
